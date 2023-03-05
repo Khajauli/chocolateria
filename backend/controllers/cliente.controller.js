@@ -13,7 +13,7 @@ var controller={
         cliente.notifi=params.notifi;
         cliente.usuario=params.usuario;
         cliente.contrasenia=params.contrasenia;
-
+        cliente.correo=params.correo;
         cliente.save((err,clienteGuardado)=>{
             if (err) return res.status(500).send({message:'Error al guardar'});
             if(!clienteGuardado) return res.status(404).send({message:'No se ha guardado el cliente'});
@@ -47,6 +47,15 @@ var controller={
         var clienteId=req.params.id;
         if(clienteId==null) return res.status(4004).send({message:"El usuario no existe"});
         Cliente.findById(usuarioId,(err,cliente)=>{
+            if(err) return res.status(500).send({message:"Error al recuperar los datos"});
+            if(!cliente) return res.status(404).send({message:'No la existe el cliente'});
+            return res.status(200).send({cliente});
+        })
+    },
+    getClienteC:function(req,res){
+        var cedula=req.params.cedula;
+        if(cedula==null) return res.status(4004).send({message:"El cliente no existe"});
+        Cliente.find({cedula},(err,cliente)=>{
             if(err) return res.status(500).send({message:"Error al recuperar los datos"});
             if(!cliente) return res.status(404).send({message:'No la existe el cliente'});
             return res.status(200).send({cliente});

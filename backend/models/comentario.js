@@ -4,6 +4,7 @@ var Schema=mongoose.Schema;
 
 var comentarioSchema=Schema({
     codigo:String,
+    producto:String,
     usuario:String,
     texto:String,
     aprobado:Boolean

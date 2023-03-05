@@ -3,11 +3,13 @@ var mongoose=require('mongoose')
 var Schema=mongoose.Schema;
 
 var chocolateSchema=Schema({
-    nombre: String,
-    precio: Number,
-    tipo: String,
-    id: String,
-    descripcion: String,
-    imagen: String
+    codigo:String,
+    nombre:String,
+    descripcion:String,
+    imagen:String,
+    precio:Number,
+    puntuacion:Number,
+    totales:Number,
+    categoria:String
 })
 module.exports=mongoose.model('Chocolate',chocolateSchema);

@@ -15,11 +15,14 @@ var controller = {
         var chocolate=new Chocolate();
         var params=req.body;
 
+        chocolate.codigo=params.codigo;
         chocolate.nombre=params.nombre;
-        chocolate.precio=params.precio;
-        chocolate.tipo=params.tipo;
         chocolate.descripcion=params.descripcion;
+        chocolate.precio=params.precio;
         chocolate.imagen=null;
+        chocolate.puntacion=params.puntacion;
+        chocolate.totales=params.totales;
+        chocolate.categoria=params.categoria;
                 
 
         chocolate.save((err,chocolateGuardado)=>{
