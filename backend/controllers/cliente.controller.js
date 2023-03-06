@@ -1,26 +1,91 @@
 'use strict'
 var Cliente=require('../models/cliente');
 const { exists } = require('../models/cliente');
+var nodemailer = require('nodemailer');
 var fs=require('fs');
 var path=require('path');
 var controller={
 
-    saveCliente:function(req,res){
-        var cliente=new Cliente();
-        var params=req.body;
-        cliente.cedula=params.cedula;
-        cliente.nombre=params.nombre;
-        cliente.notifi=params.notifi;
-        cliente.usuario=params.usuario;
-        cliente.contrasenia=params.contrasenia;
-        cliente.correo=params.correo;
-        cliente.save((err,clienteGuardado)=>{
-            if (err) return res.status(500).send({message:'Error al guardar'});
-            if(!clienteGuardado) return res.status(404).send({message:'No se ha guardado el cliente'});
-            return res.status(200).send({cliente:clienteGuardado});
-        })
+    saveCliente: async function(req, res) {
+        try {
+          const { cedula, nombre, notifi, usuairo, contrasenia,correo } = req.body;
+      
+      
+          const existingCliente = await Cliente.findOne({ cedula });
+          if (existingCliente) {
+            return res.status(404).send({ message: 'Ya existe el Cliente' });
+          }
+          
+          // create a new client object and save to database
+          const nuevoCliente = new Cliente({
+            cedula,
+            nombre,
+            notifi,
+            usuairo,
+            contrasenia,
+            correo,
+          });
+          const clienteGuardado = await nuevoCliente.save();
+          if(notifi){
+          // send email
+          const transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+              user: 'proyectobanco23@gmail.com',
+              pass: 'cudjssnyqoioxqem'
+            }
+          });
+      
+          const emailTemplate = `
+          <html>
 
-    },
+          <head>
+            <meta charset="utf-8">
+            <title>Chocolate Shop Newsletter</title>
+           
+          </head>
+          </head>
+          <body style="background-color: #f7e9e3; padding: 30px; margin: 0;">
+              <div style="background-color: #edd5c0; padding: 20px; max-width: 800px; margin: 0 auto;">
+                <div style="text-align: center;">
+                  <img src="https://static.vecteezy.com/system/resources/previews/011/048/628/original/chocolate-bar-3d-render-png.png" alt="Chocolate Shop Logo" style="height: 80px; width: 80px; margin-bottom: 20px;">
+                  <h1 style="font-family: 'Brush Script MT', cursive; font-size: 48px; color: #704214; margin-bottom: 20px;">Bienvenidos al newsletter de Ariq</h1>
+                </div>
+                <div style="background-color: #f7e9e3; padding: 20px; border: 2px solid #edd5c0; border-radius: 10px;">
+                  <p style="font-size: 18px; color: #704214; margin-bottom: 20px;">Hola {Nombre del Cliente},</p>
+                  <p style="font-size: 18px; color: #704214; margin-bottom: 20px;">Gracias por unirte a nuestra newsletter de la chocolatería. Aquí te compartimos algunos beneficios exclusivos que podrás disfrutar como suscriptor:</p>
+                  <ul style="font-size: 18px; color: #704214;margin-left: 30px; margin-bottom: 20px;">
+                    <li>Descuentos especiales en todos nuestros productos</li>
+                    <li>Promociones exclusivas para suscriptores</li>
+                    <li>Notificaciones anticipadas de nuevos productos</li>
+                    <li>Invitaciones a eventos especiales</li>
+                  </ul>
+                  <p style="font-size: 18px; color: #704214; margin-bottom: 20px;">Esperamos verte pronto en nuestra tienda y que disfrutes de los mejores chocolates artesanales.</p>
+                  <div style="text-align: center;">
+                    <img src="https://cdn.pixabay.com/photo/2015/03/26/23/09/cake-pops-693645_960_720.jpg" alt="Chocolate Shop Image" style="height: 300px; width: 500px;">
+                  </div>
+                </div>
+              </div>
+            </body>
+          </html>
+          `;
+      
+          const mailOptions = {
+            from: 'proyectobanco23@gmail.com',
+            to: correo,
+            subject: 'Clave de seguridad',
+            html: emailTemplate
+          };
+      
+          const info = await transporter.sendMail(mailOptions);
+          console.log(`Message sent: ${info.messageId}`);
+        }
+          return res.status(200).send({ cliente: clienteGuardado });
+        } catch (err) {
+          console.error(err);
+          return res.status(500).send({ message: 'Error al guardar' });
+        }
+      },
     login:function(req,res){
         var usuario=req.body.usuario;
         var contrasenia=req.body.contrasenia;

@@ -15,34 +15,34 @@ export class ClienteService{
 
     getClientes():Observable<any>{
         let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.get(this.url+'/clientes',{headers:headers});
+        return this._http.get(this.url+'clientes',{headers:headers});
     }
 
     guardarCliente(cliente:Cliente):Observable<any>{
         let params=JSON.stringify(cliente);
         let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.post(this.url+'/guardarCliente',params,{headers:headers});
+        return this._http.post(this.url+'guardarCliente',params,{headers:headers});
     }
 
     getClienteN(cedula:string):Observable<any>{
         let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.get(this.url+'/encontrarCliente/'+cedula,{headers:headers});
+        return this._http.get(this.url+'encontrarCliente/'+cedula,{headers:headers});
     }
 
     getCliente(id:string):Observable<any>{
         let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.get(this.url+'/cliente/'+id,{headers:headers});
+        return this._http.get(this.url+'cliente/'+id,{headers:headers});
     }
 
     updateCliente(cliente:Cliente):Observable<any>{
         let params=JSON.stringify(cliente);
         let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.put(this.url+'/cliente/'+cliente._id,params,{headers:headers});
+        return this._http.put(this.url+'cliente/'+cliente._id,params,{headers:headers});
     }
 
     deleteCliente(id:string):Observable<any>{
         let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.delete(this.url+'/cliente/'+id,{headers:headers});
+        return this._http.delete(this.url+'cliente/'+id,{headers:headers});
     }
 
     login(usuario: string, contrasenia: string):Observable<any>{

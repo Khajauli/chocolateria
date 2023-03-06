@@ -4,7 +4,7 @@ export class Cliente{
         public cedula:string,
         public nombre:string,
         public notifi:boolean,
-        public usuario:String,
+        public usuario:string,
         public contrasenia:string,
         public correo:string,
     ){}
