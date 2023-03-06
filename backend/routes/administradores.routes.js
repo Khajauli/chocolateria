@@ -20,10 +20,10 @@ router.put('/administrador/:id',administradorRouter.updateAdministrador);
 router.delete('/administrador/:id',administradorRouter.deleteAdministrador);
 
 //login
-router.post('/login',administradorRouter.login);
+router.post('/loginAdmin',administradorRouter.login);
 
 //logout
-router.get('/logout',administradorRouter.logout);
+router.get('/logoutAdmin',administradorRouter.logout);
 
 
 module.exports=router; 

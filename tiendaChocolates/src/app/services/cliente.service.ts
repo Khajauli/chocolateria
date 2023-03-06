@@ -45,8 +45,8 @@ export class ClienteService{
         return this._http.delete(this.url+'/cliente/'+id,{headers:headers});
     }
 
-    login(user: string, password: string):Observable<any>{
-        let data = JSON.stringify({ user:user, password:password });
+    login(usuario: string, contrasenia: string):Observable<any>{
+        let data = JSON.stringify({ usuario:usuario, contrasenia:contrasenia });
         let headers=new HttpHeaders().set('Content-Type','application/json');
         return this._http.post(this.url+'login', data,{headers:headers});
       }
