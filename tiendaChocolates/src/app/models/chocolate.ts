@@ -8,7 +8,7 @@ export class Chocolate{
         public descripcion:string,
         public imagen: string,
         public puntuacion:number,
-        totales:number,
-        categoria:String
+        public totales:number,
+        public categoria:String
     ){}
 }

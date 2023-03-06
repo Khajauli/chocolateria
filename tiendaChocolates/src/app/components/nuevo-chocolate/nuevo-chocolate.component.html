@@ -1,0 +1,51 @@
+<p>nuevo-chocolate works!</p>
+<div class="formulario">
+    <form  #chocolateForm="ngForm" (ngSubmit)="guardarChocolate(chocolateForm)">
+        <br>
+        <label for="codigo">Código:</label>
+        <input type="text" id="codigo" name="codigo" #codigo="ngModel" [(ngModel)]="chocolate.codigo" required >
+        <span *ngIf="codigo.touched && !codigo.valid">
+            Codigo obligatorio o incorrectamente ingresado
+        </span>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" #nombre="ngModel" [(ngModel)]="chocolate.nombre" required pattern="[a-zA-Z]+">
+        <span *ngIf="nombre.touched && !nombre.valid">
+            Nombre obligatorio o incorrectamente ingresado
+        </span>
+        <label for="precio">Precio:</label>
+        <input type="text" id="precio" name="precio" #precio="ngModel" [(ngModel)]="chocolate.precio" required pattern="[0-9]+">
+        <span *ngIf="precio.touched && !precio.valid">
+            Precio obligatorio o incorrectamente ingresado
+        </span>
+
+        <label for="tipo">Tipo:</label>  
+        <input type="text" id="tipo" name="tipo" #tipo="ngModel" [(ngModel)]="chocolate.tipo" required >
+        <span *ngIf="tipo.touched && !tipo.valid">
+            Tipo obligatorio o incorrectamente ingresado
+        </span>
+        
+        <label for="descripcion">Descripción:</label>  
+        <input type="text" id="descripcion" name="descripcion" #descripcion="ngModel" [(ngModel)]="chocolate.descripcion" required >
+        <span *ngIf="descripcion.touched && !descripcion.valid">
+            Descripción obligatoria o incorrectamente ingresada
+        </span>
+       
+        <label for="puntuacion">Puntuación:</label>
+        <input type="number" id="puntuacion" name="puntuacion" #puntuacion="ngModel" [(ngModel)]="chocolate.puntuacion" required>
+
+        <label for="categoria">Categoria:</label>  
+        <input type="text" id="categoria" name="categoria" #categoria="ngModel" [(ngModel)]="chocolate.categoria" required >
+        <span *ngIf="categoria.touched && !categoria.valid">
+            Categoria obligatoria o incorrectamente ingresada
+        </span>
+        <p>
+            <label for="imagen">Imagen</label>
+            <span *ngIf="chocolate.imagen" style="float: none;">
+                <img src="{{url+'get-imagen/'+chocolate.imagen}}" style="width: 100px;">
+            </span>
+            <input type="file" #archivoImagen placeholder="Seleccionar imagen" (change)="imagenChangeEvent($event)">
+        </p>
+        <input type="submit" value="Ingresar" [disabled]="!chocolateForm.form.valid">
+    </form>
+
+</div>

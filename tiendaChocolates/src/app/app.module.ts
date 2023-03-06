@@ -12,6 +12,9 @@ import { ProductosComponent } from './components/productos/productos.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactosComponent } from './components/contactos/contactos.component';
 import { EncabezadoAComponent } from './components/encabezado-a/encabezado-a.component';
+import { NuevoChocolateComponent } from './components/nuevo-chocolate/nuevo-chocolate.component';
+import { NuevoClienteComponent } from './components/nuevo-cliente/nuevo-cliente.component';
+import { NuevoAdministradorComponent } from './components/nuevo-administrador/nuevo-administrador.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { EncabezadoAComponent } from './components/encabezado-a/encabezado-a.com
     ProductosComponent,
     AboutUsComponent,
     ContactosComponent,
-    EncabezadoAComponent
+    EncabezadoAComponent,
+    NuevoChocolateComponent,
+    NuevoClienteComponent,
+    NuevoAdministradorComponent
   ],
   imports: [
     BrowserModule,

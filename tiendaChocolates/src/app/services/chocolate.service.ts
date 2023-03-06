@@ -1,11 +1,12 @@
-import {Injectable } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Comentario } from "../models/comentario";
+import { Chocolate } from "../models/chocolate";
 import { Global } from "./global";
-import { Observable } from 'rxjs';
+import { Observable } from "rxjs";
+
 
 @Injectable()
-export class ComentarioService{
+export class ChocolateService{
     public url:string;
     constructor(
         private _http:HttpClient
@@ -13,39 +14,30 @@ export class ComentarioService{
         this.url=Global.url;
     }
 
-    getComentarios():Observable<any>{
-        let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.get(this.url+'/comentarios',{headers:headers});
+    getChocolates():Observable<any>{
+        let headers=new HttpHeaders().set('Content-Type', 'application/json');
+        return this._http.get(this.url+'chocolates',{headers:headers});
     }
 
-    guardarComentario(comentario:Comentario):Observable<any>{
-        let params=JSON.stringify(comentario);
-        let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.post(this.url+'/guardarComentario',params,{headers:headers});
+    guardarChocolate(chocolate:Chocolate):Observable<any>{
+        let params=JSON.stringify(chocolate);
+        let headers=new HttpHeaders().set('Content-Type', 'application/json');
+        return this._http.post(this.url+'guardar-chocolate',params,{headers:headers});
     }
 
-    getComentarioP(producto:string):Observable<any>{
-        let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.get(this.url+'/encontrarCliente/'+producto,{headers:headers});
+    getChocolate(id:String):Observable<any>{
+        let headers=new HttpHeaders().set('Content-Type', 'application/json');
+        return this._http.get(this.url+'chocolate/'+id,{headers:headers});
     }
 
-    getComentario(id:string):Observable<any>{
-        let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.get(this.url+'/comentario/'+id,{headers:headers});
+    updateChocolate(chocolate:Chocolate):Observable<any>{
+        let params=JSON.stringify(chocolate);
+        let headers=new HttpHeaders().set('Content-Type', 'application/json');
+        return this._http.put(this.url+'editar-chocolate/'+chocolate._id,params,{headers:headers});
     }
 
-    updateCliente(comentario:Comentario):Observable<any>{
-        let params=JSON.stringify(comentario);
-        let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.put(this.url+'/comentario/'+comentario._id,params,{headers:headers});
+    deleteChocolate(id:string):Observable<any>{
+        let headers=new HttpHeaders().set('Content-Type', 'application/json');
+        return this._http.delete(this.url+'borrar-chocolate/'+id,{headers:headers});
     }
-
-    deleteComentario(id:string):Observable<any>{
-        let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.delete(this.url+'/comentario/'+id,{headers:headers});
-    }
-
-
-
-
 }
