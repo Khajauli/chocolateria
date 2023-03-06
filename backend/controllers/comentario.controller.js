@@ -42,10 +42,10 @@ var controller={
     },
     deleteComentario:function(req,res){
         var comentarioId=req.params.id;
-        if(comentarioId==null) return res.status(4004).send({message:"La pelicula no existe"});
+        if(comentarioId==null) return res.status(4004).send({message:"El comentario no existe"});
         Comentario.findByIdAndRemove(comentarioId,(err,comentarioBorrado)=>{
             if(err) return res.status(500).send({message:"Error al eliminar los datos"});
-            if(!comentarioBorrado) return res.status(404).send({message:'No se puede eliminarla pelicula'});
+            if(!comentarioBorrado) return res.status(404).send({message:'No se puede eliminar el comentario'});
             return res.status(200).send({comentarioBorrado});
         })
     },

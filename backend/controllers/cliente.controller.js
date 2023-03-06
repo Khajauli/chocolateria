@@ -22,17 +22,17 @@ var controller={
 
     },
     login:function(req,res){
-        var user=req.body.user;
-        var password=req.body.password;
+        var usuario=req.body.usuario;
+        var contrasenia=req.body.contrasenia;
         var session=req.session;
 
-        if(user==null || password==null) return res.status(404).send({message:'Datos incorrectos'});
-        Cliente.findOne({user,password},(err,cliente)=>{
+        if(usuario==null || contrasenia==null) return res.status(404).send({message:'Datos incorrectos'});
+        Cliente.findOne({usuario,password},(err,cliente)=>{
             if (err) return res.status(500).send({message:'Error al recuperar los datos'});
             if(!cliente) return res.status(404).send({message:'Usuario o constraseña incorrectos'});
-            if(user==cliente.user && password==cliente.password){
+            if(usuario==cliente.usuario && contrasenia==cliente.contrasenia){
                 session.req.session;
-                session.user=req.body.user;
+                session.usuario=req.body.usuario;
                 res.status(200).send({cliente});
             }
         })
@@ -70,8 +70,8 @@ var controller={
     },
     deleteCliente:function(req,res){
         var clienteId=req.params.id;
-        if(clienteId==null) return res.status(4004).send({message:"La pelicula no existe"});
-        Pelicula.findByIdAndRemove(clienteId,(err,clienteBorrado)=>{
+        if(clienteId==null) return res.status(4004).send({message:"El cliente no existe"});
+        Cliente.findByIdAndRemove(clienteId,(err,clienteBorrado)=>{
             if(err) return res.status(500).send({message:"Error al eliminar los datos"});
             if(!clienteBorrado) return res.status(404).send({message:'No se puede eliminarla el cliente'});
             return res.status(200).send({clienteBorrado});
@@ -80,10 +80,10 @@ var controller={
     updateCliente:function(req,res){
         var clienteId=req.params.id;
         var update=req.body;
-        if(clienteId==null) return res.status(4004).send({message:"La pelicula no existe"});
+        if(clienteId==null) return res.status(4004).send({message:"El cliente no existe"});
         Cliente.findByIdAndUpdate(clienteId,update,{new:true},(err,clienteActualizado)=>{
             if(err) return res.status(500).send({message:"Error al actualizar los datos"});
-            if(!clienteActualizado) return res.status(404).send({message:'No se puede actualizar pelicula'});
+            if(!clienteActualizado) return res.status(404).send({message:'No se puede actualizar el cliente'});
             return res.status(200).send({clienteActualizado});
         })
     }
