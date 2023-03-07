@@ -19,6 +19,8 @@ import { LoginClientesComponent } from './components/login-clientes/login-client
 import { LoginAdministradoresComponent } from './components/login-administradores/login-administradores.component';
 import { DetalleproductoComponent } from './components/detalleproducto/detalleproducto.component';
 import { EditarProductosComponent } from './components/editar-productos/editar-productos.component';
+import { NuevoComentarioComponent } from './components/nuevo-comentario/nuevo-comentario.component';
+import { NuevoArticuloComponent } from './components/nuevo-articulo/nuevo-articulo.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { EditarProductosComponent } from './components/editar-productos/editar-p
     LoginClientesComponent,
     LoginAdministradoresComponent,
     DetalleproductoComponent,
-    EditarProductosComponent
+    EditarProductosComponent,
+    NuevoComentarioComponent,
+    NuevoArticuloComponent,
   ],
   imports: [
     BrowserModule,

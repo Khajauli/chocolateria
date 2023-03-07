@@ -1,54 +1,49 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Chocolate } from 'src/app/models/chocolate';
+import { Articulo } from 'src/app/models/articulo';
+import { ArticuloService } from 'src/app/services/articulo.service';
 import { CargarService } from 'src/app/services/cargar.service';
-import { ChocolateService } from 'src/app/services/chocolate.service';
 import { Global } from 'src/app/services/global';
 
-
-
 @Component({
-  selector: 'app-nuevo-chocolate',
-  templateUrl: './nuevo-chocolate.component.html',
-  styleUrls: ['./nuevo-chocolate.component.css'],
-  providers: [ChocolateService,CargarService]
+  selector: 'app-nuevo-articulo',
+  templateUrl: './nuevo-articulo.component.html',
+  styleUrls: ['./nuevo-articulo.component.css'],
+  providers: [ArticuloService, CargarService]
 })
-export class NuevoChocolateComponent implements OnInit{
-  public chocolate:Chocolate;
-  public chocolateGuardar:Chocolate;
+export class NuevoArticuloComponent implements OnInit{
+  public articulo:Articulo;
+  public articuloGuardar:Articulo;
   public url:string;
   public status:string;
   public idGuardado:string;
   public archivosParaCargar:Array<File>;
   @ViewChild('archivoImagen') fileInput:any;
 
-
   constructor(
-    private _chocolateService:ChocolateService,
+    private _articuloService:ArticuloService,
     private _cargarService:CargarService
   ){
     this.url=Global.url;
-    this.chocolate= new Chocolate('','','',0,'','','',0,0,'');
-    this.chocolateGuardar= new Chocolate('','','',0,'','','',0,0,'');
+    this.articulo= new Articulo('',0,'','','','');
+    this.articuloGuardar= new Articulo('',0,'','','','');
     this.status="";
     this.idGuardado="";
     this.archivosParaCargar=[];
-   
   }
 
   ngOnInit(): void {
   }
-
-  guardarChocolate(form:NgForm){
-    this._chocolateService.guardarChocolate(this.chocolate).subscribe(
-      response=>{
-        if(response.chocolate){
+  guardarArticulo(form:NgForm) {
+    this._articuloService.guardarArticulo(this.articulo).subscribe(
+      response => {
+        if(response.articulo) {
           if(this.archivosParaCargar){
-            this._cargarService.peticionRequest(Global.url+"subir-imagen/"+response.chocolate._id,[],this.archivosParaCargar,'imagen')
+            this._cargarService.peticionRequest(Global.url+"subirImagen/"+response.articulo._id,[],this.archivosParaCargar,'imagen')
             .then((result:any)=>{
-              this.chocolateGuardar=result.response;
               this.status = 'success';
               this.idGuardado = result.response._id;
+              this.articuloGuardar = result.response;
               form.reset();
               this.fileInput.nativeElement.value='';
             });
@@ -56,7 +51,7 @@ export class NuevoChocolateComponent implements OnInit{
             this.status='failed';
           }
           
-        }else{
+        } else {
           console.log("medio");
           this.status = 'failed';
         }
@@ -66,7 +61,7 @@ export class NuevoChocolateComponent implements OnInit{
         console.log(<any>error);
         this.status = 'failed';
       }
-    )
+    );
   }
   imagenChangeEvent(archivoSeleccionado:any){
     this.archivosParaCargar=<Array<File>>archivoSeleccionado.target.files;

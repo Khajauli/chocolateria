@@ -7,6 +7,7 @@ var chocolatesRoutes=require('./routes/chocolates.routes');
 var clienteRoutes=require('./routes/clientes.routes');
 var comentarioRoutes=require('./routes/comentarios.routes');
 var administradorRoutes=require('./routes/administradores.routes');
+var articuloRoutes=require('./routes/articulos.routes');
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
@@ -28,4 +29,5 @@ app.use('/', chocolatesRoutes)
 app.use('/', clienteRoutes)
 app.use('/', comentarioRoutes)
 app.use('/',administradorRoutes)
+app.use('/',articuloRoutes)
 module.exports=app;
