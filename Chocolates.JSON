@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "nombre": "Chocolate oscuro",
+    "precio": 3.99,
+    "descripcion": "Chocolate amargo con un alto porcentaje de cacao",
+    "tipo": "oscuro"
+  },
+  {
+    "id": 2,
+    "nombre": "Chocolate con leche",
+    "precio": 2.99,
+    "descripcion": "Chocolate suave y cremoso con leche",
+    "tipo": "con leche"
+  },
+  {
+    "id": 3,
+    "nombre": "Chocolate blanco",
+    "precio": 4.99,
+    "descripcion": "Chocolate dulce hecho con manteca de cacao",
+    "tipo": "blanco"
+  },
+  {
+    "id": 4,
+    "nombre": "Chocolate con almendras",
+    "precio": 5.99,
+    "descripcion": "Chocolate con trozos de almendra crujiente",
+    "tipo": "con almendras"
+  }
+]
