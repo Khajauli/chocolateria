@@ -20,7 +20,7 @@
         </span>
 
         <label for="tipo">Tipo:</label>  
-        <input type="text" id="tipo" name="tipo" #tipo="ngModel" [(ngModel)]="chocolate.tipo" required >
+        <input type="text" id="tipo" name="tipo" #tipo="ngModel" [(ngModel)]="chocolate.estado" required >
         <span *ngIf="tipo.touched && !tipo.valid">
             Tipo obligatorio o incorrectamente ingresado
         </span>

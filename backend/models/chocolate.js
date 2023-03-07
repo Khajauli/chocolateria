@@ -1,4 +1,4 @@
-'use strict'
+-'use strict'
 var mongoose=require('mongoose')
 var Schema=mongoose.Schema;
 
@@ -7,6 +7,7 @@ var chocolateSchema=Schema({
     nombre:String,
     descripcion:String,
     imagen:String,
+    estado:String,
     precio:Number,
     puntuacion:Number,
     totales:Number,

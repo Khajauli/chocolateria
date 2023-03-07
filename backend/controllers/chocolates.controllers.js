@@ -25,6 +25,7 @@ var controller = {
           chocolate.puntacion = params.puntacion;
           chocolate.totales = params.totales;
           chocolate.categoria = params.categoria;
+          chocolate.estado = params.estado;
       
           const chocolateGuardado = await chocolate.save();
       
