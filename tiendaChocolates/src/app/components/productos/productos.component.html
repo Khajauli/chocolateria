@@ -1,1 +1,10 @@
-<p>productos works!</p>
+<p>Productos</p>
+<ul>
+    <li *ngFor = "let producto of productos" class = "producto">
+        <a [routerLink] = "['/chocolate', producto._id]">
+            <img src = "{{url+'get-imagen/'+producto.imagen}}" *ngIf="producto.imagen">
+            <h3>{{producto.codigo}} - {{producto.nombre}} - {{producto.precio}}</h3>
+        </a>
+   
+    </li>
+</ul>
