@@ -48,7 +48,7 @@ export class NuevoChocolateComponent implements OnInit{
             .then((result:any)=>{
               this.chocolateGuardar=result.response;
               this.status = 'success';
-              this.idGuardado = result.chocolate._id;
+              this.idGuardado = result.response._id;
               form.reset();
               this.fileInput.nativeElement.value='';
             });
