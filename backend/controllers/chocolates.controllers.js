@@ -1,5 +1,7 @@
 'use strict'
 var Chocolate=require('../models/chocolate');
+var Cliente=require('../models/cliente');
+var nodemailer = require('nodemailer');
 var fs=require('fs');
 var path=require('path');
 
@@ -11,26 +13,78 @@ var controller = {
         );
     },
     //Guardar un chocolate
-    saveChocolate:function(req,res){
-        var chocolate=new Chocolate();
-        var params=req.body;
-
-        chocolate.codigo=params.codigo;
-        chocolate.nombre=params.nombre;
-        chocolate.descripcion=params.descripcion;
-        chocolate.precio=params.precio;
-        chocolate.imagen=null;
-        chocolate.puntacion=params.puntacion;
-        chocolate.totales=params.totales;
-        chocolate.categoria=params.categoria;
-                
-
-        chocolate.save((err,chocolateGuardado)=>{
-            if (err) return res.status(500).send({message:"Error al guardar el chocolate"});
-            if(!chocolateGuardado) return res.status(404).send({message:'No se ha guardado el chocolate'});
-            return res.status(200).send({chocolate: chocolateGuardado});
-        })
-    },
+    saveChocolate: async function(req, res) {
+        try {
+          const chocolate = new Chocolate();
+          const params = req.body;
+          chocolate.codigo = params.codigo;
+          chocolate.nombre = params.nombre;
+          chocolate.descripcion = params.descripcion;
+          chocolate.precio = params.precio;
+          chocolate.imagen = null;
+          chocolate.puntacion = params.puntacion;
+          chocolate.totales = params.totales;
+          chocolate.categoria = params.categoria;
+      
+          const chocolateGuardado = await chocolate.save();
+      
+          // Send email to clients with notifi set to true
+          const clientes = await Cliente.find({ notifi: true });
+          const transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+              user: 'proyectobanco23@gmail.com',
+              pass: 'cudjssnyqoioxqem'
+            }
+          });
+      
+          for (const cliente of clientes) {
+            const emailTemplate = `
+            <html>
+              <head>
+                <meta charset="utf-8">
+                <title>Chocolate Shop Newsletter</title>
+              </head>
+              <body style="background-color: #f7e9e3; padding: 30px; margin: 0;">
+                <div style="background-color: #edd5c0; padding: 20px; max-width: 800px; margin: 0 auto;">
+                  <div style="text-align: center;">
+                    <img src="https://static.vecteezy.com/system/resources/previews/011/048/628/original/chocolate-bar-3d-render-png.png" alt="Chocolate Shop Logo" style="height: 80px; width: 80px; margin-bottom: 20px;">
+                    <h1 style="font-family: 'Brush Script MT', cursive; font-size: 48px; color: #704214; margin-bottom: 20px;">Bienvenidos al newsletter de Ariq</h1>
+                  </div>
+                  <div style="background-color: #f7e9e3; padding: 20px; border: 2px solid #edd5c0; border-radius: 10px;">
+                    <p style="font-size: 18px; color: #704214; margin-bottom: 20px;">Hola ${cliente.nombre},</p>
+                    <p style="font-size: 18px; color: #704214; margin-bottom: 20px;">Te informamos que acabamos de agregar un nuevo chocolate a nuestro catálogo:</p>
+                    <ul style="font-size: 18px; color: #704214;margin-left: 30px; margin-bottom: 20px;">
+                      <li>Nombre: ${chocolateGuardado.nombre}</li>
+                      <li>Descripción: ${chocolateGuardado.descripcion}</li>
+                      <li>Precio: ${chocolateGuardado.precio}</li>
+                      <li>Puntuación: ${chocolateGuardado.puntacion} (${chocolateGuardado.totales} votos)</li>
+                    </ul>
+                    <p style="font-size: 18px; color: #704214; margin-bottom: 20px;">¡No te lo pierdas!</p>
+                    <div style="text-align: center;">
+                      <img src="${chocolateGuardado.imagen}" alt="Nuevo chocolate" style="height: 300px; width: 500px;">
+                    </div>
+                  </div>
+                </div>
+              <//body>
+              </html>`;
+      
+              const mailOptions = {
+                from: 'proyectobanco23@gmail.com',
+                to: cliente.correo,
+                subject: 'Ariq newsletter',
+                html: emailTemplate
+              };
+          
+              const info = await transporter.sendMail(mailOptions);
+              console.log(`Message sent: ${info.messageId}`);
+            }
+              return res.status(200).send({ chocolate: chocolateGuardado });
+            } catch (err) {
+              console.error(err);
+              return res.status(500).send({ message: 'Error al guardar' });
+            }
+          },
     //Obtener chocolates
     getChocolates:function(req,res){
         Chocolate.find({}).sort().exec((err,chocolatesG)=>{
