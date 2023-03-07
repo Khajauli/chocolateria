@@ -8,7 +8,7 @@
             Cédula obligatoria o incorrectamente ingresada
         </span>
         <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" #nombre="ngModel" [(ngModel)]="cliente.nombre" required pattern="[a-zA-Z]+">
+        <input type="text" id="nombre" name="nombre" #nombre="ngModel" [(ngModel)]="cliente.nombre" required>
         <span *ngIf="nombre.touched && !nombre.valid">
             Nombre obligatorio o incorrectamente ingresado
         </span>

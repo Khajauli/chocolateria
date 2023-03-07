@@ -15,6 +15,8 @@ import { EncabezadoAComponent } from './components/encabezado-a/encabezado-a.com
 import { NuevoChocolateComponent } from './components/nuevo-chocolate/nuevo-chocolate.component';
 import { NuevoClienteComponent } from './components/nuevo-cliente/nuevo-cliente.component';
 import { NuevoAdministradorComponent } from './components/nuevo-administrador/nuevo-administrador.component';
+import { LoginClientesComponent } from './components/login-clientes/login-clientes.component';
+import { LoginAdministradoresComponent } from './components/login-administradores/login-administradores.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { NuevoAdministradorComponent } from './components/nuevo-administrador/nu
     EncabezadoAComponent,
     NuevoChocolateComponent,
     NuevoClienteComponent,
-    NuevoAdministradorComponent
+    NuevoAdministradorComponent,
+    LoginClientesComponent,
+    LoginAdministradoresComponent
   ],
   imports: [
     BrowserModule,

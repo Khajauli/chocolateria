@@ -8,7 +8,7 @@ var controller={
 
     saveCliente: async function(req, res) {
         try {
-          const { cedula, nombre, notifi, usuairo, contrasenia,correo } = req.body;
+          const { cedula, nombre, notifi, usuario, contrasenia,correo } = req.body;
       
       
           const existingCliente = await Cliente.findOne({ cedula });
@@ -21,7 +21,7 @@ var controller={
             cedula,
             nombre,
             notifi,
-            usuairo,
+            usuario,
             contrasenia,
             correo,
           });
@@ -52,7 +52,7 @@ var controller={
                   <h1 style="font-family: 'Brush Script MT', cursive; font-size: 48px; color: #704214; margin-bottom: 20px;">Bienvenidos al newsletter de Ariq</h1>
                 </div>
                 <div style="background-color: #f7e9e3; padding: 20px; border: 2px solid #edd5c0; border-radius: 10px;">
-                  <p style="font-size: 18px; color: #704214; margin-bottom: 20px;">Hola {Nombre del Cliente},</p>
+                  <p style="font-size: 18px; color: #704214; margin-bottom: 20px;">Hola ${nombre},</p>
                   <p style="font-size: 18px; color: #704214; margin-bottom: 20px;">Gracias por unirte a nuestra newsletter de la chocolatería. Aquí te compartimos algunos beneficios exclusivos que podrás disfrutar como suscriptor:</p>
                   <ul style="font-size: 18px; color: #704214;margin-left: 30px; margin-bottom: 20px;">
                     <li>Descuentos especiales en todos nuestros productos</li>
@@ -73,7 +73,7 @@ var controller={
           const mailOptions = {
             from: 'proyectobanco23@gmail.com',
             to: correo,
-            subject: 'Clave de seguridad',
+            subject: 'Ariq newsletter',
             html: emailTemplate
           };
       

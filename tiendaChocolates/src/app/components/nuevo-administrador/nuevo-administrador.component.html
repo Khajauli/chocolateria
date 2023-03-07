@@ -1,1 +1,32 @@
-<p>nuevo-administrador works!</p>
+<h1>Nuevo administrador</h1>
+<div class="formulario">
+    <form  #administradorForm="ngForm" (ngSubmit)="guardarAdministrador(administradorForm)">
+        <br>
+        <label for="cedula">Cédula:</label>
+        <input type="text" id="cedula" name="cedula" #cedula="ngModel" [(ngModel)]="administrador.cedula" required pattern="[0-9]+">
+        <span *ngIf="cedula.touched && !cedula.valid">
+            Cédula obligatoria o incorrectamente ingresada
+        </span>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" #nombre="ngModel" [(ngModel)]="administrador.nombre" required>
+        <span *ngIf="nombre.touched && !nombre.valid">
+            Nombre obligatorio o incorrectamente ingresado
+        </span>
+
+        <label for="usuario">Usuario:</label>  
+        <input type="text" id="usuario" name="usuario" #usuario="ngModel" [(ngModel)]="administrador.usuario" required >
+        <span *ngIf="usuario.touched && !usuario.valid">
+            usuario obligatorio o incorrectamente ingresado
+        </span>
+        
+        <label for="contrasenia">Contraseña:</label>  
+        <input type="text" id="contrasenia" name="contrasenia" #contrasenia="ngModel" [(ngModel)]="administrador.contrasenia" required >
+        <span *ngIf="contrasenia.touched && !contrasenia.valid">
+            contraseña obligatoria o incorrectamente ingresada
+        </span>
+       
+
+        <input type="submit" value="Ingresar" [disabled]="!administradorForm.form.valid">
+    </form>
+
+</div>
