@@ -14,6 +14,7 @@ import { Global } from 'src/app/services/global';
   providers: [ChocolateService,CargarService]
 })
 export class NuevoChocolateComponent implements OnInit{
+  public titulo:string;
   public chocolate:Chocolate;
   public chocolateGuardar:Chocolate;
   public url:string;
@@ -33,7 +34,7 @@ export class NuevoChocolateComponent implements OnInit{
     this.status="";
     this.idGuardado="";
     this.archivosParaCargar=[];
-   
+    this.titulo="GUARDAR PELICULA";
   }
 
   ngOnInit(): void {
@@ -48,7 +49,6 @@ export class NuevoChocolateComponent implements OnInit{
             .then((result:any)=>{
               this.chocolateGuardar=result.response;
               this.status = 'success';
-              this.idGuardado = result.response._id;
               form.reset();
               this.fileInput.nativeElement.value='';
             });
