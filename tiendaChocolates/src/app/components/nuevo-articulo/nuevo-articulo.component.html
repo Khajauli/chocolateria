@@ -1,0 +1,38 @@
+<h1>Nuevo articulo</h1>
+<div class="formulario">
+    <form  #articuloForm="ngForm" (ngSubmit)="guardarArticulo(articuloForm)">
+        <br>
+        <label for="numero">Numero:</label>
+        <input type="text" id="numero" name="numero" #numero="ngModel" [(ngModel)]="articulo.numero" required pattern="[0-9]+">
+        <span *ngIf="numero.touched && !numero.valid">
+            numero de artículo obligatorio o incorrectamente ingresado
+        </span>
+        <label for="titulo">Titulo:</label>
+        <input type="text" id="titulo" name="titulo" #titulo="ngModel" [(ngModel)]="articulo.titulo" required>
+        <span *ngIf="titulo.touched && !titulo.valid">
+            titulo obligatorio o incorrectamente ingresado
+        </span>
+
+        <label for="texto">Texto:</label>  
+        <input type="text" id="texto" name="texto" #texto="ngModel" [(ngModel)]="articulo.texto" required >
+        <span *ngIf="texto.touched && !texto.valid">
+            usuario obligatorio o incorrectamente ingresado
+        </span>
+
+        <label for="tipo">Tipo:</label>  
+        <input type="text" id="tipo" name="tipo" #tipo="ngModel" [(ngModel)]="articulo.tipo" required >
+        <span *ngIf="tipo.touched && !tipo.valid">
+            usuario obligatorio o incorrectamente ingresado
+        </span>
+        <p>
+            <label for="imagen">Imagen</label>
+            <span *ngIf="articulo.imagen" style="float: none;">
+                <img src="{{url+'getImagen/'+articulo.imagen}}" style="width: 100px;">
+            </span>
+            <input type="file" #archivoImagen placeholder="Seleccionar imagen" (change)="imagenChangeEvent($event)">
+        </p>
+        
+        <input type="submit" value="Ingresar" [disabled]="!articuloForm.form.valid">
+    </form>
+
+</div>

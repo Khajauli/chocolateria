@@ -17,6 +17,8 @@ import { NuevoClienteComponent } from './components/nuevo-cliente/nuevo-cliente.
 import { NuevoAdministradorComponent } from './components/nuevo-administrador/nuevo-administrador.component';
 import { LoginClientesComponent } from './components/login-clientes/login-clientes.component';
 import { LoginAdministradoresComponent } from './components/login-administradores/login-administradores.component';
+import { NuevoComentarioComponent } from './components/nuevo-comentario/nuevo-comentario.component';
+import { NuevoArticuloComponent } from './components/nuevo-articulo/nuevo-articulo.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { LoginAdministradoresComponent } from './components/login-administradore
     NuevoClienteComponent,
     NuevoAdministradorComponent,
     LoginClientesComponent,
-    LoginAdministradoresComponent
+    LoginAdministradoresComponent,
+    NuevoComentarioComponent,
+    NuevoArticuloComponent
   ],
   imports: [
     BrowserModule,
