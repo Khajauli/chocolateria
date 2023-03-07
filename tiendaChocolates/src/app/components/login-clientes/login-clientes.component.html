@@ -1,1 +1,26 @@
-<p>login-clientes works!</p>
+
+<body>
+    <h1 class="text-center">Ingresa a tu cuenta!</h1>
+    <div class="container" id="log">
+        <div class="row">
+          <div class="col-md-6 offset-md-3 d-flex justify-content-center">
+            <form #loginCForm="ngForm" (ngSubmit)="loginCliente(loginCForm)">
+              <div class="form-group">
+                <label for="username">Nombre de usuario:</label>
+                <input type="text" class="form-control" id="username" name="username" #username="ngModel" [(ngModel)]="usuario" required>
+                <span *ngIf="username.touched && !username.valid">
+                  Nombre de usuario obligatorio
+              </span>
+              </div>
+              <div class="form-group">
+                <label for="contrasenia">Contaseña:</label>
+                <input type="password" class="form-control" id="password" name="password" #password="ngModel" [(ngModel)]="contrasenia" required>
+              </div>
+              <input type="submit" value="Ingresar" [disabled]="!loginCForm.form.valid">
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      
+    </body>
