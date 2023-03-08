@@ -20,12 +20,10 @@
     </a> 
       </li> 
    
-          <button style="height: 50px; width: 100px;" [routerLink]="['/inventario/'+categoria]">
-             +
-        </button>
-
-      
-    </ng-container>
+      <button style="height: 50px; width: 100px;" (click)="showAddButtons(categoria)"> + </button>
+  <button style="height: 50px; width: 100px;" [routerLink]="['/nuevoChocolate']" *ngIf="showButtonsForCategory[categoria]">Agregar Nuevo</button>
+  <button style="height: 50px; width: 100px;" [routerLink]="['/inventario/'+categoria]" *ngIf="showButtonsForCategory[categoria]">Agregar Existente</button>
+</ng-container>
   </ul>
   
 

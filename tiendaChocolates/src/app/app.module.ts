@@ -24,6 +24,7 @@ import { NuevoArticuloComponent } from './components/nuevo-articulo/nuevo-articu
 import { AddProductosComponent } from './components/add-productos/add-productos.component';
 import { HomeAComponent } from './components/home-a/home-a.component';
 import { ProductosUComponent } from './components/productos-u/productos-u.component';
+import { AboutusAComponent } from './components/aboutus-a/aboutus-a.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { ProductosUComponent } from './components/productos-u/productos-u.compon
     AddProductosComponent,
     HomeAComponent,
     ProductosUComponent,
+    AboutusAComponent,
   ],
   imports: [
     BrowserModule,

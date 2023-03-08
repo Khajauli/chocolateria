@@ -14,15 +14,23 @@ export class ProductosComponent implements OnInit {
   public url: string;
   public confirm: boolean;
   public isFour: number;
-  public categorias: string[]; // added this property to hold categories
-
+  public categorias: string[];
+  public showButtons: boolean; // added this property
+  public showButtonsForCategory: { [key: string]: boolean };
 
   constructor(private _chocolateService: ChocolateService) {
     this.url = Global.url;
     this.productos = [];
     this.confirm = false;
     this.isFour = 0;
-    this.categorias = []; // initialize categories array
+    this.categorias = [];
+    this.showButtons = false; // initialize showButtons to false
+    this.showButtonsForCategory = {};
+
+    this.categorias.forEach((categoria) => {
+      this.showButtonsForCategory[categoria] = false;
+    });
+
   }
 
   ngOnInit(): void {
@@ -34,7 +42,7 @@ export class ProductosComponent implements OnInit {
       response => {
         if (response.chocolatesG) {
           this.productos = response.chocolatesG;
-          this.obtenerCategorias(); // call obtenerCategorias() once after products are loaded
+          this.obtenerCategorias();
         }
       },
       error => {
@@ -60,7 +68,7 @@ export class ProductosComponent implements OnInit {
       }
     }
 
-    this.categorias = categorias; // assign categories array to class property
+    this.categorias = categorias;
   }
 
   setConfirm(confirm: boolean) {
@@ -78,4 +86,9 @@ export class ProductosComponent implements OnInit {
       }
     )
   }
+
+   showAddButtons(categoria: string) { // modified this method to take a category argument
+    this.showButtonsForCategory[categoria] = true;
+  }
+
 }
