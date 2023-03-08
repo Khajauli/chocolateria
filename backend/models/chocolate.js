@@ -3,7 +3,7 @@ var mongoose=require('mongoose')
 var Schema=mongoose.Schema;
 
 var chocolateSchema=Schema({
-    codigo:String,
+    codigo:Number,
     nombre:String,
     descripcion:String,
     imagen:String,

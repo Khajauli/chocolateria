@@ -17,7 +17,6 @@ var controller = {
         try {
           const chocolate = new Chocolate();
           const params = req.body;
-          chocolate.codigo = params.codigo;
           chocolate.nombre = params.nombre;
           chocolate.descripcion = params.descripcion;
           chocolate.precio = params.precio;
@@ -26,6 +25,11 @@ var controller = {
           chocolate.totales = params.totales;
           chocolate.categoria = params.categoria;
           chocolate.estado = params.estado;
+
+          const ultimoCodigo = await Chocolate.findOne().sort({ codigo: -1 }).select({ codigo: 1 }).limit(1).exec();
+          const nuevoCodigo = ultimoCodigo ? ultimoCodigo.codigo + 1 : 1;
+          chocolate.codigo = nuevoCodigo;
+
       
           const chocolateGuardado = await chocolate.save();
       
