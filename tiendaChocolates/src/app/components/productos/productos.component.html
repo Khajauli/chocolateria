@@ -1,30 +1,30 @@
 <p>Productos</p>
 <ul>
-    <ng-container *ngFor="let categoria of obtenerCategorias()">
+    <ng-container *ngFor="let categoria of categorias">
       <h2>{{categoria}}</h2>
        <li *ngFor="let producto of productos" class="producto" >
-        <a *ngIf="producto.categoria === categoria && producto.estado === 'Activo'" >
+        <a *ngIf="producto.categoria === categoria && producto.estado === 'Activo'">
             <h3>{{producto.codigo}} - {{producto.nombre}} - {{producto.precio}}</h3>
             <!-- <button [routerLink]="['/chocolate', producto._id]"> Editar </button> -->
         <!-- Esto lo va a necesitar el usuario para desplegar los detalles de un chocolate-->
         <p *ngIf="confirm==false ">
-        <button  [routerLink]="['/editar-producto',producto._id]"> Editar </button>
-        <button (click)="setConfirm(true)" class="button-delete"> Eliminar </button>
+        <button  [routerLink]="['/editar-producto',producto._id]"  style="height: 50px;background-color: lightseagreen;width: 50ps;"> Editar </button>
+        <button (click)="setConfirm(true)" class="button-delete" style="height: 50px;background-color: lightcoral;width: 50ps;"> Eliminar </button>
          </p>
          <p *ngIf="confirm==true">
             <span class="confirm">Estas seguro de eliminar este chocolate</span><br>
-            <a (click)="setConfirm(false)" class="button-edit">Cancelar</a>
-            <a (click)="borrarChocolate(producto)" class="button-delete">Eliminar definitivamente</a>
+            <button (click)="setConfirm(false)" class="button-edit"  style="height: 50px;background-color: lightseagreen;width: 50ps;">Cancelar</button>
+            <button (click)="borrarChocolate(producto)" class="button-delete"  style="height: 50px;background-color: lightcoral;width: 50ps;">Eliminar definitivamente</button>
         </p>
-
     </a> 
       </li> 
+   
+          <button style="height: 50px; width: 100px;" [routerLink]="['/inventario']">
+             +
+        </button>
+
+      
     </ng-container>
   </ul>
   
-<a [routerLink]="['/inventario']">
-    <button style="height: 50px; width: 100px;">
-        A;ade un chocolate de inventario
-    </button>
-    
-</a>
+

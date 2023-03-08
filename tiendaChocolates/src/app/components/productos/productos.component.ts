@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Chocolate } from '../../models/chocolate';
 import { ChocolateService } from '../../services/chocolate.service';
 import { Global } from '../../services/global';
@@ -10,65 +10,71 @@ import { Global } from '../../services/global';
   providers: [ChocolateService]
 })
 export class ProductosComponent implements OnInit {
-public productos:Chocolate [ ];
-public url : string ;
-public confirm : boolean;
-constructor(
-  private _chocolateService:ChocolateService
-){
-  this.url = Global.url;
-  this.productos = [];
-  this.confirm = false;
-}
-ngOnInit(): void {
-  console.log("oninti");
-  this.getChocolates();
-}
-getChocolates(){
-  console.log("choco");
-  this._chocolateService.getChocolates().subscribe(
-    response=>{
-      console.log(response.chocolatesG);
-      if(response.chocolatesG){
-        console.log("paso");
-        this.productos = response.chocolatesG;
-        console.log(this.productos);
-      }
-    },
-    error=>{
-      console.log(<any>error);
-    }
-  );
-}
+  public productos: Chocolate[];
+  public url: string;
+  public confirm: boolean;
+  public isFour: number;
+  public categorias: string[]; // added this property to hold categories
 
-obtenerCategorias(): string[] {
-  let categorias = <any> [];
-
-  for (let producto of this.productos) {
-    if (!categorias.includes(producto.categoria)) {
-      categorias.push(producto.categoria);
-    }
+  constructor(private _chocolateService: ChocolateService) {
+    this.url = Global.url;
+    this.productos = [];
+    this.confirm = false;
+    this.isFour = 0;
+    this.categorias = []; // initialize categories array
   }
 
-  return categorias;
-}
+  ngOnInit(): void {
+    this.getChocolates();
+  }
 
-setConfirm(confirm:boolean){
-  this.confirm=confirm;
-}
-borrarChocolate(producto : Chocolate){
-  //console.log(producto);
-  producto.estado = "Inactivo";
-  this._chocolateService.updateChocolate(producto).subscribe(
-    response=>{
-      console.log("Eliminacion  exitosa");
-    },
-    error=>{
-      console.log("No se realizo la eliminacion ");
+  getChocolates() {
+    this._chocolateService.getChocolates().subscribe(
+      response => {
+        if (response.chocolatesG) {
+          this.productos = response.chocolatesG;
+          this.obtenerCategorias(); // call obtenerCategorias() once after products are loaded
+        }
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
+  }
+
+  obtenerCategorias() {
+    let categorias: string[] = [];
+    let contador: number;
+
+    for (let categoria of this.productos) {
+      contador = 0;
+      for (let producto of this.productos) {
+        if (producto.categoria === categoria.categoria && producto.estado === 'Activo') {
+          contador++;
+        }
+      }
+      if (!categorias.includes(categoria.categoria)) {
+        categorias.push(categoria.categoria);
+        console.log(categoria.categoria + ': ' + contador);
+      }
     }
-    
-    
-  )
-}
 
+    this.categorias = categorias; // assign categories array to class property
+  }
+
+  setConfirm(confirm: boolean) {
+    this.confirm = confirm;
+  }
+
+  borrarChocolate(producto: Chocolate) {
+    producto.estado = "Inactivo";
+    this._chocolateService.updateChocolate(producto).subscribe(
+      response => {
+        console.log("Eliminacion  exitosa");
+      },
+      error => {
+        console.log("No se realizo la eliminacion ");
+      }
+    )
+  }
 }
