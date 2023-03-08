@@ -1,10 +1,10 @@
 <nav class="menu">
     <span><img src="../../../assets/img/logo.png" style="width: 126px; height: 53px;"></span>
     <ul>
-        <a href="#">Inicio</a>
-        <a href="#">Productos</a>
-        <a href="#">About Us</a>
-        <a href="#">Contactos</a>
+        <a [routerLink]="['/inicio']">Inicio</a>
+        <a [routerLink]="['/productos']">Productos</a>
+        <a [routerLink]="['/about-us']">About Us</a>
+        <a [routerLink]="['/contactos']">Contactos</a>
     </ul>
     <label style="margin-right: 177px;">
       <input type="text" placeholder="Buscar" style="width: 251px; height: 45px; font-size: 16px;">
