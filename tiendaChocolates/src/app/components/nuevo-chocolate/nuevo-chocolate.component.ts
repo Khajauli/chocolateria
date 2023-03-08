@@ -29,8 +29,8 @@ export class NuevoChocolateComponent implements OnInit{
     private _cargarService:CargarService
   ){
     this.url=Global.url;
-    this.chocolate= new Chocolate('','','',0,'','','',0,0,'');
-    this.chocolateGuardar= new Chocolate('','','',0,'','','',0,0,'');
+    this.chocolate= new Chocolate('','','',0,'Activo','','',0,0,'');
+    this.chocolateGuardar= new Chocolate('','','',0,'','Activo','',0,0,'');
     this.status="";
     this.idGuardado="";
     this.archivosParaCargar=[];
