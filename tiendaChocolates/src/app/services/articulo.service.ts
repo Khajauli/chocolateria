@@ -15,34 +15,34 @@ export class ArticuloService{
 
     getArticulos():Observable<any>{
         let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.get(this.url+'/articulos',{headers:headers});
+        return this._http.get(this.url+'articulos',{headers:headers});
     }
 
     guardarArticulo(articulo:Articulo):Observable<any>{
         let params=JSON.stringify(articulo);
         let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.post(this.url+'/guardarArticulo',params,{headers:headers});
+        return this._http.post(this.url+'guardarArticulo',params,{headers:headers});
     }
 
     getArticuloP(producto:string):Observable<any>{
         let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.get(this.url+'/articuloP/'+producto,{headers:headers});
+        return this._http.get(this.url+'articuloP/'+producto,{headers:headers});
     }
 
     getArticulo(id:string):Observable<any>{
         let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.get(this.url+'/articulo/'+id,{headers:headers});
+        return this._http.get(this.url+'articulo/'+id,{headers:headers});
     }
 
     updateArticulo(articulo:Articulo):Observable<any>{
         let params=JSON.stringify(articulo);
         let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.put(this.url+'/articulo/'+articulo._id,params,{headers:headers});
+        return this._http.put(this.url+'articulo/'+articulo._id,params,{headers:headers});
     }
 
     deleteArticulo(id:string):Observable<any>{
         let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.delete(this.url+'/articulo/'+id,{headers:headers});
+        return this._http.delete(this.url+'articulo/'+id,{headers:headers});
     }
 
 
