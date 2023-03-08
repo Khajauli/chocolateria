@@ -4,8 +4,8 @@
             <h2>Regala experiencias al alcance de un chocolate</h2>
             <p>Realizamos chocolates para toda ocasión, el límite es tu imaginación.</p>
             <div class="botones">
-                <button style="background-color: black;"><a href="#" style="color: white;">Ordena Ahora</a></button>
-                <button style="background-color: white;"><a href="#" style="color: black;">Productos</a></button>
+                <button style="background-color: black;"><a href="#" style="color: white;" [routerLink]="['/contactos']">Ordena Ahora</a></button>
+                <button style="background-color: white;"><a href="#" style="color: black;" [routerLink]="['/productos']">Productos</a></button>
             </div>
         </div>
         <div class="derecha">
@@ -87,7 +87,7 @@
       <div class="fiesta">
           <h2>Para Fiestas y Eventos</h2>
           <p>Comunicate con nosotros con una semana de anticipación en nuestro horario de atención</p>
-          <button><a href="#" style="color:white;text-decoration: none;">Contactos</a></button>
+          <button><a href="#" style="color:white;text-decoration: none;" [routerLink]="['/contactos']">Contactos</a></button>
       </div>
     </section>
     <section>
