@@ -21,8 +21,8 @@ export class NuevoComentarioComponent implements OnInit{
     private _comentarioService:ComentarioService
   ){
     this.url=Global.url;
-    this.comentario= new Comentario('','','','','',false);
-    this.comentarioGuardar= new Comentario('','','','','',false);
+    this.comentario= new Comentario('','','','','',false,0);
+    this.comentarioGuardar= new Comentario('','','','','',false,0);
     this.status="";
     this.idGuardado="";
     

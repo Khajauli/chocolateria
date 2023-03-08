@@ -7,6 +7,7 @@ var comentarioSchema=Schema({
     producto:String,
     usuario:String,
     texto:String,
-    aprobado:Boolean
+    aprobado:Boolean,
+    puntaje:Number
 })
 module.exports=mongoose.model('Comentario',comentarioSchema);

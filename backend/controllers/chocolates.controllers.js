@@ -63,7 +63,7 @@ var controller = {
                       <li>Nombre: ${chocolateGuardado.nombre}</li>
                       <li>Descripción: ${chocolateGuardado.descripcion}</li>
                       <li>Precio: ${chocolateGuardado.precio}</li>
-                      <li>Puntuación: ${chocolateGuardado.puntacion} </li>
+                      <li>Puntuación: ${chocolateGuardado.puntuacion} </li>
                     </ul>
                     <p style="font-size: 18px; color: #704214; margin-bottom: 20px;">¡No te lo pierdas!</p>
                     <div style="text-align: center;">

@@ -6,5 +6,6 @@ export class Comentario{
         public usuario:string,
         public texto:string,
         public aprobado:boolean,
+        public puntaje:number,
     ){}
 }
