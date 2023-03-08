@@ -12,11 +12,13 @@ import { Global } from '../../services/global';
 export class ProductosComponent implements OnInit {
 public productos:Chocolate [ ];
 public url : string ;
+public confirm : boolean;
 constructor(
   private _chocolateService:ChocolateService
 ){
   this.url = Global.url;
   this.productos = [];
+  this.confirm = false;
 }
 ngOnInit(): void {
   console.log("oninti");
@@ -37,6 +39,36 @@ getChocolates(){
       console.log(<any>error);
     }
   );
+}
+
+obtenerCategorias(): string[] {
+  let categorias = <any> [];
+
+  for (let producto of this.productos) {
+    if (!categorias.includes(producto.categoria)) {
+      categorias.push(producto.categoria);
+    }
+  }
+
+  return categorias;
+}
+
+setConfirm(confirm:boolean){
+  this.confirm=confirm;
+}
+borrarChocolate(producto : Chocolate){
+  //console.log(producto);
+  producto.estado = "Inactivo";
+  this._chocolateService.updateChocolate(producto).subscribe(
+    response=>{
+      console.log("Eliminacion  exitosa");
+    },
+    error=>{
+      console.log("No se realizo la eliminacion ");
+    }
+    
+    
+  )
 }
 
 }

@@ -1,10 +1,30 @@
 <p>Productos</p>
 <ul>
-    <li *ngFor = "let producto of productos" class = "producto">
-        <a [routerLink] = "['/chocolate', producto._id]">
-            <img src = "{{url+'get-imagen/'+producto.imagen}}" *ngIf="producto.imagen">
+    <ng-container *ngFor="let categoria of obtenerCategorias()">
+      <h2>{{categoria}}</h2>
+       <li *ngFor="let producto of productos" class="producto" >
+        <a *ngIf="producto.categoria === categoria && producto.estado === 'Activo'" >
             <h3>{{producto.codigo}} - {{producto.nombre}} - {{producto.precio}}</h3>
-        </a>
-   
-    </li>
-</ul>
+            <!-- <button [routerLink]="['/chocolate', producto._id]"> Editar </button> -->
+        <!-- Esto lo va a necesitar el usuario para desplegar los detalles de un chocolate-->
+        <p *ngIf="confirm==false ">
+        <button  [routerLink]="['/editar-producto',producto._id]"> Editar </button>
+        <button (click)="setConfirm(true)" class="button-delete"> Eliminar </button>
+         </p>
+         <p *ngIf="confirm==true">
+            <span class="confirm">Estas seguro de eliminar este chocolate</span><br>
+            <a (click)="setConfirm(false)" class="button-edit">Cancelar</a>
+            <a (click)="borrarChocolate(producto)" class="button-delete">Eliminar definitivamente</a>
+        </p>
+
+    </a> 
+      </li> 
+    </ng-container>
+  </ul>
+  
+<a [routerLink]="['/inventario']">
+    <button style="height: 50px; width: 100px;">
+        A;ade un chocolate de inventario
+    </button>
+    
+</a>
