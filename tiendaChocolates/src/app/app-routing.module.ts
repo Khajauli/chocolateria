@@ -6,6 +6,8 @@ import { DetalleproductoComponent } from './components/detalleproducto/detallepr
 import { EditarProductosComponent } from './components/editar-productos/editar-productos.component';
 
 import { HomeComponent } from './components/home/home.component';
+import { LoginAdministradoresComponent } from './components/login-administradores/login-administradores.component';
+import { LoginClientesComponent } from './components/login-clientes/login-clientes.component';
 import { NuevoAdministradorComponent } from './components/nuevo-administrador/nuevo-administrador.component';
 import { NuevoChocolateComponent } from './components/nuevo-chocolate/nuevo-chocolate.component';
 import { NuevoClienteComponent } from './components/nuevo-cliente/nuevo-cliente.component';
@@ -21,6 +23,8 @@ const routes: Routes = [
   {path: 'nuevoAdministrador', component:NuevoAdministradorComponent},
   {path: 'chocolate/:id', component:DetalleproductoComponent},
   {path: 'editar-producto/:id' , component:EditarProductosComponent},
+  {path: 'loginCliente' , component:LoginClientesComponent},  
+  {path: 'loginAdministrador' , component:LoginAdministradoresComponent},  
   {path: '**', component: HomeComponent},
 ];
 
