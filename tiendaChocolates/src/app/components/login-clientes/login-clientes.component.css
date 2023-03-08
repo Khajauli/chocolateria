@@ -26,6 +26,13 @@ body {
   font-weight: 300;
   color: white;
 }
+.login-form h1 {
+  padding: 35px 35px 0 35px;
+  font-weight: bold;
+  color: white;
+  margin-left: 22%;
+  
+}
 .login-form span {
     padding: 35px 35px 0 35px;
     font-weight: 300;

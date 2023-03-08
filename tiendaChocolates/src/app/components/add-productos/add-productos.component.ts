@@ -1,4 +1,5 @@
 import { Component, OnInit  } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Chocolate } from '../../models/chocolate';
 import { ChocolateService } from '../../services/chocolate.service';
 import { Global } from '../../services/global';
@@ -14,7 +15,8 @@ export class AddProductosComponent implements OnInit{
   public url : string ;
   public confirm : boolean;
   constructor(
-    private _chocolateService:ChocolateService
+    private _chocolateService:ChocolateService,
+    private _route:ActivatedRoute
   ){
     this.url = Global.url;
     this.productos = [];
@@ -22,14 +24,17 @@ export class AddProductosComponent implements OnInit{
   }
   ngOnInit(): void {
     console.log("oninti");
-    this.getChocolates();
+    this._route.params.subscribe(params=>{
+      let categoria=params['categoria'];
+      this.getChocolates(categoria);
+    })
   }
-  getChocolates(){
-    this._chocolateService.getChocolates().subscribe(
+  getChocolates(categoria:string){
+    this._chocolateService.getChocolatesC(categoria).subscribe(
       response=>{
-        console.log(response.chocolatesG);
-        if(response.chocolatesG){
-          this.productos = response.chocolatesG;
+        console.log(response.chocolates);
+        if(response.chocolates){
+          this.productos = response.chocolates;
           console.log(this.productos);
         }
       },

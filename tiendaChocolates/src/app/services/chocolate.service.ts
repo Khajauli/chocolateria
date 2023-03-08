@@ -19,6 +19,11 @@ export class ChocolateService{
         return this._http.get(this.url+'chocolates',{headers:headers});
     }
 
+    getChocolatesC(categoria:String):Observable<any>{
+        let headers=new HttpHeaders().set('Content-Type', 'application/json');
+        return this._http.get(this.url+'chocolatesC/'+categoria,{headers:headers});
+    }
+
     guardarChocolate(chocolate:Chocolate):Observable<any>{
         let params=JSON.stringify(chocolate);
         let headers=new HttpHeaders().set('Content-Type', 'application/json');

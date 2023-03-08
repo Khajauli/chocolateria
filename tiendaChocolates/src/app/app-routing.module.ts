@@ -26,7 +26,7 @@ const routes: Routes = [
   {path: 'editar-producto/:id' , component:EditarProductosComponent},
   {path: 'loginCliente' , component:LoginClientesComponent},  
   {path: 'loginAdministrador' , component:LoginAdministradoresComponent},  
-  {path: 'inventario',component:AddProductosComponent},
+  {path: 'inventario/:categoria',component:AddProductosComponent},
   {path: '**', component: HomeComponent},
 ];
 

@@ -98,6 +98,14 @@ var controller = {
             return res.status(200).send({chocolatesG});
         })
     },
+    getChocolatesC:function(req,res){
+      const categoria = req.params.categoria;
+      Chocolate.find({categoria}).sort().exec((err,chocolates)=>{
+          if (err) return res.status(500).send({message:"Error al recuparar los datos de los chocolates"});
+          if(!chocolates) return res.status(404).send({message:'No existen chocolates'});
+          return res.status(200).send({chocolates});
+      })
+  },
     //Obtener un chocolate
     getChocolate:function(req,res){
         var chocolateId=req.params.id;
