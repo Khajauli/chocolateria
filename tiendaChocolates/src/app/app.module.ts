@@ -22,9 +22,6 @@ import { EditarProductosComponent } from './components/editar-productos/editar-p
 import { NuevoComentarioComponent } from './components/nuevo-comentario/nuevo-comentario.component';
 import { NuevoArticuloComponent } from './components/nuevo-articulo/nuevo-articulo.component';
 import { AddProductosComponent } from './components/add-productos/add-productos.component';
-import { HomeAComponent } from './components/home-a/home-a.component';
-import { ProductosUComponent } from './components/productos-u/productos-u.component';
-import { AboutusAComponent } from './components/aboutus-a/aboutus-a.component';
 
 @NgModule({
   declarations: [
@@ -46,9 +43,6 @@ import { AboutusAComponent } from './components/aboutus-a/aboutus-a.component';
     NuevoComentarioComponent,
     NuevoArticuloComponent,
     AddProductosComponent,
-    HomeAComponent,
-    ProductosUComponent,
-    AboutusAComponent,
   ],
   imports: [
     BrowserModule,

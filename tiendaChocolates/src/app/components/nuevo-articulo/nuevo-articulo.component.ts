@@ -42,7 +42,7 @@ export class NuevoArticuloComponent implements OnInit{
             this._cargarService.peticionRequest(Global.url+"subirImagen/"+response.articulo._id,[],this.archivosParaCargar,'imagen')
             .then((result:any)=>{
               this.status = 'success';
-
+              this.idGuardado = result.response._id;
               this.articuloGuardar = result.response;
               form.reset();
               this.fileInput.nativeElement.value='';
