@@ -1,9 +1,9 @@
-<p>Productos Administrador</p>
+<h1>Inicio Adminsitrador</h1>
+<h2>Nuestra mejor seleccion</h2>
+
 <ul>
-    <ng-container *ngFor="let categoria of categorias">
-      <h2>{{categoria}}</h2>
-       <li *ngFor="let producto of productos" class="producto" >
-        <a *ngIf="producto.categoria === categoria && producto.estado === 'Activo'">
+       <li *ngFor="let producto of productos.slice(index, index+4)" class="producto" >
+        <a *ngIf="producto.estado === 'Activo'">
             <img src="{{url+'get-imagen/'+producto.imagen}}" style="width: 30px;height: 30px;">
             <h3>{{producto.codigo}} - {{producto.nombre}} - {{producto.precio}}</h3>
             <!-- <button [routerLink]="['/chocolate', producto._id]"> Editar </button> -->
@@ -20,12 +20,27 @@
     </a> 
       </li> 
    
-          <button style="height: 50px; width: 100px;" [routerLink]="['/inventario/'+categoria]">
+          <button style="height: 50px; width: 100px;" >
+             +
+        </button>
+  </ul>
+
+<h2>Inicio Administrador</h2>
+<ul>
+
+       <li *ngFor="let articulo of articulos" class="articulo" >
+        <a *ngIf="articulo.tipo === 'Activo'">
+            <h3>{{articulo.titulo}} - {{articulo.texto}}</h3>
+            <img src="{{url+'get-imagen/'+articulo.imagen}}" style="width: 30px;height: 30px;">
+            <!-- <button [routerLink]="['/chocolate', producto._id]"> Editar </button> -->
+        <!-- Esto lo va a necesitar el usuario para desplegar los detalles de un chocolate-->
+    </a> 
+      </li> 
+   
+          <button style="height: 50px; width: 100px;" >
              +
         </button>
 
-      
-    </ng-container>
   </ul>
   
 

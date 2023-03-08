@@ -3,32 +3,25 @@ import { Chocolate } from '../../models/chocolate';
 import { ChocolateService } from '../../services/chocolate.service';
 import { Global } from '../../services/global';
 
+
 @Component({
-  selector: 'app-productos',
-  templateUrl: './productos.component.html',
-  styleUrls: ['./productos.component.css'],
+  selector: 'app-productos-u',
+  templateUrl: './productos-u.component.html',
+  styleUrls: ['./productos-u.component.css'],
   providers: [ChocolateService]
 })
-export class ProductosComponent implements OnInit {
+export class ProductosUComponent implements OnInit {
   public productos: Chocolate[];
   public url: string;
-  public confirm: boolean;
-  public isFour: number;
-  public categorias: string[]; // added this property to hold categories
-
-
+  public categorias: string[];
   constructor(private _chocolateService: ChocolateService) {
     this.url = Global.url;
     this.productos = [];
-    this.confirm = false;
-    this.isFour = 0;
     this.categorias = []; // initialize categories array
   }
-
   ngOnInit(): void {
     this.getChocolates();
   }
-
   getChocolates() {
     this._chocolateService.getChocolates().subscribe(
       response => {
@@ -42,7 +35,6 @@ export class ProductosComponent implements OnInit {
       }
     );
   }
-
   obtenerCategorias() {
     let categorias: string[] = [];
     let contador: number;
@@ -61,21 +53,5 @@ export class ProductosComponent implements OnInit {
     }
 
     this.categorias = categorias; // assign categories array to class property
-  }
-
-  setConfirm(confirm: boolean) {
-    this.confirm = confirm;
-  }
-
-  borrarChocolate(producto: Chocolate) {
-    producto.estado = "Inactivo";
-    this._chocolateService.updateChocolate(producto).subscribe(
-      response => {
-        console.log("Eliminacion  exitosa");
-      },
-      error => {
-        console.log("No se realizo la eliminacion ");
-      }
-    )
   }
 }

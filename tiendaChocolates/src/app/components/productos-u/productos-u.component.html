@@ -1,0 +1,19 @@
+<p>Productos</p>
+<ul>
+    <ng-container *ngFor="let categoria of categorias">
+      <h2>{{categoria}}</h2>
+       <li *ngFor="let producto of productos" class="producto" >
+        <a *ngIf="producto.categoria === categoria && producto.estado === 'Activo'" [routerLink]=" ['/chocolate', producto._id]" >
+            <img src="{{url+'get-imagen/'+producto.imagen}}" style="width: 30px;height: 30px;">
+            <h3>{{producto.codigo}} - {{producto.nombre}} - {{producto.precio}}</h3>
+            <!-- <button [routerLink]="['/chocolate', producto._id]"> Editar </button> -->
+        <!-- Esto lo va a necesitar el usuario para desplegar los detalles de un chocolate-->
+    
+    </a> 
+      </li> 
+ 
+    </ng-container>
+  </ul>
+  
+
+

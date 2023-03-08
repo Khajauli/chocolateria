@@ -21,6 +21,8 @@ export class AddProductosComponent implements OnInit{
     this.url = Global.url;
     this.productos = [];
     this.confirm = false;
+
+
   }
   ngOnInit(): void {
     console.log("oninti");
@@ -45,5 +47,16 @@ export class AddProductosComponent implements OnInit{
   }
   setConfirm(confirm:boolean){
     this.confirm=confirm;
+  }
+  AgregarChocolate(producto: Chocolate) {
+    producto.estado = "Activo";
+    this._chocolateService.updateChocolate(producto).subscribe(
+      response => {
+        console.log("Agregacion exitosa");
+      },
+      error => {
+        console.log("No se agrego ");
+      }
+    )
   }
 }

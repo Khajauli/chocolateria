@@ -35,7 +35,6 @@ export class NuevoComentarioComponent implements OnInit{
       response => {
         if(response.comentario) {
           this.status = 'success';
-          this.idGuardado = response.id;
           this.comentarioGuardar = response.comentario;
           form.reset();
         } else {

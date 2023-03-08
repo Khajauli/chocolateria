@@ -5,13 +5,16 @@ import { AddProductosComponent } from './components/add-productos/add-productos.
 import { ContactosComponent } from './components/contactos/contactos.component';
 import { DetalleproductoComponent } from './components/detalleproducto/detalleproducto.component';
 import { EditarProductosComponent } from './components/editar-productos/editar-productos.component';
+import { HomeAComponent } from './components/home-a/home-a.component';
 
 import { HomeComponent } from './components/home/home.component';
 import { LoginAdministradoresComponent } from './components/login-administradores/login-administradores.component';
 import { LoginClientesComponent } from './components/login-clientes/login-clientes.component';
 import { NuevoAdministradorComponent } from './components/nuevo-administrador/nuevo-administrador.component';
+import { NuevoArticuloComponent } from './components/nuevo-articulo/nuevo-articulo.component';
 import { NuevoChocolateComponent } from './components/nuevo-chocolate/nuevo-chocolate.component';
 import { NuevoClienteComponent } from './components/nuevo-cliente/nuevo-cliente.component';
+import { ProductosUComponent } from './components/productos-u/productos-u.component';
 import { ProductosComponent } from './components/productos/productos.component';
 
 const routes: Routes = [
@@ -27,6 +30,9 @@ const routes: Routes = [
   {path: 'loginCliente' , component:LoginClientesComponent},  
   {path: 'loginAdministrador' , component:LoginAdministradoresComponent},  
   {path: 'inventario/:categoria',component:AddProductosComponent},
+  {path: 'inicioAdmin', component:HomeAComponent},
+  {path: 'nuevoArticulo', component:NuevoArticuloComponent},
+  {path: 'nuestrosChocolates', component:ProductosUComponent},
   {path: '**', component: HomeComponent},
 ];
 

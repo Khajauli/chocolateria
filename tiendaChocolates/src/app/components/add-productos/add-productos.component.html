@@ -2,10 +2,9 @@
 <ul>
     <ng-container *ngFor="let producto of productos">
         <li class="producto" >
-          <a [routerLink]="['/chocolate', producto._id]">
             <img src="{{url+'get-imagen/'+producto.imagen}}" style="width: 30px;height: 30px;">
             <p>{{producto.codigo}} - {{producto.nombre}} - {{producto.precio}} - {{producto.estado}} </p>
-          </a>
+           <button *ngIf="producto.estado==='Inactivo'" (click)="AgregarChocolate(producto)" class="button-agregar"  style="height: 50px;background-color: lightcoral;width: 50ps;">Agregar</button>
         </li>
       </ng-container>
 </ul>
