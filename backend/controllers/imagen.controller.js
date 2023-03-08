@@ -8,66 +8,65 @@ var controller={
     saveImagen:function(req,res){
         var imagen=new Imagen();
         var params=req.body;
-        imagen.ss=params.numero;
-        imagen.titulo=params.titulo;
-        imagen.texto=params.texto;
+        imagen.codigo=params.codigo;
+        imagen.nombre=params.nombre;
         imagen.tipo=params.tipo;
         imagen.foto=null;
-        articulo.save((err,articuloGuardado)=>{
+        imagen.save((err,imagenGuardada)=>{
             if (err) return res.status(500).send({message:'Error al guardar'});
-            if(!articuloGuardado) return res.status(404).send({message:'No se ha guardado el articulo'});
-            return res.status(200).send({articulo:articuloGuardado});
+            if(!imagenGuardada) return res.status(404).send({message:'No se ha guardado la imagen'});
+            return res.status(200).send({imagen:imagenGuardada});
         })
 
     },
 
-    getArticulo:function(req,res){
-        var articuloId=req.params.id;
-        if(articuloId==null) return res.status(4004).send({message:"El articulo no existe"});
-        Articulo.findById(articuloId,(err,articulo)=>{
+    getImagen:function(req,res){
+        var imagenId=req.params.id;
+        if(imagenId==null) return res.status(4004).send({message:"La imagen no existe"});
+        Imagen.findById(imagenId,(err,imagen)=>{
             if(err) return res.status(500).send({message:"Error al recuperar los datos"});
-            if(!articulo) return res.status(404).send({message:'No la existe el articulo'});
-            return res.status(200).send({articulo});
+            if(!imagen) return res.status(404).send({message:'No la existe la imagen'});
+            return res.status(200).send({imagen});
         })
     },
-    getArticuloP:function(req,res){
-        var numero=req.params.numero;
-        if(numero==null) return res.status(4004).send({message:"El articulo no existe"});
-        Articulo.find({numero},(err,articulo)=>{
+    getImagenT:function(req,res){
+        var tipo=req.params.tipo;
+        if(tipo==null) return res.status(4004).send({message:"La imagen no existe"});
+        Imagen.find({tipo},(err,imagen)=>{
             if(err) return res.status(500).send({message:"Error al recuperar los datos"});
-            if(!articulo) return res.status(404).send({message:'No la existe el articulo'});
-            return res.status(200).send({articulo});
+            if(!imagen) return res.status(404).send({message:'No la existe la imagen'});
+            return res.status(200).send({imagen});
         })
     },
-    getArticulos:function(req,res){
-        Articulo.find({}).sort().exec((err,articulos)=>{
+    getImagenes:function(req,res){
+        Imagen.find({}).sort().exec((err,imagenes)=>{
             if(err) return res.status(500).send({message:"Error al recuperar los datos"});
-            if(!articulos) return res.status(404).send({message:'No existen articulos'});
-            return res.status(200).send({articulos});
+            if(!imagenes) return res.status(404).send({message:'No existen la imagen'});
+            return res.status(200).send({imagenes});
         })
     },
-    deleteArticulo:function(req,res){
-        var articuloId=req.params.id;
-        if(articuloId==null) return res.status(4004).send({message:"El articulo no existe"});
-        Articulo.findByIdAndRemove(articuloId,(err,articuloBorrado)=>{
+    deleteImagen:function(req,res){
+        var imagenId=req.params.id;
+        if(imagenId==null) return res.status(4004).send({message:"la imagen no existe"});
+        Imagen.findByIdAndRemove(imagenId,(err,imagenBorrada)=>{
             if(err) return res.status(500).send({message:"Error al eliminar los datos"});
-            if(!articuloBorrado) return res.status(404).send({message:'No se puede eliminarla el articulo'});
-            return res.status(200).send({articuloBorrado});
+            if(!imagenBorrada) return res.status(404).send({message:'No se puede eliminarla la imagen'});
+            return res.status(200).send({imagenBorrada});
         })
     },
-    updateArticulo:function(req,res){
-        var articuloId=req.params.id;
+    updateImagen:function(req,res){
+        var imagenId=req.params.id;
         var update=req.body;
-        if(articuloId==null) return res.status(4004).send({message:"El articulo no existe"});
-        Articulo.findByIdAndUpdate(articuloId,update,{new:true},(err,articuloActualizado)=>{
+        if(imagenId==null) return res.status(4004).send({message:"la imagenno existe"});
+        Imagen.findByIdAndUpdate(imagenId,update,{new:true},(err,imagenActualizada)=>{
             if(err) return res.status(500).send({message:"Error al actualizar los datos"});
-            if(!articuloActualizado) return res.status(404).send({message:'No se puede actualizar los datos del articulo'});
-            return res.status(200).send({articuloActualizado});
+            if(!imagenActualizada) return res.status(404).send({message:'No se puede actualizar los datos de la imagen'});
+            return res.status(200).send({imagenActualizada});
         })
     },
 
     uploadImage:function(req,res){
-        var articuloId=req.params.id;
+        var imagenId=req.params.id;
         var fileName="Imagen no subida";
 
         if(req.files){
@@ -77,9 +76,9 @@ var controller={
             var extSplit=fileName.split('\.'); //Ojo acá
             var fileExt=extSplit[1];
             if(fileExt=='png'||fileExt=='jpg'||fileExt=='jpeg'||fileExt=='gif'){
-                Articulo.findByIdAndUpdate(articuloId,{imagen:fileName},{new:true},(err,imagenU)=>{
+                Imagen.findByIdAndUpdate(imagenId,{foto:fileName},{new:true},(err,imagenU)=>{
                     if (err) return res.status(500).send({message:"La imagen no se ha subido"});
-                    if(!imagenU) return res.status(404).send({message:'El articulo no existe y no se subió la imagen'});
+                    if(!imagenU) return res.status(404).send({message:'La imagen no existe y no se subió la imagen'});
                     return res.status(200).send({imagenU});
                 });
             }else{
