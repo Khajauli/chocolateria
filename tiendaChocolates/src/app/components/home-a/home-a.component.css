@@ -106,6 +106,7 @@
   justify-content: space-between;
   margin-left: 142px;
   margin-right: 142px;
+  margin-bottom: 0px;
 }
 .grid-container {
     display: grid;
@@ -252,13 +253,79 @@
     height: 600px;
   }
 }
+/**/
+.informacion {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 70px;
+}
+.izquierdaI, .derechaI {
+  width: 50%;
+  float: left;
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+.izquierdaI {
+  flex-basis: calc(50% -1em);
+}
+.izquierdaI p{
+  font-size: 30px;
+  text-align: justify;
+  margin-left: 96px;
+  margin-top: 15px;
+}
+.izquierdaI h2{
+  font-size: 48px;
+  font-weight: 500;
+  margin-left: 96px;
+  margin-top: -40px;
+}
+.izquierdaI img{
+  width: 100%;
+  height: 347px;
+  margin-left: 96px;
+  border-radius: 20px 20px 20px 20px;
+}
+.derechaI h2{
+  font-size: 48px;
+  font-weight: 500;
+  margin-left: 100px;
+}
+.derechaI {
+  flex-basis: calc(50% - 1em);
+}
+.derechaI p{
+  font-size: 30px;
+  text-align: justify;
+  margin-top: 15px;
+  margin-left: 100px;
+}
+.derechaI img{
+  width: 100%;
+  height: 347px;
+  border-radius: 20px 20px 20px 20px;
+  margin-left: 100px;
+}
+.editar button{
+  width: 55px;
+  height: 55px;
+}
+.editar button i{
+  font-size: 35px;
+}
+.agregar-botones {
+  display: flex;
+  margin-top: 10px;
+}
 /*Contactos fiesta*/
 .fiesta {
     background-color: #D9FBCD;
     padding: 1em 0;
     text-align: center;
     color:black ;
-    margin-top: 650px;
+    margin-top: 100px;
 }
 .fiesta h2{
     font-size: 36px;

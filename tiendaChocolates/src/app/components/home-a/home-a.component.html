@@ -50,52 +50,74 @@
     </div>
   </div>
 </section>
-
-<h2>Inicio Administrador</h2>
-<ul>
-
-       <li *ngFor="let articulo of articulos" class="articulo" >
-        <a *ngIf="articulo.tipo === 'Activo'">
-            <h3>{{articulo.titulo}} - {{articulo.texto}}</h3>
-            <img src="{{url+'get-imagen/'+articulo.imagen}}" style="width: 30px;height: 30px;">
+<div class="container">
+    <ul>
+        <li *ngFor="let articulo of articulos; let i = index" class="articulo" >
+            <ng-container [ngSwitch]="i % 2 === 0">
+            <ng-container *ngSwitchCase="true">
+                <div class="informacion">
+                    <a *ngIf="articulo.tipo === 'Activo'">
+                        <div class="izquierdaI">
+                            <h2>{{articulo.titulo}}</h2>
+                            <p>{{articulo.texto}}</p>
+                        </div>
+                        <div class="derechaI">
+                            <img src="{{url+'get-imagen/'+articulo.imagen}}">
+                        </div>
+                    </a>
+                </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="false">
+                <div class="informacion">
+                    <a *ngIf="articulo.tipo === 'Activo'">
+                        <div class="izquierdaI">
+                            <img src="{{url+'get-imagen/'+articulo.imagen}}">
+                        </div>
+                        <div class="derechaI">
+                            <h2>{{articulo.titulo}}</h2>
+                            <p>{{articulo.texto}}</p>
+                        </div>
+                    </a>
+                </div>
+            </ng-container>
+            </ng-container>
             <div class="editar">
-              <p *ngIf="confirmArt==false ">
-                  <button  [routerLink]="['/editar-articulo',articulo._id]" style="margin-left: 90px;"><i class="fa-sharp fa-solid fa-pen-to-square"></i></button>
-                  <button (click)="setConfirmArt(true, articulo)" class="button-delete"><i class="fa-sharp fa-solid fa-trash-can"></i></button>
-              </p>
-              <p *ngIf="confirmArt && selectedArticulo === articulo">
-                  <span class="confirmArt">Estas seguro de eliminar este chocolate</span><br>
-                  <button (click)="setConfirmArt(false, articulo)" class="button-edit" style="margin-left: 90px; background-color: #D50000; color: white;"><i class="fa-sharp fa-solid fa-xmark"></i></button>
-                  <button (click)="borrarArticulo(articulo)" class="button-delete" style="background-color: #009100; color: white;"><i class="fa-sharp fa-solid fa-check"></i></button> 
-              </p>
-          </div>
-          </a> 
-      </li> 
-   
-      <button id="agregar"class="boton-nuevo"(click)="toggleAgregar()">+</button>
-
-      <ng-container *ngIf="agregarVisible">
-        <button [routerLink]="['/nuevoArticulo']" style="background-color: #87EDAB; color: black; width: 100px; margin-top: 5px;margin-left: 45px;margin-bottom: 25px;">Agregar Nuevo</button>
-        <button [routerLink]="['/inventario/'+'articulos']" style="background-color: #87EDAB; color: black; width: 100px; margin-top: 5px;margin-left: 45px;margin-bottom: 25px;">Agregar Existente</button>
-      </ng-container>
-
-  </ul>
-  <section>
+                <p *ngIf="confirmArt==false ">
+                    <button  [routerLink]="['/editar-articulo',articulo._id]" style="margin-left: 800px;"><i class="fa-sharp fa-solid fa-pen-to-square"></i></button>
+                    <button (click)="setConfirmArt(true, articulo)" class="button-delete"><i class="fa-sharp fa-solid fa-trash-can"></i></button>
+                </p>
+                <p *ngIf="confirmArt && selectedArticulo === articulo">
+                    <span class="confirmArt">Estas seguro de eliminar este chocolate</span><br>
+                    <button (click)="setConfirmArt(false, articulo)" class="button-edit" style="margin-left: 800px;background-color: #D50000; color: white;"><i class="fa-sharp fa-solid fa-xmark"></i></button>
+                    <button (click)="borrarArticulo(articulo)" class="button-delete" style="background-color: #009100; color: white;"><i class="fa-sharp fa-solid fa-check"></i></button> 
+                </p>
+            </div>
+        </li> 
+        <button id="agregar" class="boton-nuevo" (click)="toggleAgregar()" style="background-color: transparent; border: none; color: black; margin-left: 800px;"><i class="fa-solid fa-circle-plus"></i></button>
+        <ng-container *ngIf="agregarVisible">
+            <div class="agregar-botones">
+                <button [routerLink]="['/nuevoArticulo']" style="background-color: #CDD9FB; color: black; width: 100px;height: 50px; margin-top: 5px; margin-left: 850px;">Añadir nuevo</button>
+                <button [routerLink]="['/inventario/'+'articulos']" style="background-color: #CDD9FB; color: black; width: 100px;height: 50px; margin-top: 5px; font-size: 10px;">Añadir existente</button>
+            </div>
+        </ng-container>
+    </ul>
+</div>
+<section>
     <div class="fiesta">
         <h2>Para Fiestas y Eventos</h2>
         <p>Comunicate con nosotros con una semana de anticipación en nuestro horario de atención</p>
         <button><a href="#" style="color:white;text-decoration: none;" [routerLink]="['/contactos']">Contactos</a></button>
     </div>
-  </section>
-  <section>
+</section>
+<section>
     <div class="eslogan">
-      <img src="../../../assets/img/comillas.png" id="comillas-izquierda">
-      <h2 style="margin-top: 168px;">El chocolate no resolverá tus problemas</h2>
-      <h2 style="margin-bottom: 82px;">Pero tampoco lo hará una manzana</h2>
-      <img src="../../../assets/img/comillas1.png" id="comillas-derecha">
-      <img src="../../../assets/img/CEO ARIQ.jpg" style="width: 88px;height: 88px;border-radius: 50%;">
-      <p style="font-size: 24px; font-weight: 600;margin-bottom: 8px;">Kharol Chicaiza</p>
-      <p style="font-size: 18px; font-weight: 500px;margin-bottom: 132px;">Delivery & Fundadora de ARIQ</p>
+        <img src="../../../assets/img/comillas.png" id="comillas-izquierda">
+        <h2 style="margin-top: 168px;">El chocolate no resolverá tus problemas</h2>
+        <h2 style="margin-bottom: 82px;">Pero tampoco lo hará una manzana</h2>
+        <img src="../../../assets/img/comillas1.png" id="comillas-derecha">
+        <img src="../../../assets/img/CEO ARIQ.jpg" style="width: 88px;height: 88px;border-radius: 50%;">
+        <p style="font-size: 24px; font-weight: 600;margin-bottom: 8px;">Kharol Chicaiza</p>
+        <p style="font-size: 18px; font-weight: 500px;margin-bottom: 132px;">Delivery & Fundadora de ARIQ</p>
     </div>
-  </section>
-  <app-pie></app-pie>
+</section>
+<app-pie></app-pie>
