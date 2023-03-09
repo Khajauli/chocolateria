@@ -6,5 +6,6 @@ export class Articulo{
         public texto:string,
         public imagen:string,
         public tipo:string,
+        public estado:string,
     ){}
 }

@@ -12,6 +12,7 @@ var controller={
         articulo.titulo=params.titulo;
         articulo.texto=params.texto;
         articulo.tipo=params.tipo;
+        articulo.estado=params.estado;
         articulo.imagen=null;
         articulo.save((err,articuloGuardado)=>{
             if (err) return res.status(500).send({message:'Error al guardar'});

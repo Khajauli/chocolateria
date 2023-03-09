@@ -7,6 +7,7 @@ var articuloSchema=Schema({
     titulo:String,
     texto:String,
     imagen:String,
-    tipo:String
+    tipo:String,
+    estado:String
 })
 module.exports=mongoose.model('Articulo',articuloSchema);
