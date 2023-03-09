@@ -37,7 +37,9 @@ export class LoginAdministradoresComponent implements OnInit{
     this._adminService.login(this.usuario, this.contrasenia).subscribe(
       response => {
         this.admin=response.administrador;
-        this._router.navigate(['/home',this.admin._id]);
+        console.log(response);
+        localStorage.setItem('token', response.token);
+        this._router.navigate(['/productos']);
 
       },
       error => {

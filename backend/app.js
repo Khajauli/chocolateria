@@ -44,6 +44,6 @@ app.get('/',(req,res)=>{
 app.use('/', chocolatesRoutes)
 app.use('/', clienteRoutes)
 app.use('/', comentarioRoutes)
-app.use('/',administradorRoutes)
+app.use('/administrator',administradorRoutes)
 app.use('/',articuloRoutes)
 module.exports=app;

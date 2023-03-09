@@ -1,6 +1,7 @@
 'use strict'
 var Administrador=require('../models/administrador');
 const { exists } = require('../models/administrador');
+const jwt = require('jsonwebtoken');
 var fs=require('fs');
 var path=require('path');
 var controller={
@@ -13,35 +14,29 @@ var controller={
         administrador.usuario=params.usuario;
         administrador.contrasenia=params.contrasenia;
         administrador.rol=params.rol;
-        administrador.save((err,adminGuardado)=>{
-            if (err) return res.status(500).send({message:'Error al guardar'});
-            if(!adminGuardado) return res.status(404).send({message:'No se ha guardado el administrador'});
-            return res.status(200).send({administrador:adminGuardado});
-        })
-
+        administrador.save();
+        const token = jwt.sign({_id: administrador._id}, 'secretkey');
+        res.status(200).json({token}); 
     },
-    login:function(req,res){
+    login: async function(req,res){
         var params=req.body;
         var usuario=params.usuario;
         var contrasenia=params.contrasenia;
         var session=req.session;
 
         if(usuario==null || contrasenia==null) return res.status(404).send({message:'Datos incorrectos'});
-        Administrador.findOne({usuario,contrasenia},(err,administrador)=>{
-            if (err) return res.status(500).send({message:'Error al recuperar los datos'});
-            if(!administrador) return res.status(404).send({message:'Usuario o constraseña incorrectos'});
-            if(usuario==administrador.usuario && contrasenia==administrador.contrasenia){
-                session.req.session;
-                session.usuario=req.body.usuario;
-                res.status(200).send({administrador});
-            }
-        })
+        const user = await Administrador.findOne({usuario});
+        if (!user) return res.status(401).send("El usuario no existe");
+        if (user.contrasenia !== contrasenia) return res.status(401).send('Contraseña Incorrecta');
+        const token = jwt.sign({_id: user._id}, 'secretkey');
+        return res.status(200).json({token});
     }
 ,      
     logout:function(req,res){
         req.session.destroy();
         res.status(200).send({message:"Sesion cerrada exitosamente"});
     },
+
     
     getAdmin:function(req,res){
         var adminId=req.params.id;

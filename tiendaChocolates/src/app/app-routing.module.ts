@@ -17,10 +17,11 @@ import { HomeAComponent } from './components/home-a/home-a.component';
 import { InventarioTotalComponent } from './components/inventario-total/inventario-total.component';
 import { NuevoArticuloComponent } from './components/nuevo-articulo/nuevo-articulo.component';
 import { EditarArticulosComponent } from './components/editar-articulos/editar-articulos.component';
+import { AuthAGuard } from './authA.guard';
 
 const routes: Routes = [
   {path: 'inicio', component: HomeComponent},
-  {path: 'productos', component: ProductosComponent},
+  {path: 'productos', component: ProductosComponent,canActivate:[AuthAGuard]},
   {path: 'about-us', component: AboutUsComponent},
   {path: 'contactos', component: ContactosComponent},
   {path: 'nuevoChocolate', component: NuevoChocolateComponent},
