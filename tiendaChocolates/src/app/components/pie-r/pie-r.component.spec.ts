@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeAComponent } from './home-a.component';
+import { PieRComponent } from './pie-r.component';
 
-describe('HomeAComponent', () => {
-  let component: HomeAComponent;
-  let fixture: ComponentFixture<HomeAComponent>;
+describe('PieRComponent', () => {
+  let component: PieRComponent;
+  let fixture: ComponentFixture<PieRComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeAComponent ]
+      declarations: [ PieRComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HomeAComponent);
+    fixture = TestBed.createComponent(PieRComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
