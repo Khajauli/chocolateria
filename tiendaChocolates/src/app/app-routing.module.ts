@@ -13,6 +13,7 @@ import { NuevoAdministradorComponent } from './components/nuevo-administrador/nu
 import { NuevoChocolateComponent } from './components/nuevo-chocolate/nuevo-chocolate.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { ProductosUComponent } from './components/productos-u/productos-u.component';
+import { HomeAComponent } from './components/home-a/home-a.component';
 
 const routes: Routes = [
   {path: 'inicio', component: HomeComponent},
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: 'loginAdministrador' , component:LoginAdministradoresComponent},  
   {path: 'inventario/:categoria',component:AddProductosComponent},
   {path: 'nuestrosChocolates',component:ProductosUComponent},
+  {path: 'inicioAdm', component:HomeAComponent},
   {path: '**', component: HomeComponent},
 ];
 
