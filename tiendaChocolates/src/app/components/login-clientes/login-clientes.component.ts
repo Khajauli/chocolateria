@@ -17,6 +17,7 @@ export class LoginClientesComponent implements OnInit{
   public contrasenia:string;
   public idGuardado:string;
   public cliente:Cliente;
+  public clienteGuardado:Cliente;
 
   constructor(
     private _clienteService:ClienteService,
@@ -27,14 +28,15 @@ export class LoginClientesComponent implements OnInit{
     this.usuario="";
     this.idGuardado="";
     this.contrasenia="";
-    this.cliente=new Cliente('','','',false,'','','');
+    this.cliente=new Cliente('','','');
+    this.clienteGuardado=new Cliente('','','');
   }
   ngOnInit(): void {
     
   }
 
-  loginCliente(form: NgForm) {
-    this._clienteService.login(this.usuario, this.contrasenia).subscribe(
+  guardarCliente(form: NgForm) {
+    this._clienteService.guardarCliente(this.cliente).subscribe(
       response => {
         this.cliente=response.cliente;
         this._router.navigate(['/home',this.cliente._id]);

@@ -34,7 +34,7 @@ var controller = {
           const chocolateGuardado = await chocolate.save();
       
           // Send email to clients with notifi set to true
-          const clientes = await Cliente.find({ notifi: true });
+          const clientes = await Cliente.find({});
           const transporter = nodemailer.createTransport({
             service: 'Gmail',
             auth: {
