@@ -12,6 +12,7 @@ import { LoginClientesComponent } from './components/login-clientes/login-client
 import { NuevoAdministradorComponent } from './components/nuevo-administrador/nuevo-administrador.component';
 import { NuevoChocolateComponent } from './components/nuevo-chocolate/nuevo-chocolate.component';
 import { ProductosComponent } from './components/productos/productos.component';
+import { ProductosUComponent } from './components/productos-u/productos-u.component';
 
 const routes: Routes = [
   {path: 'inicio', component: HomeComponent},
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'loginCliente' , component:LoginClientesComponent},  
   {path: 'loginAdministrador' , component:LoginAdministradoresComponent},  
   {path: 'inventario/:categoria',component:AddProductosComponent},
+  {path: 'nuestrosChocolates',component:ProductosUComponent},
   {path: '**', component: HomeComponent},
 ];
 
