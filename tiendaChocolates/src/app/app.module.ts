@@ -25,6 +25,7 @@ import { ProductosUComponent } from './components/productos-u/productos-u.compon
 import { AboutusAComponent } from './components/aboutus-a/aboutus-a.component';
 import { PieRComponent } from './components/pie-r/pie-r.component';
 import { HomeAComponent } from './components/home-a/home-a.component';
+import { InventarioTotalComponent } from './components/inventario-total/inventario-total.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { HomeAComponent } from './components/home-a/home-a.component';
     ProductosUComponent,
     AboutusAComponent,
     PieRComponent,
+    InventarioTotalComponent,
   ],
   imports: [
     BrowserModule,

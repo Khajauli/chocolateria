@@ -23,11 +23,13 @@ public index=1;
 public agregarVisible = false;
 public selectedProduct: Chocolate;
 public imagen : Imagen;
+public anadir: boolean;
 
 constructor(
   private _articuloService: ArticuloService,
   private _chocolateService:ChocolateService,
   private _imagenService : ImagenService
+  
 ){
   this.url = Global.url;
   this.articulos = [];
@@ -36,6 +38,7 @@ constructor(
   this.confirm = false;
   this.selectedProduct = new Chocolate ("","","",0,"","","",0,0,"");
   this.imagen = new Imagen ("",0,"","","");
+  this.anadir = false;
 }
 ngOnInit(): void {
     this.getArticulos();
@@ -97,5 +100,8 @@ toggleAgregar() {
   this.agregarVisible = !this.agregarVisible;
 }
 
+setAdd(anadir: boolean) {
+  this.anadir = anadir;
+}
 
 }

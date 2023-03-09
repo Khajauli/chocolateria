@@ -23,11 +23,29 @@ export class AddProductosComponent implements OnInit{
     this.confirm = false;
   }
   ngOnInit(): void {
-    console.log("oninti");
-    this._route.params.subscribe(params=>{
-      let categoria=params['categoria'];
-      this.getChocolates(categoria);
-    })
+    console.log("oninit");
+    this._route.params.subscribe(params => {
+      if (params && params['categoria']) {
+        let categoria = params['categoria'];
+        this.getChocolates(categoria);
+      } else {
+        this.getChoco();
+      }
+    });
+  }
+  getChoco(){
+    this._chocolateService.getChocolates().subscribe( 
+      response=>{
+        console.log(response.chocolatesG);
+        if(response.chocolatesG){
+          this.productos = response.chocolatesG;
+          console.log("paso por aqui");
+        }
+      },
+      error=>{
+        console.log(<any>error);
+      }
+    );
   }
   getChocolates(categoria:string){
     this._chocolateService.getChocolatesC(categoria).subscribe(
