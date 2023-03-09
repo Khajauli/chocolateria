@@ -15,6 +15,8 @@ export class ProductosComponent implements OnInit {
   public confirm: boolean;
   public isFour: number;
   public categorias: string[]; // added this property to hold categories
+  public selectedProduct: Chocolate;
+
 
   constructor(private _chocolateService: ChocolateService) {
     this.url = Global.url;
@@ -22,6 +24,7 @@ export class ProductosComponent implements OnInit {
     this.confirm = false;
     this.isFour = 0;
     this.categorias = []; // initialize categories array
+    this.selectedProduct = new Chocolate ("","","",0,"","","",0,0,"");
   }
 
   ngOnInit(): void {
@@ -62,8 +65,9 @@ export class ProductosComponent implements OnInit {
     this.categorias = categorias; // assign categories array to class property
   }
 
-  setConfirm(confirm: boolean) {
+  setConfirm(confirm: boolean, producto: Chocolate) {
     this.confirm = confirm;
+    this.selectedProduct = producto;
   }
 
   borrarChocolate(producto: Chocolate) {
