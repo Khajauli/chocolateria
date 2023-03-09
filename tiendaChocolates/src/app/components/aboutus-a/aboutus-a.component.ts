@@ -21,7 +21,7 @@ constructor(
   this.url = Global.url;
   this.articulos = [];
   this.confirmArt = false;
-  this.selectArticulo = new Articulo("",0,"","","","");
+  this.selectArticulo = new Articulo("",0,"","","","","");
 }
 ngOnInit(): void {
     this.getArticulos();

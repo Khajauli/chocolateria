@@ -42,7 +42,7 @@ constructor(
   this.imagen = new Imagen ("",0,"","","");
   this.anadir = false;
   this.confirmArt = false;
-  this.selectedArticulo = new Articulo("",0,"","","","");
+  this.selectedArticulo = new Articulo("",0,"","","","","");
 }
 ngOnInit(): void {
     this.getArticulos();

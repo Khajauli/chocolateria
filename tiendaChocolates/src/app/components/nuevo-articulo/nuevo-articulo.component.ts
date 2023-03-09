@@ -26,8 +26,8 @@ export class NuevoArticuloComponent implements OnInit{
     private _cargarService:CargarService
   ){
     this.url=Global.url;
-    this.articulo= new Articulo('',0,'','','','');
-    this.articuloGuardar= new Articulo('',0,'','','','');
+    this.articulo= new Articulo('',0,'','','','','');
+    this.articuloGuardar= new Articulo('',0,'','','','','');
     this.status="";
     this.idGuardado="";
     this.archivosParaCargar=[];

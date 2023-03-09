@@ -26,8 +26,8 @@ constructor (
 ){
   this.titulo = "Editar Articulos";
   this.url = Global.url;
-  this.articulo = new Articulo ("",0,"","","","");
-  this.articuloSaved = new Articulo ("",0,"","","","");
+  this.articulo = new Articulo ("",0,"","","","","");
+  this.articuloSaved = new Articulo ("",0,"","","","","");
   this.archivoSaved = [];
   this.status = '';
   this.idSaved = '';
