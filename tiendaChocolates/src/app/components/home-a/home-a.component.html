@@ -37,9 +37,12 @@
     </a> 
       </li> 
    
-          <button style="height: 50px; width: 100px;" >
-             +
-        </button>
+      <button style="height: 50px; width: 100px;" (click)="toggleAgregar()">+</button>
+
+      <ng-container *ngIf="agregarVisible">
+        <button [routerLink]="['/nuevoChocolate']" >Agregar Nuevo</button>
+        <button [routerLink]="['/**']">Agregar Existente</button>
+      </ng-container>
 
   </ul>
   

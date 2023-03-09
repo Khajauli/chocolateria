@@ -18,6 +18,8 @@ public productos:Chocolate [ ];
 public confirm : boolean;
 public  sortedChocolates: Chocolate[];
 public index=1;
+public agregarVisible = false;
+
 constructor(
   private _articuloService: ArticuloService,
   private _chocolateService:ChocolateService,
@@ -82,4 +84,9 @@ borrarChocolate(producto: Chocolate) {
     }
   )
 }
+
+toggleAgregar() {
+  this.agregarVisible = !this.agregarVisible;
+}
+
 }
