@@ -63,11 +63,11 @@
     </a> 
       </li> 
    
-      <button style="height: 50px; width: 100px;" (click)="toggleAgregar()">+</button>
+      <button id="agregar"class="boton-nuevo"(click)="toggleAgregar()">+</button>
 
       <ng-container *ngIf="agregarVisible">
-        <button [routerLink]="['/nuevoChocolate']" >Agregar Nuevo</button>
-        <button [routerLink]="['/**']">Agregar Existente</button>
+        <button [routerLink]="['/nuevoArticulo']" style="background-color: #87EDAB; color: black; width: 100px; margin-top: 5px;margin-left: 45px;margin-bottom: 25px;">Agregar Nuevo</button>
+        <button [routerLink]="['/inventario/'+'artiuclos']" style="background-color: #87EDAB; color: black; width: 100px; margin-top: 5px;margin-left: 45px;margin-bottom: 25px;">Agregar Existente</button>
       </ng-container>
 
   </ul>

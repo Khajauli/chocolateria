@@ -1,11 +1,21 @@
 <table style="margin: 0 auto; width: 70%; text-align: center; margin-bottom: 100px;">
-  <thead>
+  <thead *ngIf="isChocolate">
     <tr>
       <th>Código</th>
       <th>Imagen</th>
       <th>Nombre</th>
       <th>Precio</th>
       <th>Estado</th>
+      <th></th>
+    </tr>
+  </thead>
+  <thead *ngIf="isArticulos">
+    <tr>
+      <th>Numero</th>
+      <th>Imagen</th>
+      <th>Titulo</th>
+      <th>Texto</th>
+      <th>Tipo</th>
       <th></th>
     </tr>
   </thead>
@@ -22,6 +32,17 @@
         </td>
       </tr>
     </ng-container>
+
+    <ng-container *ngFor="let articulo of articulos">
+      <tr class="articulo">
+        <td>{{articulo.numero}}</td>
+        <td><img src="{{url+'get-imagen/'+articulo.imagen}}" style="width: 50px;height: 50px;"></td>
+        <td>{{articulo.titulo}} </td>
+        <td>{{articulo.texto}} </td>
+        <td>{{articulo.tipo}} </td>
+      </tr>
+    </ng-container>
+
   </tbody>
 </table>
 <app-pie-r></app-pie-r>

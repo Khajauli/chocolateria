@@ -15,6 +15,7 @@ import { ProductosComponent } from './components/productos/productos.component';
 import { ProductosUComponent } from './components/productos-u/productos-u.component';
 import { HomeAComponent } from './components/home-a/home-a.component';
 import { InventarioTotalComponent } from './components/inventario-total/inventario-total.component';
+import { NuevoArticuloComponent } from './components/nuevo-articulo/nuevo-articulo.component';
 
 const routes: Routes = [
   {path: 'inicio', component: HomeComponent},
@@ -32,6 +33,7 @@ const routes: Routes = [
   {path: 'nuestrosChocolates',component:ProductosUComponent},
   {path: 'inicioAdmin', component:HomeAComponent},
   {path: 'inventario', component:InventarioTotalComponent},
+  {path: 'nuevoArticulo', component:NuevoArticuloComponent},
   {path: '**', component: HomeComponent},
 ];
 
