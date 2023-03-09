@@ -18,7 +18,7 @@
         <td>{{producto.precio}}</td>
         <td>{{producto.estado}}</td>
         <td>
-          <button (click)="agregarChocolate(producto)" [routerLink]="'/productos'" *ngIf="producto.estado == 'Inactivo'">Añadir</button>
+          <button (click)="agregarChocolate(producto)" [routerLink]="'/productos'" *ngIf="producto.estado == 'Inactivo'"style="border: none; width: 50px;height: 50px;background-color: transparent;"><i class="fa-sharp fa-solid fa-circle-plus" style="font-size: 35px;"></i></button>
         </td>
       </tr>
     </ng-container>
