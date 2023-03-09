@@ -101,4 +101,15 @@ export class AddProductosComponent implements OnInit{
       }
     )
   }
+  agregarArticulo(articulo: Articulo){
+    articulo.tipo = "Activo";
+    this._articuloService.updateArticulo(articulo).subscribe(
+      response=>{
+        console.log("Se agrego articulo con exito");
+      },
+      error=>{
+        console.log("No se agrego un articulo");
+      }
+    )
+  }
 }
