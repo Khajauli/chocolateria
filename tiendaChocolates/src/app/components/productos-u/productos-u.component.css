@@ -9,26 +9,28 @@
   position: relative;
   margin-bottom: 110px;
 }
-.Sizquierda, .Sderecha {
-    width: 50%;
-    float: left;
-    box-sizing: border-box;
-    padding: 0 20px;
-}
 .Sizquierda {
   position: absolute;
   left: 0px;
   border-right: solid black 1px;
+  width: 30%;
+  float: left;
+  box-sizing: border-box;
+  padding: 0 20px;
 }
 .Sizquierda h2{
     font-size: 48px;
     font-weight: 700;
     line-height: 66px;
-    margin-left: 96px;
+    margin-left: 123px;
 }
 .Sderecha {
   position: absolute;
   right: 20px;
+  width: 70%;
+  float: left;
+  box-sizing: border-box;
+  padding: 0 20px;
 }
 .Sderecha p{
     font-size: 25px;
