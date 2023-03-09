@@ -11,7 +11,6 @@ import { LoginAdministradoresComponent } from './components/login-administradore
 import { LoginClientesComponent } from './components/login-clientes/login-clientes.component';
 import { NuevoAdministradorComponent } from './components/nuevo-administrador/nuevo-administrador.component';
 import { NuevoChocolateComponent } from './components/nuevo-chocolate/nuevo-chocolate.component';
-import { NuevoClienteComponent } from './components/nuevo-cliente/nuevo-cliente.component';
 import { ProductosComponent } from './components/productos/productos.component';
 
 const routes: Routes = [
@@ -20,7 +19,6 @@ const routes: Routes = [
   {path: 'about-us', component: AboutUsComponent},
   {path: 'contactos', component: ContactosComponent},
   {path: 'nuevoChocolate', component: NuevoChocolateComponent},
-  {path: 'nuevoCliente', component: NuevoClienteComponent},
   {path: 'nuevoAdministrador', component:NuevoAdministradorComponent},
   {path: 'chocolate/:id', component:DetalleproductoComponent},
   {path: 'editar-producto/:id' , component:EditarProductosComponent},
