@@ -1,0 +1,22 @@
+.contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins';
+}
+.tarjeta{
+    border: solid black 1px;
+    border-radius: 16px 16px 16px 16px;
+    width: 1000px;
+    height: 400px;
+    margin-bottom: 150px;
+}
+.titulo{
+    background-color: black;
+    color: white;
+    font-size: 30px;
+    font-weight: 600;
+    border-radius: 16px 16px 0px 0px;
+    text-align: center;
+    margin-bottom: 15px;
+}

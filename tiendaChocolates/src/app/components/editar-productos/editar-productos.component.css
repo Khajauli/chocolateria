@@ -1,0 +1,52 @@
+.contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins';
+}
+.tarjeta{
+    border: solid black 1px;
+    border-radius: 20px 20px 20px 20px;
+    width: 1125px;
+    height: 610px;
+    margin-bottom: 150px;
+}
+.titulo{
+    color: black;
+    font-size: 27px;
+    line-height: 66px;
+    font-weight: 700;
+    text-align: left;
+    margin-left: 107px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+.izquierda, .derecha {
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+.derecha .derecha input{
+    font-size: 33px;
+}
+.derecha div {
+    margin-bottom: 30px;
+}
+.derecha div input{
+    border: none;
+}
+.derecha div label{
+    font-weight: bold;
+}
+.imagen{
+    width: 300px;
+    height: 370px;
+    margin-left: 120px;
+    margin-bottom: 20px;
+}
+.imagen span img{
+    width: 300px;
+    height: 370px;
+    border-radius: 33px 33px 33px 33px;
+}
