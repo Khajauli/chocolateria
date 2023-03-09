@@ -1,12 +1,27 @@
-<p>Inventario works!</p>
-<ul>
+<table style="margin: 0 auto; width: 70%; text-align: center; margin-bottom: 100px;">
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Imagen</th>
+      <th>Nombre</th>
+      <th>Precio</th>
+      <th>Estado</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
     <ng-container *ngFor="let producto of productos">
-        <li class="producto" >
-            <img src="{{url+'get-imagen/'+producto.imagen}}" style="width: 30px;height: 30px;">
-            <p>{{producto.codigo}} - {{producto.nombre}} - {{producto.precio}} - {{producto.estado}} </p>
-            <button (click)="agregarChocolate(producto)" [routerLink] = "['/productos']" >
-              Añadir
-            </button>
-        </li>
-      </ng-container>
-</ul>
+      <tr class="producto">
+        <td>{{producto.codigo}}</td>
+        <td><img src="{{url+'get-imagen/'+producto.imagen}}" style="width: 50px;height: 50px;"></td>
+        <td>{{producto.nombre}}</td>
+        <td>{{producto.precio}}</td>
+        <td>{{producto.estado}}</td>
+        <td>
+          <button (click)="agregarChocolate(producto)" [routerLink]="'/productos'">Añadir</button>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
+<app-pie-r></app-pie-r>
