@@ -13,7 +13,6 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactosComponent } from './components/contactos/contactos.component';
 import { EncabezadoAComponent } from './components/encabezado-a/encabezado-a.component';
 import { NuevoChocolateComponent } from './components/nuevo-chocolate/nuevo-chocolate.component';
-import { NuevoClienteComponent } from './components/nuevo-cliente/nuevo-cliente.component';
 import { NuevoAdministradorComponent } from './components/nuevo-administrador/nuevo-administrador.component';
 import { LoginClientesComponent } from './components/login-clientes/login-clientes.component';
 import { LoginAdministradoresComponent } from './components/login-administradores/login-administradores.component';
@@ -22,10 +21,10 @@ import { EditarProductosComponent } from './components/editar-productos/editar-p
 import { NuevoComentarioComponent } from './components/nuevo-comentario/nuevo-comentario.component';
 import { NuevoArticuloComponent } from './components/nuevo-articulo/nuevo-articulo.component';
 import { AddProductosComponent } from './components/add-productos/add-productos.component';
-import { HomeAComponent } from './components/home-a/home-a.component';
 import { ProductosUComponent } from './components/productos-u/productos-u.component';
 import { AboutusAComponent } from './components/aboutus-a/aboutus-a.component';
 import { PieRComponent } from './components/pie-r/pie-r.component';
+import { HomeAComponent } from './components/home-a/home-a.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +37,6 @@ import { PieRComponent } from './components/pie-r/pie-r.component';
     ContactosComponent,
     EncabezadoAComponent,
     NuevoChocolateComponent,
-    NuevoClienteComponent,
     NuevoAdministradorComponent,
     LoginClientesComponent,
     LoginAdministradoresComponent,
