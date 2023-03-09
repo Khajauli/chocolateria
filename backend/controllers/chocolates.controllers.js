@@ -142,7 +142,6 @@ var controller = {
     uploadImage:function(req,res){
         var chocolateId=req.params.id;
         var fileName="Imagen no subida";
-
         if(req.files){
             var filePath=req.files.imagen.path;
             var file_split=filePath.split('\\');

@@ -46,4 +46,15 @@ export class AddProductosComponent implements OnInit{
   setConfirm(confirm:boolean){
     this.confirm=confirm;
   }
+  agregarChocolate(producto: Chocolate) {
+    producto.estado = "Activo";
+    this._chocolateService.updateChocolate(producto).subscribe(
+      response => {
+        console.log("Agregar exitoso");
+      },
+      error => {
+        console.log("No se agrego ");
+      }
+    )
+  }
 }

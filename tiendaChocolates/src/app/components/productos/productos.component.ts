@@ -72,7 +72,6 @@ export class ProductosComponent implements OnInit {
     this.selectedProduct = producto;
   }
   setAdd(anadir: boolean) {
-    console.log("sedio clicl");
     this.anadir = anadir;
   }
 
