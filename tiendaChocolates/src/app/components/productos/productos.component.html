@@ -35,7 +35,9 @@
                     </ng-container> 
                     <div class="producto">
                         <div class="tarjeta boton-tarjeta">
-                            <button id="agregar" [routerLink]="['/inventario/'+categoria]" class="boton-nuevo">+</button>
+                            <button id="agregar"class="boton-nuevo" (click)="setAdd(true)">+</button>
+                            <button *ngIf="anadir" [routerLink]="['/nuevoChocolate']"  style="background-color: #009100; color: white; width: 100px;" >Añadir nuevo chocolate </button>
+                            <button *ngIf="anadir"  [routerLink]="['/inventario/'+categoria]" style="background-color: #009100; color: white; width: 100px;" >Añadir chocolate existente </button>
                         </div>
                     </div>
                 </div>
@@ -75,7 +77,9 @@
                     </ng-container> 
                     <div class="producto">
                         <div class="tarjeta boton-tarjeta">
-                            <button id="agregar" [routerLink]="['/inventario/'+categoria]" class="boton-nuevo">+</button>
+                            <button id="agregar"class="boton-nuevo" (click)="setAdd(true)">+</button>
+                            <button *ngIf="anadir" [routerLink]="['/nuevoChocolate']"  style="background-color: #009100; color: white; width: 100px;" >Añadir nuevo chocolate </button>
+                            <button *ngIf="anadir"  [routerLink]="['/inventario/'+categoria]" style="background-color: #009100; color: white; width: 100px;" >Añadir chocolate existente </button>
                         </div>
                     </div>
                 </div>
@@ -115,7 +119,9 @@
                     </ng-container> 
                     <div class="producto">
                         <div class="tarjeta boton-tarjeta">
-                            <button id="agregar" [routerLink]="['/inventario/'+categoria]" class="boton-nuevo">+</button>
+                            <button id="agregar"class="boton-nuevo" (click)="setAdd(true)">+</button>
+                            <button *ngIf="anadir" [routerLink]="['/nuevoChocolate']"  style="background-color: #009100; color: white; width: 100px;" >Añadir nuevo chocolate </button>
+                            <button *ngIf="anadir"  [routerLink]="['/inventario/'+categoria]" style="background-color: #009100; color: white; width: 100px;" >Añadir chocolate existente </button>
                         </div>
                     </div>
                 </div>
@@ -155,7 +161,9 @@
                     </ng-container> 
                     <div class="producto">
                         <div class="tarjeta boton-tarjeta">
-                            <button id="agregar" [routerLink]="['/inventario/'+categoria]" class="boton-nuevo">+</button>
+                            <button id="agregar"class="boton-nuevo" (click)="setAdd(true)">+</button>
+                            <button *ngIf="anadir" [routerLink]="['/nuevoChocolate']"  style="background-color: #009100; color: white; width: 100px;" >Añadir nuevo chocolate </button>
+                            <button *ngIf="anadir"  [routerLink]="['/inventario/'+categoria]" style="background-color: #009100; color: white; width: 100px;" >Añadir chocolate existente </button>
                         </div>
                     </div>
                 </div>
@@ -195,7 +203,9 @@
                     </ng-container> 
                     <div class="producto">
                         <div class="tarjeta boton-tarjeta">
-                            <button id="agregar" [routerLink]="['/inventario/'+categoria]" class="boton-nuevo">+</button>
+                            <button id="agregar"class="boton-nuevo" (click)="setAdd(true)">+</button>
+                            <button *ngIf="anadir" [routerLink]="['/nuevoChocolate']"  style="background-color: #009100; color: white; width: 100px;" >Añadir nuevo chocolate </button>
+                            <button *ngIf="anadir"  [routerLink]="['/inventario/'+categoria]" style="background-color: #009100; color: white; width: 100px;" >Añadir chocolate existente </button>
                         </div>
                     </div>
                 </div>

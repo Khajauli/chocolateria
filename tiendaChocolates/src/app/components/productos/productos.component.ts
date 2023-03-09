@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { COMPILER_OPTIONS, Component, OnInit } from '@angular/core';
 import { Chocolate } from '../../models/chocolate';
 import { ChocolateService } from '../../services/chocolate.service';
 import { Global } from '../../services/global';
@@ -16,6 +16,7 @@ export class ProductosComponent implements OnInit {
   public isFour: number;
   public categorias: string[]; // added this property to hold categories
   public selectedProduct: Chocolate;
+  public anadir: boolean;
 
 
   constructor(private _chocolateService: ChocolateService) {
@@ -25,6 +26,7 @@ export class ProductosComponent implements OnInit {
     this.isFour = 0;
     this.categorias = []; // initialize categories array
     this.selectedProduct = new Chocolate ("","","",0,"","","",0,0,"");
+    this.anadir = false;
   }
 
   ngOnInit(): void {
@@ -68,6 +70,10 @@ export class ProductosComponent implements OnInit {
   setConfirm(confirm: boolean, producto: Chocolate) {
     this.confirm = confirm;
     this.selectedProduct = producto;
+  }
+  setAdd(anadir: boolean) {
+    console.log("sedio clicl");
+    this.anadir = anadir;
   }
 
   borrarChocolate(producto: Chocolate) {

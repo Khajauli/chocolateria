@@ -28,7 +28,7 @@ const routes: Routes = [
   {path: 'loginAdministrador' , component:LoginAdministradoresComponent},  
   {path: 'inventario/:categoria',component:AddProductosComponent},
   {path: 'nuestrosChocolates',component:ProductosUComponent},
-  {path: 'inicioAdm', component:HomeAComponent},
+  {path: 'inicioAdmin', component:HomeAComponent},
   {path: '**', component: HomeComponent},
 ];
 
