@@ -22,6 +22,13 @@ import { EditarProductosComponent } from './components/editar-productos/editar-p
 import { NuevoComentarioComponent } from './components/nuevo-comentario/nuevo-comentario.component';
 import { NuevoArticuloComponent } from './components/nuevo-articulo/nuevo-articulo.component';
 import { AddProductosComponent } from './components/add-productos/add-productos.component';
+<<<<<<< Updated upstream
+=======
+import { HomeAComponent } from './components/home-a/home-a.component';
+import { ProductosUComponent } from './components/productos-u/productos-u.component';
+import { AboutusAComponent } from './components/aboutus-a/aboutus-a.component';
+import { PieRComponent } from './components/pie-r/pie-r.component';
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -43,6 +50,13 @@ import { AddProductosComponent } from './components/add-productos/add-productos.
     NuevoComentarioComponent,
     NuevoArticuloComponent,
     AddProductosComponent,
+<<<<<<< Updated upstream
+=======
+    HomeAComponent,
+    ProductosUComponent,
+    AboutusAComponent,
+    PieRComponent,
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
