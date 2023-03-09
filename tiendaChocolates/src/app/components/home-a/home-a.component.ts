@@ -24,6 +24,8 @@ public agregarVisible = false;
 public selectedProduct: Chocolate;
 public imagen : Imagen;
 public anadir: boolean;
+public confirmArt : boolean;
+public selectedArticulo : Articulo;
 
 constructor(
   private _articuloService: ArticuloService,
@@ -39,6 +41,8 @@ constructor(
   this.selectedProduct = new Chocolate ("","","",0,"","","",0,0,"");
   this.imagen = new Imagen ("",0,"","","");
   this.anadir = false;
+  this.confirmArt = false;
+  this.selectedArticulo = new Articulo("",0,"","","","");
 }
 ngOnInit(): void {
     this.getArticulos();
@@ -104,4 +108,19 @@ setAdd(anadir: boolean) {
   this.anadir = anadir;
 }
 
+setConfirmArt(confirm: boolean, articulo: Articulo) {
+  this.confirmArt = confirm;
+  this.selectedArticulo=articulo;
+}
+
+borrarArticulo(articulo: Articulo){
+  articulo.tipo = "Inactivo";
+  this._articuloService.updateArticulo(articulo).subscribe(
+    response=> {
+      console.log("Eliminacion exitosa");
+    }, error => {
+      console.log("No se ha eliminado")
+    }
+  )
+}
 }

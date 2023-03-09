@@ -58,9 +58,18 @@
         <a *ngIf="articulo.tipo === 'Activo'">
             <h3>{{articulo.titulo}} - {{articulo.texto}}</h3>
             <img src="{{url+'get-imagen/'+articulo.imagen}}" style="width: 30px;height: 30px;">
-            <!-- <button [routerLink]="['/chocolate', producto._id]"> Editar </button> -->
-        <!-- Esto lo va a necesitar el usuario para desplegar los detalles de un chocolate-->
-    </a> 
+            <div class="editar">
+              <p *ngIf="confirmArt==false ">
+                  <button  [routerLink]="['/editar-articulo',articulo._id]" style="margin-left: 90px;"><i class="fa-sharp fa-solid fa-pen-to-square"></i></button>
+                  <button (click)="setConfirmArt(true, articulo)" class="button-delete"><i class="fa-sharp fa-solid fa-trash-can"></i></button>
+              </p>
+              <p *ngIf="confirmArt && selectedArticulo === articulo">
+                  <span class="confirmArt">Estas seguro de eliminar este chocolate</span><br>
+                  <button (click)="setConfirmArt(false, articulo)" class="button-edit" style="margin-left: 90px; background-color: #D50000; color: white;"><i class="fa-sharp fa-solid fa-xmark"></i></button>
+                  <button (click)="borrarArticulo(articulo)" class="button-delete" style="background-color: #009100; color: white;"><i class="fa-sharp fa-solid fa-check"></i></button> 
+              </p>
+          </div>
+          </a> 
       </li> 
    
       <button id="agregar"class="boton-nuevo"(click)="toggleAgregar()">+</button>

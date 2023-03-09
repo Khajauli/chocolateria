@@ -18,6 +18,7 @@ export class NuevoArticuloComponent implements OnInit{
   public status:string;
   public idGuardado:string;
   public archivosParaCargar:Array<File>;
+  public titulo : string;
   @ViewChild('archivoImagen') fileInput:any;
 
   constructor(
@@ -30,6 +31,7 @@ export class NuevoArticuloComponent implements OnInit{
     this.status="";
     this.idGuardado="";
     this.archivosParaCargar=[];
+    this.titulo="GUARDAR ARTICULO";
   }
 
   ngOnInit(): void {

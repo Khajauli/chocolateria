@@ -16,6 +16,7 @@ import { ProductosUComponent } from './components/productos-u/productos-u.compon
 import { HomeAComponent } from './components/home-a/home-a.component';
 import { InventarioTotalComponent } from './components/inventario-total/inventario-total.component';
 import { NuevoArticuloComponent } from './components/nuevo-articulo/nuevo-articulo.component';
+import { EditarArticulosComponent } from './components/editar-articulos/editar-articulos.component';
 
 const routes: Routes = [
   {path: 'inicio', component: HomeComponent},
@@ -34,6 +35,7 @@ const routes: Routes = [
   {path: 'inicioAdmin', component:HomeAComponent},
   {path: 'inventario', component:InventarioTotalComponent},
   {path: 'nuevoArticulo', component:NuevoArticuloComponent},
+  {path: 'editar-articulo/:id', component:EditarArticulosComponent},
   {path: '**', component: HomeComponent},
 ];
 
