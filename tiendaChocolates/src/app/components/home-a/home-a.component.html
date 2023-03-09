@@ -1,31 +1,53 @@
-<p>home-a works!</p>
-<h1>Inicio Adminsitrador</h1>
-<h2>Regala Experiencias al alcance de chocolate</h2>
-<h4>Realizamos chocolates para toda ocasión, el limite es tu imaginación</h4>
-<h2>Nuestra mejor seleccion</h2>
-<ul>
-       <li *ngFor="let producto of productos.slice(index, index+4)" class="producto" >
+<section>
+  <div class="izquierda">
+      <h2>Regala experiencias al alcance de un chocolate</h2>
+      <p>Realizamos chocolates para toda ocasión, el límite es tu imaginación.</p>
+      <div class="botones">
+          <button style="background-color: black;"><a href="#" style="color: white;" [routerLink]="['/contactos']">Ordena Ahora</a></button>
+          <button style="background-color: white;"><a href="#" style="color: black;" [routerLink]="['/productos']">Productos</a></button>
+      </div>
+  </div>
+  <div class="derecha">
+      <img src="../../../assets/img/pastel.png">
+      <div class="circulo"></div>
+  </div>
+</section>
+<section>
+  <div class="seleccion">
+    <div class="Sizquierda">
+        <h2>Nuestra Mejor selección</h2>
+    </div>
+    <div class="Sderecha">
+        <p>Aquí te mostramos nuestros productos más solicitados, que pueden ser de tu agrado.</p>
+    </div>
+  </div>
+  <div class="productos-container">
+    <ng-container *ngFor="let producto of productos.slice(index, index+4)" class="producto" >
         <a *ngIf="producto.estado === 'Activo'">
-            <img src="{{url+'get-imagen/'+producto.imagen}}" style="width: 30px;height: 30px;">
-            <h3>{{producto.codigo}} - {{producto.nombre}} - {{producto.precio}}</h3>
-            <!-- <button [routerLink]="['/chocolate', producto._id]"> Editar </button> -->
-        <!-- Esto lo va a necesitar el usuario para desplegar los detalles de un chocolate-->
-        <p *ngIf="confirm==false ">
-        <button  [routerLink]="['/editar-producto',producto._id]"  style="height: 50px;background-color: lightseagreen;width: 50ps;"> Editar </button>
-        <button (click)="setConfirm(true, producto)" class="button-delete" style="height: 50px;background-color: lightcoral;width: 50ps;"> Eliminar </button>
-         </p>
-         <p *ngIf="confirm==true && selectedProduct === producto">
-            <span class="confirm">Estas seguro de eliminar este chocolate</span><br>
-            <button (click)="setConfirm(false, producto)" class="button-edit"  style="height: 50px;background-color: lightseagreen;width: 50ps;">Cancelar</button>
-            <button (click)="borrarChocolate(producto)" class="button-delete"  style="height: 50px;background-color: lightcoral;width: 50ps;">Eliminar definitivamente</button>
-        </p>
-    </a> 
-      </li> 
-   
-          <button style="height: 50px; width: 100px;" >
-             +
-        </button>
-  </ul>
+            <div class="tarjeta">
+                <img src="{{url+'get-imagen/'+producto.imagen}}">
+                <h3>{{producto.descripcion}}</h3>
+                <div class="editar">
+                    <p *ngIf="confirm==false ">
+                        <button  [routerLink]="['/editar-producto',producto._id]" style="margin-left: 90px;"><i class="fa-sharp fa-solid fa-pen-to-square"></i></button>
+                        <button (click)="setConfirm(true, producto)" class="button-delete"><i class="fa-sharp fa-solid fa-trash-can"></i></button>
+                    </p>
+                    <p *ngIf="confirm && selectedProduct === producto">
+                        <span class="confirm">Estas seguro de eliminar este chocolate</span><br>
+                        <button (click)="setConfirm(false, producto)" class="button-edit" style="margin-left: 90px; background-color: #D50000; color: white;"><i class="fa-sharp fa-solid fa-xmark"></i></button>
+                        <button (click)="borrarChocolate(producto)" class="button-delete" style="background-color: #009100; color: white;"><i class="fa-sharp fa-solid fa-check"></i></button>
+                    </p>
+                </div>
+            </div>
+        </a> 
+    </ng-container> 
+    <div class="producto">
+        <div class="tarjeta boton-tarjeta">
+            <button id="agregar"class="boton-nuevo">+</button>
+        </div>
+    </div>
+  </div>
+</section>
 
 <h2>Inicio Administrador</h2>
 <ul>
@@ -47,3 +69,22 @@
       </ng-container>
 
   </ul>
+  <section>
+    <div class="fiesta">
+        <h2>Para Fiestas y Eventos</h2>
+        <p>Comunicate con nosotros con una semana de anticipación en nuestro horario de atención</p>
+        <button><a href="#" style="color:white;text-decoration: none;" [routerLink]="['/contactos']">Contactos</a></button>
+    </div>
+  </section>
+  <section>
+    <div class="eslogan">
+      <img src="../../../assets/img/comillas.png" id="comillas-izquierda">
+      <h2 style="margin-top: 168px;">El chocolate no resolverá tus problemas</h2>
+      <h2 style="margin-bottom: 82px;">Pero tampoco lo hará una manzana</h2>
+      <img src="../../../assets/img/comillas1.png" id="comillas-derecha">
+      <img src="../../../assets/img/CEO ARIQ.jpg" style="width: 88px;height: 88px;border-radius: 50%;">
+      <p style="font-size: 24px; font-weight: 600;margin-bottom: 8px;">Kharol Chicaiza</p>
+      <p style="font-size: 18px; font-weight: 500px;margin-bottom: 132px;">Delivery & Fundadora de ARIQ</p>
+    </div>
+  </section>
+  <app-pie></app-pie>
