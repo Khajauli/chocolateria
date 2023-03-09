@@ -1,3 +1,4 @@
+<h2>{{titulo}}</h2>
 <p>nuevo-chocolate works!</p>
 <div class="formulario">
     <form  #chocolateForm="ngForm" (ngSubmit)="guardarChocolate(chocolateForm)">
@@ -18,11 +19,11 @@
             Precio obligatorio o incorrectamente ingresado
         </span>
 
-        <label for="tipo">Tipo:</label>  
-        <input type="text" id="tipo" name="tipo" #tipo="ngModel" [(ngModel)]="chocolate.tipo" required >
+        <!-- <label for="tipo">Estado:</label>  
+        <input type="text" id="tipo" name="tipo" #tipo="ngModel" [(ngModel)]="chocolate.estado" required >
         <span *ngIf="tipo.touched && !tipo.valid">
             Tipo obligatorio o incorrectamente ingresado
-        </span>
+        </span> -->
         
         <label for="descripcion">Descripción:</label>  
         <input type="text" id="descripcion" name="descripcion" #descripcion="ngModel" [(ngModel)]="chocolate.descripcion" required >
@@ -32,6 +33,9 @@
        
         <label for="puntuacion">Puntuación:</label>
         <input type="number" id="puntuacion" name="puntuacion" #puntuacion="ngModel" [(ngModel)]="chocolate.puntuacion" required>
+        <span *ngIf="puntuacion.touched && !puntuacion.valid">
+            Categoria obligatoria o incorrectamente ingresada
+        </span>
 
         <label for="categoria">Categoria:</label>  
         <input type="text" id="categoria" name="categoria" #categoria="ngModel" [(ngModel)]="chocolate.categoria" required >

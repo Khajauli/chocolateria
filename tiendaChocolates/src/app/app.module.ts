@@ -17,6 +17,15 @@ import { NuevoClienteComponent } from './components/nuevo-cliente/nuevo-cliente.
 import { NuevoAdministradorComponent } from './components/nuevo-administrador/nuevo-administrador.component';
 import { LoginClientesComponent } from './components/login-clientes/login-clientes.component';
 import { LoginAdministradoresComponent } from './components/login-administradores/login-administradores.component';
+import { DetalleproductoComponent } from './components/detalleproducto/detalleproducto.component';
+import { EditarProductosComponent } from './components/editar-productos/editar-productos.component';
+import { NuevoComentarioComponent } from './components/nuevo-comentario/nuevo-comentario.component';
+import { NuevoArticuloComponent } from './components/nuevo-articulo/nuevo-articulo.component';
+import { AddProductosComponent } from './components/add-productos/add-productos.component';
+import { HomeAComponent } from './components/home-a/home-a.component';
+import { ProductosUComponent } from './components/productos-u/productos-u.component';
+import { AboutusAComponent } from './components/aboutus-a/aboutus-a.component';
+import { PieRComponent } from './components/pie-r/pie-r.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +41,16 @@ import { LoginAdministradoresComponent } from './components/login-administradore
     NuevoClienteComponent,
     NuevoAdministradorComponent,
     LoginClientesComponent,
-    LoginAdministradoresComponent
+    LoginAdministradoresComponent,
+    DetalleproductoComponent,
+    EditarProductosComponent,
+    NuevoComentarioComponent,
+    NuevoArticuloComponent,
+    AddProductosComponent,
+    HomeAComponent,
+    ProductosUComponent,
+    AboutusAComponent,
+    PieRComponent,
   ],
   imports: [
     BrowserModule,

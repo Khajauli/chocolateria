@@ -1,0 +1,41 @@
+<h1>Nuevo cliente</h1>
+<div class="formulario">
+    <form  #comentarioForm="ngForm" (ngSubmit)="guardarComentario(comentarioForm)">
+        <br>
+        <label for="codigo">Codigo:</label>
+        <input type="text" id="codigo" name="codigo" #codigo="ngModel" [(ngModel)]="comentario.codigo" required >
+        <span *ngIf="codigo.touched && !codigo.valid">
+            codigo obligatoria o incorrectamente ingresada
+        </span>
+        <label for="producto">Producto:</label>
+        <input type="text" id="producto" name="producto" #producto="ngModel" [(ngModel)]="comentario.producto" required>
+        <span *ngIf="producto.touched && !producto.valid">
+            producto obligatorio o incorrectamente ingresado
+        </span>
+
+
+        <label for="usuario">Usuario:</label>  
+        <input type="text" id="usuario" name="usuario" #usuario="ngModel" [(ngModel)]="comentario.usuario" required >
+        <span *ngIf="usuario.touched && !usuario.valid">
+            usuario obligatorio o incorrectamente ingresado
+        </span>
+        
+        <label for="texto">Texto:</label>  
+        <input type="text" id="texto" name="texto" #texto="ngModel" [(ngModel)]="comentario.texto" required >
+        <span *ngIf="texto.touched && !texto.valid">
+            texto obligatoria o incorrectamente ingresada
+        </span>
+        <label for="puntaje">Puntaje:</label>  
+        <select name="puntaje" #puntaje="ngModel" [(ngModel)]="comentario.puntaje" >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+       
+        
+        <input type="submit" value="Ingresar" [disabled]="!comentarioForm.form.valid">
+    </form>
+
+</div>

@@ -1,0 +1,94 @@
+/*Cabecera*/
+.menu {
+    display: flex;
+    align-items: center;
+    height: 75px;
+    background-color: white;
+    font-family: 'Poppins';
+}
+.menu span {
+    margin-right: auto;
+    margin-left: 184px;
+    font-size: 30px;
+}
+.menu ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-right: 533px;
+}
+.menu a {
+    margin-left: 46px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    color: black;
+}
+/*Responsive cabecera*/
+@media (max-width: 1864px) {
+    .menu ul {
+    margin-right: 20px;
+    }
+    .menu label {
+    margin-right: 20px;
+    }
+}
+@media screen and (max-width: 1360px) {
+    .menu ul {
+      margin-right: 233px;
+    }
+    .menu a{
+        font-size: 15px;
+    }
+    .menu label {
+      margin-right: 0;
+    }
+    .menu input[type="text"] {
+      width: 150px;
+    }
+    .menu label input{
+        width: 100px;
+    }
+    .menu button {
+      width: 30px;
+    }
+
+}
+@media only screen and (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+  }
+  .menu span {
+    margin: 0;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .menu ul {
+    margin: 0;
+    margin-bottom: 20px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .menu a {
+    margin: 10px 0;
+    font-size: 18px;
+    text-align: center;
+  }
+  .menu label {
+    margin: 0;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .menu input[type="text"] {
+    width: 100%;
+    margin-right: 10px;
+  }
+}

@@ -8,25 +8,20 @@ var controller={
 
     saveCliente: async function(req, res) {
         try {
-          const { cedula, nombre, notifi, usuario, contrasenia,correo } = req.body;
+          const {nombre, correo } = req.body;
       
       
-          const existingCliente = await Cliente.findOne({ cedula });
+          const existingCliente = await Cliente.findOne({ correo });
           if (existingCliente) {
             return res.status(404).send({ message: 'Ya existe el Cliente' });
           }
           
           // create a new client object and save to database
           const nuevoCliente = new Cliente({
-            cedula,
             nombre,
-            notifi,
-            usuario,
-            contrasenia,
             correo,
           });
           const clienteGuardado = await nuevoCliente.save();
-          if(notifi){
           // send email
           const transporter = nodemailer.createTransport({
             service: 'Gmail',
@@ -79,7 +74,7 @@ var controller={
       
           const info = await transporter.sendMail(mailOptions);
           console.log(`Message sent: ${info.messageId}`);
-        }
+        
           return res.status(200).send({ cliente: clienteGuardado });
         } catch (err) {
           console.error(err);

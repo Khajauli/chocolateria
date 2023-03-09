@@ -21,8 +21,9 @@ var controller={
 
     },
     login:function(req,res){
-        var usuario=req.body.user;
-        var contrasenia=req.body.contrasenia;
+        var params=req.body;
+        var usuario=params.usuario;
+        var contrasenia=params.contrasenia;
         var session=req.session;
 
         if(usuario==null || contrasenia==null) return res.status(404).send({message:'Datos incorrectos'});

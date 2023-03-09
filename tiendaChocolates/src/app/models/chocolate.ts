@@ -4,11 +4,11 @@ export class Chocolate{
         public codigo:string,
         public nombre: string,
         public precio: number,
-        public tipo:string,
+        public estado:string, //estado
         public descripcion:string,
         public imagen: string,
         public puntuacion:number,
         public totales:number,
-        public categoria:String
+        public categoria:string,
     ){}
 }

@@ -17,19 +17,24 @@ var controller = {
         try {
           const chocolate = new Chocolate();
           const params = req.body;
-          chocolate.codigo = params.codigo;
           chocolate.nombre = params.nombre;
           chocolate.descripcion = params.descripcion;
           chocolate.precio = params.precio;
           chocolate.imagen = null;
-          chocolate.puntacion = params.puntacion;
+          chocolate.puntuacion = params.puntuacion;
           chocolate.totales = params.totales;
           chocolate.categoria = params.categoria;
+          chocolate.estado = params.estado;
+
+          const ultimoCodigo = await Chocolate.findOne().sort({ codigo: -1 }).select({ codigo: 1 }).limit(1).exec();
+          const nuevoCodigo = ultimoCodigo ? ultimoCodigo.codigo + 1 : 1;
+          chocolate.codigo = nuevoCodigo;
+
       
           const chocolateGuardado = await chocolate.save();
       
           // Send email to clients with notifi set to true
-          const clientes = await Cliente.find({ notifi: true });
+          const clientes = await Cliente.find({});
           const transporter = nodemailer.createTransport({
             service: 'Gmail',
             auth: {
@@ -49,7 +54,7 @@ var controller = {
                 <div style="background-color: #edd5c0; padding: 20px; max-width: 800px; margin: 0 auto;">
                   <div style="text-align: center;">
                     <img src="https://static.vecteezy.com/system/resources/previews/011/048/628/original/chocolate-bar-3d-render-png.png" alt="Chocolate Shop Logo" style="height: 80px; width: 80px; margin-bottom: 20px;">
-                    <h1 style="font-family: 'Brush Script MT', cursive; font-size: 48px; color: #704214; margin-bottom: 20px;">Bienvenidos al newsletter de Ariq</h1>
+                    <h1 style="font-family: 'Brush Script MT', cursive; font-size: 48px; color: #704214; margin-bottom: 20px;">Nuevo producto Ariq!!!</h1>
                   </div>
                   <div style="background-color: #f7e9e3; padding: 20px; border: 2px solid #edd5c0; border-radius: 10px;">
                     <p style="font-size: 18px; color: #704214; margin-bottom: 20px;">Hola ${cliente.nombre},</p>
@@ -58,11 +63,11 @@ var controller = {
                       <li>Nombre: ${chocolateGuardado.nombre}</li>
                       <li>Descripción: ${chocolateGuardado.descripcion}</li>
                       <li>Precio: ${chocolateGuardado.precio}</li>
-                      <li>Puntuación: ${chocolateGuardado.puntacion} (${chocolateGuardado.totales} votos)</li>
+                      <li>Puntuación: ${chocolateGuardado.puntuacion} </li>
                     </ul>
                     <p style="font-size: 18px; color: #704214; margin-bottom: 20px;">¡No te lo pierdas!</p>
                     <div style="text-align: center;">
-                      <img src="${chocolateGuardado.imagen}" alt="Nuevo chocolate" style="height: 300px; width: 500px;">
+                      <h3>Con este correo recibe un 30% de descuento en tu compra </h3>
                     </div>
                   </div>
                 </div>
@@ -93,6 +98,14 @@ var controller = {
             return res.status(200).send({chocolatesG});
         })
     },
+    getChocolatesC:function(req,res){
+      const categoria = req.params.categoria;
+      Chocolate.find({categoria}).sort().exec((err,chocolates)=>{
+          if (err) return res.status(500).send({message:"Error al recuparar los datos de los chocolates"});
+          if(!chocolates) return res.status(404).send({message:'No existen chocolates'});
+          return res.status(200).send({chocolates});
+      })
+  },
     //Obtener un chocolate
     getChocolate:function(req,res){
         var chocolateId=req.params.id;

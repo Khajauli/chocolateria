@@ -9,19 +9,44 @@ var controller={
             "<h1>Hola 2<h1>"
         );
     },
-    saveComentario:function(req,res){
-        var comentario=new Comentario();
-        var params=req.body;
-        comentario.codigo=params.codigo;
-        comentario.usuario=params.usuario;
-        comentario.texto=params.texto;
-        comentario.aprobado=params.aprobado;
-        comentario.producto=params.producto;
-        comentario.save((err,comentarioGuardado)=>{
-            if(err) return res.status(500).send({message:"Error al guardar"});
-            if(!comentarioGuardado) return res.status(404).send({message:'No se ha guardado el comentario'});
-            return res.status(200).send({comentario:comentarioGuardado});
-        })
+    saveComentario:async function(req,res){
+        const comentario = new Comentario();
+        const params = req.body;
+        comentario.codigo = params.codigo;
+        comentario.usuario = params.usuario;
+        comentario.texto = params.texto;
+        comentario.aprobado = params.aprobado;
+        comentario.puntaje = params.puntaje;
+
+        try {
+            const chocolate = await Chocolate.findOne({ codigo: params.producto });
+            if (!chocolate) {
+            return res.status(404).send({ message: 'No se ha encontrado el chocolate relacionado' });
+            }
+
+            comentario.producto = chocolate;
+
+            const oldAvgScore = chocolate.puntuacion;
+            const totalReviews = chocolate.totales;
+            const newScore = comentario.puntaje;
+            const newAvgScore = (oldAvgScore * totalReviews + newScore) / (totalReviews + 1);
+
+            chocolate.puntuacion = newAvgScore;
+            chocolate.totales = totalReviews + 1;
+            await chocolate.save();
+
+            comentario.save((err, comentarioGuardado) => {
+            if (err) {
+                return res.status(500).send({ message: 'Error al guardar el comentario' });
+            }
+            if (!comentarioGuardado) {
+                return res.status(404).send({ message: 'No se ha guardado el comentario' });
+            }
+            return res.status(200).send({ comentario: comentarioGuardado });
+            });
+        } catch (err) {
+            return res.status(500).send({ message: 'Error al buscar el chocolate relacionado' });
+        }
     },
     //recuperar todas las peliculas
     getComentarios:function(req,res){

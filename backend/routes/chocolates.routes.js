@@ -12,6 +12,8 @@ router.get('/inicio',chocolateRouter.getInicio);
 router.post('/guardar-chocolate',chocolateRouter.saveChocolate);
 //Obtener chocolates
 router.get('/chocolates',chocolateRouter.getChocolates);
+//chocolates por categoria
+router.get('/chocolatesC/:categoria',chocolateRouter.getChocolatesC);
 //Obtener un chocolate
 router.get('/chocolate/:id',chocolateRouter.getChocolate);
 //Modificar un chocolate
