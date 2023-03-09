@@ -40,10 +40,12 @@ export class LoginAdministradoresComponent implements OnInit{
         console.log(response);
         localStorage.setItem('token', response.token);
         this._router.navigate(['/productos']);
+        
 
       },
       error => {
         console.log(error);
+        console.log("error afuera");
 
       }
     );
