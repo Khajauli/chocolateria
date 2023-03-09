@@ -60,20 +60,22 @@ guardarChocolate(form : NgForm){
       if(this.archivoSaved){
         this._cargarService.peticionRequest(Global.url+"subir-imagen/"+this.chocolate._id,[], this.archivoSaved, 'imagen')
         .then((result:any)=>{
-          this.chocolateSaved = result.response.chocolateG;
+          this.chocolateSaved = result.response.chocolateU;
           this.status = 'success';
-          this.idSaved = response.response.chocolateG._id;
-          console.log(result.response.chocolateG);
+          this.idSaved = response.response.chocolateU._id;
+          console.log(result.response.chocolateU);
           form.reset();
         });
       }else{
+        this.chocolateSaved= response.chocolateU
         this.status='success';
-        console.log(this.archivoSaved);
+        console.log("medio");
+        
       }
     }
   );
 }
-imagenChangeEvent(archivoSaved : any){
-  this.archivoSaved = <Array<File>> archivoSaved.target.files;
+imagenChangeEvent(archivoSeleccionado: any){
+  this.archivoSaved = <Array<File>> archivoSeleccionado.target.files;
 }
 }
