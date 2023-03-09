@@ -4,12 +4,14 @@ import { ArticuloService } from '../../services/articulo.service';
 import { Chocolate } from '../../models/chocolate';
 import { ChocolateService } from '../../services/chocolate.service';
 import { Global } from '../../services/global';
+import { Imagen } from '../../models/imagen';
+import { ImagenService } from '../../services/imagen.service';
 
 @Component({
   selector: 'app-home-a',
   templateUrl: './home-a.component.html',
   styleUrls: ['./home-a.component.css'],
-  providers: [ArticuloService,ChocolateService]
+  providers: [ArticuloService,ChocolateService, ImagenService]
 })
 export class HomeAComponent implements OnInit {
 public articulos: Articulo [ ];
@@ -19,16 +21,21 @@ public confirm : boolean;
 public  sortedChocolates: Chocolate[];
 public index=1;
 public agregarVisible = false;
+public selectedProduct: Chocolate;
+public imagen : Imagen;
 
 constructor(
   private _articuloService: ArticuloService,
   private _chocolateService:ChocolateService,
+  private _imagenService : ImagenService
 ){
   this.url = Global.url;
   this.articulos = [];
   this.productos = [];
   this.sortedChocolates = [];
   this.confirm = false;
+  this.selectedProduct = new Chocolate ("","","",0,"","","",0,0,"");
+  this.imagen = new Imagen ("",0,"","","");
 }
 ngOnInit(): void {
     this.getArticulos();
@@ -59,8 +66,9 @@ getChocolates() {
     }
   );
 }
-setConfirm(confirm:boolean){
-  this.confirm=confirm;
+setConfirm(confirm: boolean, producto: Chocolate) {
+  this.confirm = confirm;
+  this.selectedProduct = producto;
 }
 AgregarChocolate(producto: Chocolate) {
   producto.estado = "Activo";
@@ -88,5 +96,6 @@ borrarChocolate(producto: Chocolate) {
 toggleAgregar() {
   this.agregarVisible = !this.agregarVisible;
 }
+
 
 }

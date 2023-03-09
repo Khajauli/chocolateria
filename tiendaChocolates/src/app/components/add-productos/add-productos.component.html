@@ -18,7 +18,7 @@
         <td>{{producto.precio}}</td>
         <td>{{producto.estado}}</td>
         <td>
-          <button (click)="agregarChocolate(producto)" [routerLink]="'/productos'">Añadir</button>
+          <button (click)="agregarChocolate(producto)" [routerLink]="'/productos'" *ngIf="producto.estado == 'Inactivo'">Añadir</button>
         </td>
       </tr>
     </ng-container>

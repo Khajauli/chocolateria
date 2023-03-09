@@ -1,7 +1,8 @@
 <p>home-a works!</p>
 <h1>Inicio Adminsitrador</h1>
+<h2>Regala Experiencias al alcance de chocolate</h2>
+<h4>Realizamos chocolates para toda ocasión, el limite es tu imaginación</h4>
 <h2>Nuestra mejor seleccion</h2>
-
 <ul>
        <li *ngFor="let producto of productos.slice(index, index+4)" class="producto" >
         <a *ngIf="producto.estado === 'Activo'">
@@ -11,11 +12,11 @@
         <!-- Esto lo va a necesitar el usuario para desplegar los detalles de un chocolate-->
         <p *ngIf="confirm==false ">
         <button  [routerLink]="['/editar-producto',producto._id]"  style="height: 50px;background-color: lightseagreen;width: 50ps;"> Editar </button>
-        <button (click)="setConfirm(true)" class="button-delete" style="height: 50px;background-color: lightcoral;width: 50ps;"> Eliminar </button>
+        <button (click)="setConfirm(true, producto)" class="button-delete" style="height: 50px;background-color: lightcoral;width: 50ps;"> Eliminar </button>
          </p>
-         <p *ngIf="confirm==true">
+         <p *ngIf="confirm==true && selectedProduct === producto">
             <span class="confirm">Estas seguro de eliminar este chocolate</span><br>
-            <button (click)="setConfirm(false)" class="button-edit"  style="height: 50px;background-color: lightseagreen;width: 50ps;">Cancelar</button>
+            <button (click)="setConfirm(false, producto)" class="button-edit"  style="height: 50px;background-color: lightseagreen;width: 50ps;">Cancelar</button>
             <button (click)="borrarChocolate(producto)" class="button-delete"  style="height: 50px;background-color: lightcoral;width: 50ps;">Eliminar definitivamente</button>
         </p>
     </a> 
