@@ -1,0 +1,137 @@
+<div class="container">
+  <div class="seleccion">
+    <div class="Sizquierda">
+        <h2>Nuestra Mejor selección</h2>
+    </div>
+    <div class="Sderecha">
+        <p>Aquí te mostramos nuestros productos más solicitados, que pueden ser de tu agrado.</p>
+    </div>
+  </div>
+  <div class="containerI">
+    <div class="grid-container">
+      <ng-container *ngFor="let categoria of categorias">
+        <ng-container *ngIf="categoria === 'Premium'">
+          <ng-container *ngFor="let producto of productos">
+            <ng-container *ngIf="producto.categoria === categoria && producto.estado === 'Activo' && producto.imagen">
+              <li class="producto">
+                <a [routerLink]="['/chocolate', producto._id]" style="text-decoration: none;">
+                  <img src="{{url+'get-imagen/'+producto.imagen}}">
+                  <h3>{{producto.codigo}} - {{producto.nombre}} - {{producto.precio}}</h3>
+                </a> 
+              </li> 
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+  <div class="seleccion">
+    <div class="Sizquierda">
+        <h2>Nuestra Mejor selección</h2>
+    </div>
+    <div class="Sderecha">
+        <p>Aquí te mostramos nuestros productos más solicitados, que pueden ser de tu agrado.</p>
+    </div>
+  </div>
+  <div class="containerI">
+    <div class="grid-container">
+      <ng-container *ngFor="let categoria of categorias">
+        <ng-container *ngIf="categoria === 'Premium'">
+          <ng-container *ngFor="let producto of productos">
+            <ng-container *ngIf="producto.categoria === categoria && producto.estado === 'Activo' && producto.imagen">
+              <li class="producto">
+                <a [routerLink]="['/chocolate', producto._id]" style="text-decoration: none;">
+                  <img src="{{url+'get-imagen/'+producto.imagen}}">
+                  <h3>{{producto.codigo}} - {{producto.nombre}} - {{producto.precio}}</h3>
+                </a> 
+              </li> 
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+  <div class="seleccion">
+    <div class="Sizquierda">
+        <h2>Nuestra Mejor selección</h2>
+    </div>
+    <div class="Sderecha">
+        <p>Aquí te mostramos nuestros productos más solicitados, que pueden ser de tu agrado.</p>
+    </div>
+  </div>
+  <div class="containerI">
+    <div class="grid-container">
+      <ng-container *ngFor="let categoria of categorias">
+        <ng-container *ngIf="categoria === 'Premium'">
+          <ng-container *ngFor="let producto of productos">
+            <ng-container *ngIf="producto.categoria === categoria && producto.estado === 'Activo' && producto.imagen">
+              <li class="producto">
+                <a [routerLink]="['/chocolate', producto._id]" style="text-decoration: none;">
+                  <img src="{{url+'get-imagen/'+producto.imagen}}">
+                  <h3>{{producto.codigo}} - {{producto.nombre}} - {{producto.precio}}</h3>
+                </a> 
+              </li> 
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+  <div class="seleccion">
+    <div class="Sizquierda">
+        <h2>Nuestra Mejor selección</h2>
+    </div>
+    <div class="Sderecha">
+        <p>Aquí te mostramos nuestros productos más solicitados, que pueden ser de tu agrado.</p>
+    </div>
+  </div>
+  <div class="containerI">
+    <div class="grid-container">
+      <ng-container *ngFor="let categoria of categorias">
+        <ng-container *ngIf="categoria === 'Premium'">
+          <ng-container *ngFor="let producto of productos">
+            <ng-container *ngIf="producto.categoria === categoria && producto.estado === 'Activo' && producto.imagen">
+              <li class="producto">
+                <a [routerLink]="['/chocolate', producto._id]" style="text-decoration: none;">
+                  <img src="{{url+'get-imagen/'+producto.imagen}}">
+                  <h3>{{producto.codigo}} - {{producto.nombre}} - {{producto.precio}}</h3>
+                </a> 
+              </li> 
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+  <div class="seleccion">
+    <div class="Sizquierda">
+        <h2>Nuestra Mejor selección</h2>
+    </div>
+    <div class="Sderecha">
+        <p>Aquí te mostramos nuestros productos más solicitados, que pueden ser de tu agrado.</p>
+    </div>
+  </div>
+  <div class="containerI">
+    <div class="grid-container">
+      <ng-container *ngFor="let categoria of categorias">
+        <ng-container *ngIf="categoria === 'Premium'">
+          <ng-container *ngFor="let producto of productos">
+            <ng-container *ngIf="producto.categoria === categoria && producto.estado === 'Activo' && producto.imagen">
+              <li class="producto">
+                <a [routerLink]="['/chocolate', producto._id]" style="text-decoration: none;">
+                  <img src="{{url+'get-imagen/'+producto.imagen}}">
+                  <h3>{{producto.codigo}} - {{producto.nombre}} - {{producto.precio}}</h3>
+                </a> 
+              </li> 
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+
+  
+
+
