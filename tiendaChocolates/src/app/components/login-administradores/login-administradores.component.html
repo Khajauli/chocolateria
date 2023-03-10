@@ -1,27 +1,28 @@
-
-<div class="container" id="log">
-    <div class="row">
-      <div class="login-form">
-        <form #loginAForm="ngForm" (ngSubmit)="loginAdmin(loginAForm)">
-          <h1>Administrador</h1>
-          <div class="content">
-          <div class="input-field">
-            <label for="username">Nombre de usuario:</label>
-            <input type="text" class="form-control" id="username" name="username" #username="ngModel" [(ngModel)]="usuario" required style="color: white; text-align: center;">
-            <span *ngIf="username.touched && !username.valid">
-              Nombre de usuario obligatorio
-          </span>
+<body>
+  <div class="container" id="log">
+      <div class="row">
+        <div class="login-form">
+          <form #loginAForm="ngForm" (ngSubmit)="loginAdmin(loginAForm)" style="margin-top: 300px;">
+            <h1>Administrador</h1>
+            <div class="content">
+            <div class="input-field">
+              <label for="username">Nombre de usuario:</label>
+              <input type="text" class="form-control" id="username" name="username" #username="ngModel" [(ngModel)]="usuario" required style="color: white; text-align: center;">
+              <span *ngIf="username.touched && !username.valid">
+                Nombre de usuario obligatorio
+            </span>
+            </div>
+            <div class="input-field">
+              <label for="contrasenia">Contaseña:</label>
+              <input type="password" class="form-control" id="password" name="password" #password="ngModel" [(ngModel)]="contrasenia" required style="color: white; text-align: center;">
+            </div>
           </div>
-          <div class="input-field">
-            <label for="contrasenia">Contaseña:</label>
-            <input type="password" class="form-control" id="password" name="password" #password="ngModel" [(ngModel)]="contrasenia" required style="color: white; text-align: center;">
-          </div>
+            <div class="action">
+            <input type="submit" value="Ingresar" [disabled]="!loginAForm.form.valid">
+            </div>
+          </form>
         </div>
-          <div class="action">
-          <input type="submit" value="Ingresar" [disabled]="!loginAForm.form.valid">
-          </div>
-        </form>
       </div>
     </div>
-  </div>
+</body>
 

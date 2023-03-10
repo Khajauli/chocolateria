@@ -8,6 +8,8 @@
 body {
   background: #27262C;
   font-family: 'Rubik', sans-serif;
+  height: 965px;
+  margin-top: -30px;
 }
 
 .login-form {
@@ -19,7 +21,9 @@ body {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
           flex-direction: column;
-  
+}
+.content{
+  text-align: center;
 }
 .login-form label {
   padding: 35px 35px 0 35px;
