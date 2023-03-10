@@ -1,7 +1,7 @@
 <div class="contenedor">
     <div class="tarjeta">
         <div class="titulo">
-            <h2>Agregar Contenido Adicional{{titulo}}</h2>
+            <h2>{{tema}}</h2>
         </div>
         <div class="formulario">
             <form  #articuloForm="ngForm" (ngSubmit)="guardarArticulo(articuloForm)">
@@ -29,7 +29,7 @@
                     </div>
                     <div>
                         <label for="texto">Texto:</label>  
-                        <input type="text" id="texto" name="texto" #texto="ngModel" [(ngModel)]="articulo.texto" required>
+                        <textarea type="text" id="texto" name="texto" #texto="ngModel" [(ngModel)]="articulo.texto" required></textarea>
                         <span *ngIf="texto.touched && !texto.valid">
                             usuario obligatorio o incorrectamente ingresado
                         </span>
