@@ -1,97 +1,80 @@
-<div class="container">
-    <section>
-        <div class="izquierda">
-            <h2>Regala experiencias al alcance de un chocolate</h2>
-            <p>Realizamos chocolates para toda ocasión, el límite es tu imaginación.</p>
-            <div class="botones">
-                <button style="background-color: black;"><a href="#" style="color: white;" [routerLink]="['/contactos']">Ordena Ahora</a></button>
-                <button style="background-color: white;"><a href="#" style="color: black;" [routerLink]="['/productos']">Productos</a></button>
-            </div>
-        </div>
-        <div class="derecha">
-            <img class="pastel" src="../../../assets/img/pastel.png">
-            <div class="circulo"></div>
-        </div>
-    </section>
-    <section>
-        <div class="seleccion">
-            <div class="Sizquierda">
-                <h2>Nuestra Mejor selección</h2>
-            </div>
-            <div class="Sderecha">
-                <p>Aquí te mostramos nuestros productos más solicitados, que pueden ser de tu agrado.</p>
-            </div>
-        </div>
-        <div class="portafolio">
-            <div class="imagen-port">
-              <img src="../../../assets/img/cheesecake.jpg">
-              <div class="infoImagen">
-                <div>
-                  <p>Red Velvet & Cream Cheese (500g)</p>
-                </div>
-              </div>
-            </div>
-            <div class="imagen-port">
-              <img src="../../../assets/img/cheesecake.jpg">
-              <div class="infoImagen">
-                <div>
-                  <p>Red Velvet & Cream Cheese (500g)</p>
-                </div>
-              </div>
-            </div>
-            <div class="imagen-port">
-              <img src="../../../assets/img/cheesecake.jpg">
-              <div class="infoImagen">
-                <div>
-                  <p>Red Velvet & Cream Cheese (500g)</p>
-                </div>
-              </div>
-            </div>
-            <div class="imagen-port">
-              <img src="../../../assets/img/cheesecake.jpg">
-              <div class="infoImagen">
-                <div>
-                  <p>Red Velvet & Cream Cheese (500g)</p>
-                </div>
-              </div>
-            </div>
-          </div>
-    </section>
-    <section>
-        <div class="informacion">
-            <div class="izquierdaI">
-                <h2>Nuestro productos son frescos y de calidad</h2>
-                <p>Utilizamos los mejores productos para obtener chocolates
-                  de primera. Nuestro sabor es único y son un excelente detalle 
-                  para cualquier ocasión. Son deliciosos, tienes que probarlos! </p>
-            </div>
-            <div class="derechaI">
-                <img src="../../../assets/img/cheesecake.jpg">
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="izquierdaI" id="imagenB">
-            <img src="../../../assets/img/cheesecake.jpg">
-        </div>
-        <div class="derechaI" id="infoB">
-            <h2>Escoge tus chocolates</h2>
-            <p>Tenemos una gran variedad de chocolates que se 
-              acoplan a los diferentes gustos de nuestros clientes,
-              si no sabes cual escoger te recomendamos los
-              productos de nuestra mejor selección.
-            </p>
-        </div>
-    </section>
-    <section>
-      <div class="fiesta">
-          <h2>Para Fiestas y Eventos</h2>
-          <p>Comunicate con nosotros con una semana de anticipación en nuestro horario de atención</p>
-          <button><a href="#" style="color:white;text-decoration: none;" [routerLink]="['/contactos']">Contactos</a></button>
+<section>
+  <div class="izquierda">
+      <h2>Regala experiencias al alcance de un chocolate</h2>
+      <p>Realizamos chocolates para toda ocasión, el límite es tu imaginación.</p>
+      <div class="botones">
+          <button style="background-color: black;"><a href="#" style="color: white;" [routerLink]="['/contactos']">Ordena Ahora</a></button>
+          <button style="background-color: white;"><a href="#" style="color: black;" [routerLink]="['/productos']">Productos</a></button>
       </div>
-    </section>
-    <section>
-      <div class="eslogan">
+  </div>
+  <div class="derecha">
+      <img class="pastel" src="../../../assets/img/pastel.png">
+      <div class="circulo"></div>
+  </div>
+</section>
+<section>
+  <div class="seleccion">
+    <div class="Sizquierda">
+        <h2>Nuestra Mejor selección</h2>
+    </div>
+    <div class="Sderecha">
+        <p>Aquí te mostramos nuestros productos más solicitados, que pueden ser de tu agrado.</p>
+    </div>
+  </div>
+  <div class="productos-container">
+    <ng-container *ngFor="let producto of productos.slice(index, index+4)" class="producto" >
+        <a *ngIf="producto.estado === 'Activo'">
+            <div class="tarjeta">
+                <img src="{{url+'get-imagen/'+producto.imagen}}">
+                <h3>{{producto.descripcion}}</h3>
+            </div>
+        </a> 
+    </ng-container> 
+  </div>
+</section>
+<div class="container">
+    <ul>
+        <li *ngFor="let articulo of articulos; let i = index" class="articulo" >
+            <ng-container [ngSwitch]="i % 2 === 0">
+            <ng-container *ngSwitchCase="true">
+                <div class="informacion">
+                    <a *ngIf="articulo.estado === 'Activo' && articulo.tipo === 'Home' ">
+                        <div class="izquierdaI">
+                            <h2>{{articulo.titulo}}</h2>
+                            <p>{{articulo.texto}}</p>
+                        </div>
+                        <div class="derechaI">
+                            <img src="{{url+'get-imagen/'+articulo.imagen}}">
+                        </div>
+                    </a>
+                </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="false">
+                <div class="informacion">
+                    <a *ngIf="articulo.estado === 'Activo' && articulo.tipo === 'Home'">
+                        <div class="izquierdaI">
+                            <img src="{{url+'get-imagen/'+articulo.imagen}}">
+                        </div>
+                        <div class="derechaI">
+                            <h2>{{articulo.titulo}}</h2>
+                            <p>{{articulo.texto}}</p>
+                        </div>
+                    </a>
+                </div>
+            </ng-container>
+            </ng-container>
+        </li> 
+    </ul>
+</div>
+<section>
+    <div class="fiesta">
+        <h2>Para Fiestas y Eventos</h2>
+        <p>Comunicate con nosotros con una semana de anticipación en nuestro horario de atención</p>
+        <button><a href="#" style="color:white;text-decoration: none;" [routerLink]="['/contactos']">Contactos</a></button>
+    </div>
+</section>
+<section>
+    <div class="eslogan">
         <img src="../../../assets/img/comillas.png" id="comillas-izquierda">
         <h2 style="margin-top: 168px;">El chocolate no resolverá tus problemas</h2>
         <h2 style="margin-bottom: 82px;">Pero tampoco lo hará una manzana</h2>
@@ -99,7 +82,7 @@
         <img src="../../../assets/img/CEO ARIQ.jpg" style="width: 88px;height: 88px;border-radius: 50%;">
         <p style="font-size: 24px; font-weight: 600;margin-bottom: 8px;">Kharol Chicaiza</p>
         <p style="font-size: 18px; font-weight: 500px;margin-bottom: 132px;">Delivery & Fundadora de ARIQ</p>
-      </div>
-    </section>
-</div>
+    </div>
+</section>
+
 <app-pie></app-pie>

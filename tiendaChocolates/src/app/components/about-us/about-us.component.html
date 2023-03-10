@@ -1,1 +1,46 @@
-<p>about-us works!</p>
+<div class="circulo"></div>
+<div class="container">
+    <ng-container *ngFor="let articulo of articulos,; let i = index" class="articulo" >
+        <ng-container [ngSwitch]="i % 2 === 0">
+            <ng-container *ngSwitchCase="true">
+                <div class="informacion">
+                    <a a *ngIf="articulo.estado === 'Activo' && articulo.tipo === 'About' ">
+                        <div class="izquierdaI">
+                            <h2>{{articulo.titulo}}</h2>
+                            <p>{{articulo.texto}}</p>
+                        </div>
+                        <div class="derechaI">
+                            <img src="{{url+'get-imagen/'+articulo.imagen}}">
+                        </div>
+                    </a>
+                </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="false">
+                <div class="informacion">
+                    <a a *ngIf="articulo.estado === 'Activo' && articulo.tipo === 'About' ">
+                        <div class="izquierdaI">
+                            <img src="{{url+'get-imagen/'+articulo.imagen}}">
+                        </div>
+                        <div class="derechaI">
+                            <h2>{{articulo.titulo}}</h2>
+                            <p>{{articulo.texto}}</p>
+                        </div>
+                    </a>
+                </div>
+            </ng-container>
+        </ng-container>
+    </ng-container> 
+</div>
+<div class="tiempo">
+    <ng-container *ngFor="let articulo of articulos" class="articulo" >
+        <a *ngIf="articulo.estado === 'Activo' && articulo.tipo === 'Tiempo' ">
+            <div class="tarjeta">
+                <h2>{{articulo.titulo}}</h2>
+                <p>{{articulo.texto}}</p>
+                <img src="{{url+'get-imagen/'+articulo.imagen}}">
+            </div>
+        </a> 
+    </ng-container> 
+</div>
+<h2 style="margin-left: 96px;margin-bottom: 50px;">Linea de Tiempo</h2>
+<app-pie-a></app-pie-a>
