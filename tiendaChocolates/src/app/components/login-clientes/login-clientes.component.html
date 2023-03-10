@@ -8,15 +8,18 @@
               <h1>Bienvenido Cliente</h1>
               <div class="content">
               <div class="input-field">
-                <label for="username">Nombre de usuario:</label>
-                <input type="text" class="form-control" placeholder="username" id="username" name="username" #username="ngModel" [(ngModel)]="usuario" required>
+                <label for="username">Nombre :</label>
+                <input type="text" class="form-control" placeholder="Nombre" id="username" name="username" #username="ngModel" [(ngModel)]="cliente.nombre" required>
                 <span *ngIf="username.touched && !username.valid">
-                  Nombre de usuario obligatorio
+                  Nombre obligatorio
               </span>
               </div>
               <div class="input-field">
-                <label for="contrasenia">Contaseña:</label>
-                <input type="password" class="form-control" placeholder="password" id="password" name="password" #password="ngModel" [(ngModel)]="contrasenia" required>
+                <label for="contrasenia">Correo:</label>
+                <input type="email" class="form-control" placeholder="Correo" id="password" name="password" #password="ngModel" [(ngModel)]="cliente.correo" required>
+                <span *ngIf="password.touched && !password.valid">
+                  Correo obligatorio
+              </span>
               </div>
             </div>
             <div class="action">
