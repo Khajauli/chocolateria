@@ -16,18 +16,18 @@ export class ComentarioService{
 
     getComentarios():Observable<any>{
         let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.get(this.url+'/comentarios',{headers:headers});
+        return this._http.get(this.url+'comentarios',{headers:headers});
     }
 
     guardarComentario(comentario:Comentario):Observable<any>{
         let params=JSON.stringify(comentario);
         let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.post(this.url+'/guardarComentario',params,{headers:headers});
+        return this._http.post(this.url+'guardarComentario',params,{headers:headers});
     }
 
     getComentarioP(producto:string):Observable<any>{
         let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.get(this.url+'/encontrarCliente/'+producto,{headers:headers});
+        return this._http.get(this.url+'encontrarCliente/'+producto,{headers:headers});
     }
 
     getComentario(id:string):Observable<any>{

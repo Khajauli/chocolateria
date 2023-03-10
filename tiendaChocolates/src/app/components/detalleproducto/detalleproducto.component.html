@@ -17,6 +17,45 @@
             <h3 class="texto"> {{chocolate.descripcion}}</h3>
         </div>
     </div>
+    <div class="tarjeta">
+    <div class="titulo">
+        <p>Dejanos tus comentarios</p> </div>
+        <div class="formulario">
+            <form  #comentarioForm="ngForm" (ngSubmit)="guardarComentario(comentarioForm)">
+                <div class="codigo">
+                    <label for="codigo">Código:</label>
+                    <input type="text" id="codigo" name="codigo" #codigo="ngModel" [(ngModel)]="comentario.codigo" required >
+                </div>
+                <div class="usuario">
+                    <label for="usuario">Ingrese su correo:</label>
+                    <input type="email" id="usuario" name="usuario" #codigo="ngModel" [(ngModel)]="comentario.usuario" required >
+                </div>
+                <div class="texto">
+                    <label for="texto">Texto:</label>
+                    <textarea id="texto" name="texto" #codigo="ngModel" [(ngModel)]="comentario.texto" required></textarea>
+                </div>
+                <!-- <div class="texto">
+                    <label for="texto">Desea ser notificado: </label>
+                    <input type="checkbox" [(ngModel)]="comentario.codigo" name="notificar">
+                  </div> -->
+                <div class="puntaje">
+                    <label for="puntaje">Puntua este producto (5 = muy satisfecho, 0 = podria mejorar):</label>
+                    <input type="number" id="puntaje" name="puntaje" #codigo="ngModel" [(ngModel)]="comentario.puntaje" required>
+                </div>
+                <div class="guardar">
+                    <button type="submit" [disabled]="!comentarioForm.form.valid" style="width: 54px;height: 54px; background-color: transparent; border: none;"><i class="fa-sharp fa-solid fa-floppy-disk" style="color: black; font-size: 35px;"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class = "tarjeta">
+        <h2>Reseñas </h2>
+        <ng-container *ngFor="let comentario of comentarios" class="comentario" >
+            <!-- <a *ngIf="comentario.producto == chocolate" > -->
+                <!-- {{ comentario.puntuacion }} -->
+            <!-- </a>  -->
+        </ng-container>
+    </div>
 </div>
 
 <!-- <p *ngIf = "confirm==false">
