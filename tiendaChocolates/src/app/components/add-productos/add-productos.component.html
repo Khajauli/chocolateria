@@ -1,4 +1,35 @@
 <app-encabezado-a></app-encabezado-a>
+<table style="margin: 0 auto; width: 70%; text-align: center; margin-bottom: 10px;margin-top: 50px;"> 
+  <thead *ngIf="isChocolate">
+  <h2>Busqueda</h2> 
+    <input type="text" [(ngModel)]="nombre" name="nombre" placeholder="Por categoria" class="nombre">
+    <button type="button" (click)="buscarChocolate()">Buscar</button>
+  <div *ngIf="chocolateBuscado">
+    <tr>
+      <th>Código</th>
+      <th>Nombre</th>
+      <th>Precio</th>
+      <th>Estado</th>
+    </tr>
+    <ng-container *ngFor="let chocolate of chocolates">
+     <tr>
+      <td>
+        {{chocolate.codigo}}
+      </td>
+      <td>
+        {{chocolate.nombre}}
+      </td>
+      <td>
+        {{chocolate.precio}}
+      </td>
+      <td>
+        {{chocolate.estado}}
+      </td>
+    </tr> 
+    </ng-container>
+  </div>
+  </thead>
+  </table>
 <table style="margin: 0 auto; width: 70%; text-align: center; margin-bottom: 500px;margin-top: 50px;">
   <thead *ngIf="isChocolate">
     <tr>
@@ -49,4 +80,5 @@
 
   </tbody>
 </table>
+
 <app-pie-r></app-pie-r>

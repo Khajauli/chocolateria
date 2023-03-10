@@ -19,6 +19,9 @@ export class AddProductosComponent implements OnInit{
   public articulos : Articulo [ ];
   public isChocolate : boolean;
   public isArticulos : boolean;
+  public chocolateBuscado: boolean = false;
+  public nombre : string;
+  public chocolates : Chocolate [ ];
   constructor(
     private _chocolateService:ChocolateService,
     private _route:ActivatedRoute, 
@@ -30,6 +33,8 @@ export class AddProductosComponent implements OnInit{
     this.articulos = [];
     this.isChocolate = false;
     this.isArticulos = false;
+    this.nombre = "";
+    this.chocolates = [];
   }
   ngOnInit(): void {
     console.log("oninit");
@@ -112,4 +117,15 @@ export class AddProductosComponent implements OnInit{
       }
     )
   }
+buscarChocolate(){
+  this._chocolateService.getChocolatesC(this.nombre).subscribe(
+    response=>{
+      this.chocolates = response.chocolates;
+      this.chocolateBuscado = true;
+      console.log(response);
+    },error=>{
+      console.log(<any>error);
+    }
+  )
+}
 }
