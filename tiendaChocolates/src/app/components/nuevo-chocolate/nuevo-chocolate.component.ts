@@ -49,6 +49,7 @@ export class NuevoChocolateComponent implements OnInit{
             this._cargarService.peticionRequest(Global.url+"subir-imagen/"+response.chocolate._id,[],this.archivosParaCargar,'imagen')
             .then((result:any)=>{
               this.chocolateGuardar=result.response;
+              this.idGuardado = result.response._id;
               this.status = 'success';
               form.reset();
               this.fileInput.nativeElement.value='';
