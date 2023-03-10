@@ -18,6 +18,7 @@ export class LoginClientesComponent implements OnInit{
   public idGuardado:string;
   public cliente:Cliente;
   public clienteGuardado:Cliente;
+  public status:string;
 
   constructor(
     private _clienteService:ClienteService,
@@ -30,6 +31,7 @@ export class LoginClientesComponent implements OnInit{
     this.contrasenia="";
     this.cliente=new Cliente('','','');
     this.clienteGuardado=new Cliente('','','');
+    this.status="";
   }
   ngOnInit(): void {
     
@@ -43,6 +45,7 @@ export class LoginClientesComponent implements OnInit{
 
       },
       error => {
+        this.status='failed';
         console.log(error);
 
       }
