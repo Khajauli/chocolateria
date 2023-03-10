@@ -12,7 +12,7 @@ import { Global } from 'src/app/services/global';
   providers : [ArticuloService, CargarService]
 })
 export class EditarArticulosComponent implements OnInit{
-public titulo : string;
+public tema : string;
 public articulo : Articulo;
 public articuloSaved : Articulo;
 public url : string;
@@ -24,7 +24,7 @@ constructor (
   private _cargarService : CargarService,
   private _route : ActivatedRoute
 ){
-  this.titulo = "Editar Articulos";
+  this.tema= "Editar Articulos";
   this.url = Global.url;
   this.articulo = new Articulo ("",0,"","","","","");
   this.articuloSaved = new Articulo ("",0,"","","","","");
@@ -58,7 +58,7 @@ guardarArticulo( form : NgForm){
         .then((result:any)=>{
           this.articuloSaved = result.response.articulo;
           this.status = 'success';
-          this.idSaved = response.response.articulo._id;
+          // this.idSaved = response.response.articulo._id;
           form.reset();
         })
       }else{

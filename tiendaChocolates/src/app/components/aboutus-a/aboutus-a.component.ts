@@ -12,8 +12,8 @@ import { Global } from '../../services/global';
 export class AboutusAComponent implements OnInit {
 public articulos : Articulo [ ];
 public url : string;
-public selectArticulo : Articulo;
 public confirmArt : boolean;
+public selectedArticulo : Articulo;
 
 constructor(
   private _articuloService : ArticuloService,
@@ -21,7 +21,7 @@ constructor(
   this.url = Global.url;
   this.articulos = [];
   this.confirmArt = false;
-  this.selectArticulo = new Articulo("",0,"","","","","");
+  this.selectedArticulo = new Articulo("",0,"","","","","");
 }
 ngOnInit(): void {
     this.getArticulos();
@@ -32,10 +32,25 @@ getArticulos(){
       console.log(response.articulos);
       if(response.articulos){
         this.articulos = response.articulos;
+        console.log(this.articulos);
       }
     },
     error => {
       console.log(<any>error);
+    }
+  )
+}
+setConfirmArt(confirm: boolean, articulo: Articulo) {
+  this.confirmArt = confirm;
+  this.selectedArticulo=articulo;
+}
+borrarArticulo(articulo: Articulo){
+  articulo.tipo = "Inactivo";
+  this._articuloService.updateArticulo(articulo).subscribe(
+    response=> {
+      console.log("Eliminacion exitosa");
+    }, error => {
+      console.log("No se ha eliminado")
     }
   )
 }

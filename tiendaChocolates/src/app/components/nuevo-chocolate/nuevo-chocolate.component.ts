@@ -34,10 +34,11 @@ export class NuevoChocolateComponent implements OnInit{
     this.status="";
     this.idGuardado="";
     this.archivosParaCargar=[];
-    this.titulo="GUARDAR CHOCOLATE";
+    this.titulo="";
   }
 
   ngOnInit(): void {
+    this.titulo = "Nuevo Chocolate";
   }
 
   guardarChocolate(form:NgForm){

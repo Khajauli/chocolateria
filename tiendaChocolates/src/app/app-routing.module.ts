@@ -18,6 +18,7 @@ import { InventarioTotalComponent } from './components/inventario-total/inventar
 import { NuevoArticuloComponent } from './components/nuevo-articulo/nuevo-articulo.component';
 import { EditarArticulosComponent } from './components/editar-articulos/editar-articulos.component';
 import { AuthAGuard } from './authA.guard';
+import { AboutusAComponent } from './components/aboutus-a/aboutus-a.component';
 
 const routes: Routes = [
   {path: 'inicio', component: HomeComponent},
@@ -37,6 +38,7 @@ const routes: Routes = [
   {path: 'inventario', component:InventarioTotalComponent},
   {path: 'nuevoArticulo', component:NuevoArticuloComponent},
   {path: 'editar-articulo/:id', component:EditarArticulosComponent},
+  {path: 'aboutus-a', component:AboutusAComponent},
   {path: '**', component: HomeComponent},
 ];
 

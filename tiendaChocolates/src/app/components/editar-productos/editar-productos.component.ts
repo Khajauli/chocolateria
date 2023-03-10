@@ -27,7 +27,7 @@ constructor(
   private _router:Router,
   private _route:ActivatedRoute
 ){
-  this.titulo="Editar Chocolate";
+  this.titulo="";
   this.url = Global.url;
   this.chocolate = new Chocolate("","","",0,"","","",0,0,"");
   this.chocolateSaved = new Chocolate("","","",0,"","","",0,0,"");
@@ -40,6 +40,7 @@ ngOnInit(): void {
       let id=params['id'];
       console.log("estoy en el init editar")
       this.getChocolate(id);
+      this.titulo="Editar Chocolate";
     })
 }
 getChocolate( id:String ){
@@ -62,7 +63,7 @@ guardarChocolate(form : NgForm){
         .then((result:any)=>{
           this.chocolateSaved = result.response.chocolateU;
           this.status = 'success';
-          this.idSaved = response.response.chocolateU._id;
+          // this.idSaved = response.response.chocolateU._id;
           console.log(result.response.chocolateU);
           form.reset();
         });

@@ -56,7 +56,7 @@
             <ng-container [ngSwitch]="i % 2 === 0">
             <ng-container *ngSwitchCase="true">
                 <div class="informacion">
-                    <a *ngIf="articulo.tipo === 'Activo'">
+                    <a *ngIf="articulo.estado === 'Activo' && articulo.tipo === 'Home' ">
                         <div class="izquierdaI">
                             <h2>{{articulo.titulo}}</h2>
                             <p>{{articulo.texto}}</p>
@@ -69,7 +69,7 @@
             </ng-container>
             <ng-container *ngSwitchCase="false">
                 <div class="informacion">
-                    <a *ngIf="articulo.tipo === 'Activo'">
+                    <a *ngIf="articulo.estado === 'Activo' && articulo.tipo === 'Home'">
                         <div class="izquierdaI">
                             <img src="{{url+'get-imagen/'+articulo.imagen}}">
                         </div>
