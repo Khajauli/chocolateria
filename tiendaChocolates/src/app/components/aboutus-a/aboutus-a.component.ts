@@ -15,6 +15,7 @@ public url : string;
 public confirmArt : boolean;
 public selectedArticulo : Articulo;
 public agregarVisible = false;
+public addButton = false;
 
 constructor(
   private _articuloService : ArticuloService,
@@ -57,6 +58,9 @@ borrarArticulo(articulo: Articulo){
       console.log("No se ha eliminado")
     }
   )
+}
+verify() {
+  this.addButton = !this.addButton;
 }
 
 }
