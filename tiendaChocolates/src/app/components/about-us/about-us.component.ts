@@ -50,7 +50,7 @@ export class AboutUsComponent implements OnInit{
     this.agregarVisible = !this.agregarVisible;
   }
   borrarArticulo(articulo: Articulo){
-    articulo.tipo = "Inactivo";
+    articulo.estado = "Inactivo";
     this._articuloService.updateArticulo(articulo).subscribe(
       response=> {
         console.log("Eliminacion exitosa");

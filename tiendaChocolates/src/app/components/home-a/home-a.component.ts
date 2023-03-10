@@ -115,7 +115,8 @@ export class HomeAComponent implements OnInit {
   }
 
   borrarArticulo(articulo: Articulo){
-    articulo.tipo = "Inactivo";
+    articulo.estado = "Inactivo";
+    console.log(articulo);
     this._articuloService.updateArticulo(articulo).subscribe(
       response=> {
         console.log("Eliminacion exitosa");
