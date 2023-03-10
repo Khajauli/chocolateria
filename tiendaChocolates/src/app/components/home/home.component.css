@@ -23,6 +23,17 @@
 .izquierda {
   text-align: left;
 }
+.izquierda {
+  animation: vibrar 1s infinite alternate;
+}
+@keyframes vibrar {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(10px);
+  }
+}
 .derecha {
   text-align: right;
   position: relative;

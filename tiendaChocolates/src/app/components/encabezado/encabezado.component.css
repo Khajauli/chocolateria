@@ -11,6 +11,7 @@
     margin-left: 184px;
     font-size: 30px;
 }
+
 .menu ul {
     display: flex;
     list-style: none;
@@ -25,6 +26,9 @@
     font-weight: 500;
     line-height: 24px;
     color: black;
+}
+.menu a:hover {
+  color: red; /* o cualquier otro color que se desee */
 }
 /*Responsive cabecera*/
 @media (max-width: 1864px) {
