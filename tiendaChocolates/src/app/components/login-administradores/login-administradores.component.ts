@@ -39,7 +39,7 @@ export class LoginAdministradoresComponent implements OnInit{
         this.admin=response.administrador;
         console.log(response);
         localStorage.setItem('token', response.token);
-        this._router.navigate(['/productos']);
+        this._router.navigate(['/inicioAdmin']);
         
 
       },
