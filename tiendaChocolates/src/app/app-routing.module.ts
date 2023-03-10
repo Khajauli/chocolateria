@@ -30,7 +30,7 @@ const routes: Routes = [
   {path: 'chocolate/:id', component:DetalleproductoComponent},
   {path: 'editar-producto/:id' , component:EditarProductosComponent,canActivate:[AuthAGuard]},
   {path: 'loginCliente' , component:LoginClientesComponent},  
-  {path: 'loginAdministrador' , component:LoginAdministradoresComponent},  
+  {path: 'Administrador' , component:LoginAdministradoresComponent},  
   {path: 'inventario/:categoria',component:AddProductosComponent,canActivate:[AuthAGuard]},
   {path: 'inventario',component:AddProductosComponent,canActivate:[AuthAGuard]},
   {path: 'nuestrosChocolates',component:ProductosUComponent},
