@@ -26,3 +26,30 @@
     </div>
 </ng-container>
 <h2>Linea de Tiempo</h2>
+<ng-container *ngFor="let articulo of articulos" class="articulo" >
+    <a *ngIf="articulo.estado === 'Activo' && articulo.tipo === 'Tiempo' ">
+        <div class="tarjeta">
+            <h2>{{articulo.titulo}}</h2>
+            <p>{{articulo.texto}}</p>
+            <img src="{{url+'get-imagen/'+articulo.imagen}}">
+        </div>
+        <div class="editar">
+            <p *ngIf="confirmArt==false ">
+                <button  [routerLink]="['/editar-articulo',articulo._id]" style="margin-left: 800px;"><i class="fa-sharp fa-solid fa-pen-to-square"></i></button>
+                <button (click)="setConfirmArt(true, articulo)" class="button-delete"><i class="fa-sharp fa-solid fa-trash-can"></i></button>
+            </p>
+            <p *ngIf="confirmArt && selectedArticulo === articulo">
+                <span class="confirmArt">Estas seguro de eliminar este chocolate</span><br>
+                <button (click)="setConfirmArt(false, articulo)" class="button-edit" style="margin-left: 800px;background-color: #D50000; color: white;"><i class="fa-sharp fa-solid fa-xmark"></i></button>
+                <button (click)="borrarArticulo(articulo)" class="button-delete" style="background-color: #009100; color: white;"><i class="fa-sharp fa-solid fa-check"></i></button> 
+            </p>
+        </div>
+    </a> 
+</ng-container> 
+<button id="agregar" class="boton-nuevo" (click)="verify()" style="background-color: transparent; border: none; color: black; margin-left: 800px;"><i class="fa-solid fa-circle-plus"></i></button>
+<ng-container *ngIf="addButton">
+    <div class="agregar-botones">
+        <button [routerLink]="['/nuevoArticulo']" style="background-color: #CDD9FB; color: black; width: 100px;height: 50px; margin-top: 5px; margin-left: 850px;">Añadir nuevo</button>
+        <button [routerLink]="['/inventario/'+'articulos']" style="background-color: #CDD9FB; color: black; width: 100px;height: 50px; margin-top: 5px; font-size: 10px;">Añadir existente</button>
+    </div>
+</ng-container>
