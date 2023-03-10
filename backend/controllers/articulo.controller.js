@@ -5,15 +5,20 @@ var fs=require('fs');
 var path=require('path');
 var controller={
 
-    saveArticulo:function(req,res){
+    saveArticulo: async function(req,res){
         var articulo=new Articulo();
         var params=req.body;
-        articulo.numero=params.numero;
+        
         articulo.titulo=params.titulo;
         articulo.texto=params.texto;
         articulo.tipo=params.tipo;
         articulo.estado=params.estado;
         articulo.imagen=null;
+
+        const ultimoCodigo = await Articulo.findOne().sort({ numero: -1 }).select({ numero: 1 }).limit(1).exec();
+          const nuevoCodigo = ultimoCodigo ? ultimoCodigo.numero + 1 : 1;
+          articulo.numero = nuevoCodigo;
+
         articulo.save((err,articuloGuardado)=>{
             if (err) return res.status(500).send({message:'Error al guardar'});
             if(!articuloGuardado) return res.status(404).send({message:'No se ha guardado el articulo'});

@@ -1,5 +1,6 @@
 'use strict'
 var Comentario=require('../models/comentario');
+var Chocolate=require('../models/chocolate');
 var fs=require('fs');
 var path=require('path');
 const { exists } = require('../models/comentario');
@@ -17,6 +18,10 @@ var controller={
         comentario.texto = params.texto;
         comentario.aprobado = params.aprobado;
         comentario.puntaje = params.puntaje;
+
+        const ultimoCodigo = await Comentario.findOne().sort({ codigo: -1 }).select({ codigo: 1 }).limit(1).exec();
+          const nuevoCodigo = ultimoCodigo ? ultimoCodigo.codigo + 1 : 1;
+          comentario.codigo = nuevoCodigo;
 
         try {
             const chocolate = await Chocolate.findOne({ codigo: params.producto });
