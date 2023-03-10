@@ -1,71 +1,86 @@
 <app-encabezado></app-encabezado>
 <div class="contenedor">
-    <div class="tarjeta">
-        <div class="titulo">
-            <p>Detalle de producto</p>
-        </div>
-        <div class = "izquierda" *ngIf = "chocolate">
-            <div class = "imagen" *ngIf = "chocolate.imagen">
-                <img src = "{{url+'get-imagen/'+chocolate.imagen}}" *ngIf = "chocolate.imagen">
+    <div class="tarjetasS">
+        <div class="tarjeta">
+            <div class="titulo">
+                <p>Detalle de producto</p>
+            </div>
+            <div class = "izquierda" *ngIf = "chocolate">
+                <div class = "imagen" *ngIf = "chocolate.imagen">
+                    <img src = "{{url+'get-imagen/'+chocolate.imagen}}" *ngIf = "chocolate.imagen">
+                </div>
+            </div>
+            <div class="derecha">
+                <h3 class="descripcion">Nombre:</h3>
+                <h3 class="texto">{{chocolate.nombre}}</h3>
+                <h3 class="descripcion">Precio:</h3>
+                <h3 class="texto"> {{chocolate.precio}} $</h3>
+                <h3 class="descripcion">Descripcion:</h3>
+                <h3 class="texto"> {{chocolate.descripcion}}</h3>
+                <h3 class="descripcion">Puntuacion:</h3>
+                <h3 class="texto"> {{chocolate.puntuacion}}</h3>
             </div>
         </div>
-        <div class="derecha">
-            <h3 class="descripcion">Nombre:</h3>
-            <h3 class="texto">{{chocolate.nombre}}</h3>
-            <h3 class="descripcion">Precio:</h3>
-            <h3 class="texto"> {{chocolate.precio}} $</h3>
-            <h3 class="descripcion">Descripcion:</h3>
-            <h3 class="texto"> {{chocolate.descripcion}}</h3>
-            <h3 class="descripcion">Puntuacion:</h3>
-            <h3 class="texto"> {{chocolate.puntuacion}}</h3>
+        <div class="tarjeta">
+            <div class="titulo">
+                <p>Dejanos tus comentarios</p> 
+            </div>
+            <div class="formulario" style="margin-left: 20px;">
+                <div class="message success" *ngIf="status=='success'">
+                    Tu comentario se ha ingresado correctamente
+                </div>
+                <div class="message failed" *ngIf="status=='failed'">
+                    El comentario no se ha podido guardar, prueba ingresando los datos nuevamente.
+                </div>
+                <form  #comentarioForm="ngForm" (ngSubmit)="guardarComentario(comentarioForm)">
+                    <div class="codigo">
+                        <label for="codigo">Código:</label>
+                        
+                    </div>
+                    <div>
+                        <input type="text" id="codigo" name="codigo" #codigo="ngModel" [(ngModel)]="comentario.codigo" required style="width: 90%;height: 30px;font-size: 20px;">
+                    </div>
+                    <div class="usuario">
+                        <label for="usuario">Ingrese su usuario:</label>
+                    </div>
+                    <div>
+                        <input type="text" id="usuario" name="usuario" #codigo="ngModel" [(ngModel)]="comentario.usuario" required style="width: 90%;height: 30px;font-size: 20px;" >
+                    </div>
+                    <div class="texto">
+                        <label for="texto" style="width: 600px;height: 30px;font-size: 20px;">Texto:</label>
+                    </div>
+                    <div>
+                        <textarea id="texto" name="texto" #codigo="ngModel" [(ngModel)]="comentario.texto" required style="width: 90%;height: 100px;font-size: 20px;"></textarea>
+                    </div>
+                    <!-- <div class="texto">
+                        <label for="texto">Desea ser notificado: </label>
+                        <input type="checkbox" [(ngModel)]="comentario.codigo" name="notificar">
+                      </div> -->
+                    <div class="puntaje">
+                        <label for="puntaje">Puntua este producto (5 = muy satisfecho, 0 = podria mejorar):</label>
+                    </div>
+                    <div>
+                        <input type="number" id="puntaje" name="puntaje" #codigo="ngModel" [(ngModel)]="comentario.puntaje" required style="width: 90%;height: 30px;font-size: 20px;">
+                    </div>
+                    <div class="guardar">
+                        <button type="submit" [disabled]="!comentarioForm.form.valid" style="width: 54px;height: 54px; background-color: transparent; border: none;color: black; font-size: 40px;margin-left:435px;margin-top: 100px;"><i class="fa-solid fa-floppy-disk"></i></button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-    <div class="tarjeta">
-    <div class="titulo">
-        <p>Dejanos tus comentarios</p> </div>
-        <div class="formulario">
-            <div class="message success" *ngIf="status=='success'">
-                Tu comentario se ha ingresado correctamente
+    <div class = "tarjeta2">
+        <div class="comentarios">
+
+            <div class="titulo">
+                <p>Reseñas</p> 
             </div>
-            <div class="message failed" *ngIf="status=='failed'">
-                El comentario no se ha podido guardar, prueba ingresando los datos nuevamente.
-            </div>
-            <form  #comentarioForm="ngForm" (ngSubmit)="guardarComentario(comentarioForm)">
-                <div class="codigo">
-                    <label for="codigo">Código:</label>
-                    <input type="text" id="codigo" name="codigo" #codigo="ngModel" [(ngModel)]="comentario.codigo" required >
-                </div>
-                <div class="usuario">
-                    <label for="usuario">Ingrese su usuario:</label>
-                    <input type="text" id="usuario" name="usuario" #codigo="ngModel" [(ngModel)]="comentario.usuario" required >
-                </div>
-                <div class="texto">
-                    <label for="texto">Texto:</label>
-                    <textarea id="texto" name="texto" #codigo="ngModel" [(ngModel)]="comentario.texto" required></textarea>
-                </div>
-                <!-- <div class="texto">
-                    <label for="texto">Desea ser notificado: </label>
-                    <input type="checkbox" [(ngModel)]="comentario.codigo" name="notificar">
-                  </div> -->
-                <div class="puntaje">
-                    <label for="puntaje">Puntua este producto (5 = muy satisfecho, 0 = podria mejorar):</label>
-                    <input type="number" id="puntaje" name="puntaje" #codigo="ngModel" [(ngModel)]="comentario.puntaje" required>
-                </div>
-                <div class="guardar">
-                    <button type="submit" [disabled]="!comentarioForm.form.valid" style="width: 54px;height: 54px; background-color: transparent; border: none;">guardar</button>
-                </div>
-            </form>
+            <ng-container *ngFor="let comentario of comentarios" class="comentario" >
+                    <a *ngIf="comentario.producto == chocolate.codigo" >
+                        <p style="margin-left: 20px;font-size: 20px;"><i class="fa-solid fa-comment"></i>     {{ comentario.texto }}</p>
+                    </a>
+            </ng-container>
         </div>
-    </div>
-    <div class = "tarjeta">
-        <div class="titulo">
-            <p>Reseñas</p> 
-        </div>
-        <ng-container *ngFor="let comentario of comentarios" class="comentario" >
-                <a *ngIf="comentario.producto == chocolate.codigo" >
-                    <p>{{ comentario.texto }}</p>
-                </a>
-        </ng-container>
     </div>
 </div>
 <app-pie-r></app-pie-r>
