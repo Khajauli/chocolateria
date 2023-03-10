@@ -81,7 +81,7 @@
                 </div>
             </ng-container>
             </ng-container>
-            <div class="editar">
+            <div class="editar" *ngIf="articulo.estado === 'Activo' && articulo.tipo === 'Home'">
                 <p *ngIf="confirmArt==false ">
                     <button  [routerLink]="['/editar-articulo',articulo._id]" style="margin-left: 800px;"><i class="fa-sharp fa-solid fa-pen-to-square"></i></button>
                     <button (click)="setConfirmArt(true, articulo)" class="button-delete"><i class="fa-sharp fa-solid fa-trash-can"></i></button>
