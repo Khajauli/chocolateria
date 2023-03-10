@@ -14,6 +14,7 @@ public articulos : Articulo [ ];
 public url : string;
 public confirmArt : boolean;
 public selectedArticulo : Articulo;
+public agregarVisible = false;
 
 constructor(
   private _articuloService : ArticuloService,
@@ -44,6 +45,9 @@ setConfirmArt(confirm: boolean, articulo: Articulo) {
   this.confirmArt = confirm;
   this.selectedArticulo=articulo;
 }
+toggleAgregar() {
+  this.agregarVisible = !this.agregarVisible;
+}
 borrarArticulo(articulo: Articulo){
   articulo.tipo = "Inactivo";
   this._articuloService.updateArticulo(articulo).subscribe(
@@ -54,4 +58,5 @@ borrarArticulo(articulo: Articulo){
     }
   )
 }
+
 }

@@ -18,3 +18,11 @@
         </div>
     </a> 
 </ng-container> 
+<button id="agregar" class="boton-nuevo" (click)="toggleAgregar()" style="background-color: transparent; border: none; color: black; margin-left: 800px;"><i class="fa-solid fa-circle-plus"></i></button>
+<ng-container *ngIf="agregarVisible">
+    <div class="agregar-botones">
+        <button [routerLink]="['/nuevoArticulo']" style="background-color: #CDD9FB; color: black; width: 100px;height: 50px; margin-top: 5px; margin-left: 850px;">Añadir nuevo</button>
+        <button [routerLink]="['/inventario/'+'articulos']" style="background-color: #CDD9FB; color: black; width: 100px;height: 50px; margin-top: 5px; font-size: 10px;">Añadir existente</button>
+    </div>
+</ng-container>
+<h2>Linea de Tiempo</h2>
