@@ -29,6 +29,8 @@ import { InventarioTotalComponent } from './components/inventario-total/inventar
 import { EditarArticulosComponent } from './components/editar-articulos/editar-articulos.component';
 import { AuthAGuard } from './authA.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { PieAComponent } from './components/pie-a/pie-a.component';
+import { PieTComponent } from './components/pie-t/pie-t.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     PieRComponent,
     InventarioTotalComponent,
     EditarArticulosComponent,
+    PieAComponent,
+    PieTComponent,
   ],
   imports: [
     BrowserModule,
