@@ -21,6 +21,7 @@ export class DetalleproductoComponent implements OnInit {
   public producto : Chocolate;
   public comentarios : Comentario [];
   public cod : string;
+  public status:string;
   
   constructor(
     private _chocolateService : ChocolateService,
@@ -35,6 +36,7 @@ export class DetalleproductoComponent implements OnInit {
     this.producto = new Chocolate ("","","",0,"","","",0,0,"");
     this.comentarios = [];
     this.cod = "";
+    this.status="";
   }
   ngOnInit(): void {
       this._route.params.subscribe(params=>{
@@ -65,8 +67,10 @@ export class DetalleproductoComponent implements OnInit {
       response=>{
         console.log("Se ha ingresado con exito el comentario");
         form.reset();
+        this.status = 'success';
       },error=>{
         console.log(<any>error);
+        this.status = 'failed';
       }
     )
   }

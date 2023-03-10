@@ -4,6 +4,12 @@
             <h2>{{titulo}}</h2>
         </div>
         <div class="formulario">
+            <div class="message success" *ngIf="status=='success'">
+                El chocolate se ha ingresado correctamente
+            </div>
+            <div class="message failed" *ngIf="status=='failed'">
+                El chocolate no se ha podido guardar, prueba ingresando los datos nuevamente.
+            </div>
             <form  #chocolateForm="ngForm" (ngSubmit)="guardarChocolate(chocolateForm)">
                 <div class="izquierda">
                     <div class="imagen">

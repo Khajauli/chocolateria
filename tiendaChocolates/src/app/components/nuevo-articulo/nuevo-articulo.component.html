@@ -4,6 +4,12 @@
             <h2>{{tema}}</h2>
         </div>
         <div class="formulario">
+            <div class="message success" *ngIf="status=='success'">
+                El articulo se ha ingresado correctamente
+            </div>
+            <div class="message failed" *ngIf="status=='failed'">
+                El articulo no se ha podido guardar, prueba ingresando los datos nuevamente.
+            </div>
             <form  #articuloForm="ngForm" (ngSubmit)="guardarArticulo(articuloForm)">
                 <div class="izquierda">
                     <label for="imagen">Imagen</label>

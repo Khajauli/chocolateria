@@ -24,6 +24,12 @@
     <div class="titulo">
         <p>Dejanos tus comentarios</p> </div>
         <div class="formulario">
+            <div class="message success" *ngIf="status=='success'">
+                Tu comentario se ha ingresado correctamente
+            </div>
+            <div class="message failed" *ngIf="status=='failed'">
+                El comentario no se ha podido guardar, prueba ingresando los datos nuevamente.
+            </div>
             <form  #comentarioForm="ngForm" (ngSubmit)="guardarComentario(comentarioForm)">
                 <div class="codigo">
                     <label for="codigo">Código:</label>
