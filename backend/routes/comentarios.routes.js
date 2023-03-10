@@ -16,6 +16,6 @@ router.put('/comentario/:id',comentarioRouter.updateComentario);
 
 router.delete('/comentario/:id',comentarioRouter.deleteComentario);
 
-router.get('/comentariosProd/:producto',comentarioRouter.getComentariosByProducto);
+router.get('/comentariosProd/:id',comentarioRouter.getComentariosByProducto);
 
 module.exports=router; 

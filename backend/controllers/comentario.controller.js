@@ -29,7 +29,7 @@ var controller={
             return res.status(404).send({ message: 'No se ha encontrado el chocolate relacionado' });
             }
 
-            comentario.producto = chocolate;
+            comentario.producto = chocolate.codigo;
 
             const oldAvgScore = chocolate.puntuacion;
             const totalReviews = chocolate.totales;
@@ -90,9 +90,9 @@ var controller={
         })
     },
     getComentariosByProducto:function(req,res){
-        var producto=req.params.producto;
-        if(producto==null) return res.status(4004).send({message:"El comentario indicado no existe"});
-        Comentario.find({producto},(err,comentarios)=>{
+        var id=req.params.id;
+        if(id==null) return res.status(4004).send({message:"El comentario indicado no existe"});
+        Comentario.findById(id,(err,comentarios)=>{
             if(err) return res.status(500).send({message:"Error al recuperar los datos"});
             if(!comentarios) return res.status(404).send({message:'No existe el comentario'});
             return res.status(200).send({comentarios});

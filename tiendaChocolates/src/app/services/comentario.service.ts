@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Comentario } from "../models/comentario";
 import { Global } from "./global";
 import { Observable } from 'rxjs';
+import { Chocolate} from "../models/chocolate";
 
 @Injectable()
 export class ComentarioService{
@@ -25,9 +26,9 @@ export class ComentarioService{
         return this._http.post(this.url+'guardarComentario',params,{headers:headers});
     }
 
-    getComentarioP(producto:string):Observable<any>{
+    getComentarioP(id:string):Observable<any>{
         let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.get(this.url+'encontrarCliente/'+producto,{headers:headers});
+        return this._http.get(this.url+'comentariosProd/'+id,{headers:headers});
     }
 
     getComentario(id:string):Observable<any>{

@@ -20,6 +20,7 @@ export class DetalleproductoComponent implements OnInit {
   public comentario : Comentario;
   public producto : Chocolate;
   public comentarios : Comentario [];
+  public cod : string;
   
   constructor(
     private _chocolateService : ChocolateService,
@@ -33,21 +34,22 @@ export class DetalleproductoComponent implements OnInit {
     this.comentario = new Comentario ("","","","","",true,0);
     this.producto = new Chocolate ("","","",0,"","","",0,0,"");
     this.comentarios = [];
+    this.cod = "";
   }
   ngOnInit(): void {
       this._route.params.subscribe(params=>{
         let id = params['id'];
         this.getProducto(id);
-        this.getComentarios();
+         this.getComentarios();
+        //this.getComentariosP();
       })
   }
   getProducto(id : String){
     this._chocolateService.getChocolate(id).subscribe(
-      
       response => {
         console.log(response.chocolateG);
         this.chocolate = response.chocolateG;
-        this.producto = response.chocolateG;
+        this.cod = this.chocolate.codigo;
       },
       error => {
         console.log(<any> error);
@@ -58,7 +60,7 @@ export class DetalleproductoComponent implements OnInit {
     this.confirm = confirm;
   }
   guardarComentario( form: NgForm){
-    this.comentario.producto =this.producto.codigo;
+    this.comentario.producto =this.chocolate.codigo;
     this._comentarioService.guardarComentario(this.comentario).subscribe(
       response=>{
         console.log("Se ha ingresado con exito el comentario");
@@ -69,15 +71,14 @@ export class DetalleproductoComponent implements OnInit {
     )
   }
   getComentarios(){
-    this.comentario.producto =this.chocolate.codigo;
     this._comentarioService.getComentarios().subscribe(
       response=> {
-        this.comentarios= response.comentarios;
-        console.log(response);
+        this.comentarios = response.comentarios;
       },error=>{
         console.log(<any> error);
       }
     )
   }
+  
 
 }
